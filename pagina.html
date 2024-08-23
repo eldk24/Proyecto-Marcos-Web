@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<header style="background-color: rgb(33, 33, 33);">
+  <title>Interfaz Página</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .custom-paragraph {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0 0 0;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    .main-heading {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 36px 12px 12px 12px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    img {
+      width: 100%;
+    }
+
+    .turnos {
+      display: flex;
+      justify-content: space-between; /* Espacio uniforme */
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto; /* Centrar */
+      position: relative; /* Para la posición del mensaje emergente */
+    }
+
+    .turnos .item {
+      position: relative;
+      text-align: center;
+      margin: 0 10px; /* Espacio horizontal entre objetos */
+      margin-bottom: 140px;
+    }
+
+    .turnos img {
+      width: 80px;
+      height: 80px;
+      display: block;
+      margin: 0 auto;
+      margin-top: 140px;
+    }
+
+    .custom-paragraph {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 16px 0 0 0;
+    }
+
+    /* Mensaje emergente */
+    .message {
+      position: absolute;
+      bottom: 60%; /* Acá se ajusta el mensaje emergente */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: black;
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      white-space: nowrap;
+      display: none;
+      z-index: 1;
+    }
+
+    .item:hover .message {
+      display: block;
+    }
+
+    /* Filas con colores de fondo */
+
+    .row {
+      background-color: rgb(255, 231, 250); 
+    }
+
+    .row2 {
+      background-color: rgb(255, 251, 231); 
+    }
+
+    .row3 {
+      background-color: rgb(231, 233, 255);
+    }
+
+    .row4 {
+      background-color: rgb(255, 231, 235);
+    }
+
+    /* Espaciado para la cuarta fila */
+    .row4 .custom-paragraph {
+      margin-bottom: 3px;
+    }
+  </style>
+
+<div style="background-color: rgb(33, 33, 33); font-size: 12px;" class="container">
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+      <span style="color: rgb(255, 255, 255); font-size: 14px;" class="fs-4">Universidad la Estrella del Mañana</span>
+    </a>
+
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Inicio</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Pagos</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Cursos</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Matrícula</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Acerca UEM</a></li>
+    </ul>
+</header>
+<body>
+
+
+
+
+    </header>
+  </div>
+
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./carruselimg1.png" class="d-block w-100" alt="img1">
+      </div>
+      <div class="carousel-item">
+        <img src="./carruselimg2.png" class="d-block w-100" alt="img2">
+      </div>
+      <div class="carousel-item">
+        <img src="./carruselimg3.png" class="d-block w-100" alt="img3">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+
+
+<!-- Primera fila -->
+<div class="container-fluid">
+  <div style="margin-top: 24px; margin-bottom: 24px;" class="row">
+    <div class="col-md-6">
+      <img src="https://observatorio.tec.mx/wp-content/uploads/2022/05/ScreenShot2021-03-15at4.49.33.png" alt="Imagen 1">
+    </div>
+    <div class="col-md-6">
+      <p class="main-heading">¡Tu horario, tu ritmo: Organiza tu tiempo, optimiza tu aprendizaje!</p>
+      <ol>
+        <li class="custom-paragraph">Referencias sobre nuestros docentes ⭐⭐⭐⭐⭐</li>
+        <li class="custom-paragraph">Horarios diversos disponibles 📅</li>
+        <li class="custom-paragraph">Simulación de horarios ⌛</li>
+        <li class="custom-paragraph">Personaliza tu experiencia académica con facilidad ⚡</li>
+        <li class="custom-paragraph">Acceso a actualizaciones en tiempo real sobre disponibilidad 💨💨💨</li>
+        <li class="custom-paragraph">Consulta recomendaciones basadas en tu perfil académico 👩🏻‍🎓</li>
+        <li class="custom-paragraph">Facilita cambios en tus horarios con solo unos clics 🖱️👆</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- Segunda fila -->
+<div class="container-fluid row2">
+  <div style="margin-top: 24px; margin-bottom: 24px;" class="row">
+    <div class="col-md-6">
+      <p class="main-heading">¡Organízate con los turnos de estudios disponibles!</p>
+      <div class="turnos">
+        <div class="item">
+          <img src="https://cdn-icons-png.flaticon.com/512/2383/2383797.png" alt="Turno Mañana">
+          <p class="custom-paragraph">Turno Mañana</p>
+          <div class="message">8:00 AM - 12:00 PM</div>
+        </div>
+        <div class="item">
+          <img src="https://cdn-icons-png.flaticon.com/512/6498/6498985.png" alt="Turno Tarde">
+          <p class="custom-paragraph">Turno Tarde</p>
+          <div class="message">1:00 PM - 5:00 PM</div>
+        </div>
+        <div class="item">
+          <img src="https://images.vexels.com/media/users/3/217105/isolated/preview/14adb8ccf199f2492aebfc74f5ac517e-icono-de-noche-de-luna-y-estrellas.png" alt="Turno Noche">
+          <p class="custom-paragraph">Turno Noche</p>
+          <div class="message">6:00 PM - 10:00 PM</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <img src="https://static.vecteezy.com/system/resources/previews/000/547/741/non_2x/desert-landscape-nature-different-time-vector-illustrator.jpg" alt="Imagen 2">
+    </div>
+  </div>
+</div>
+
+<!-- Tercera fila -->
+<div class="container-fluid row3">
+    <div style="margin-top: 24px; margin-bottom: 24px;"class="row">
+      <div class="col-md-3">
+        <img src="https://tipseducacion.com/wp-content/uploads/2014/04/estudiantes-y-profesores.jpg" alt="Imagen 3">
+      </div>
+      <div class="col-md-3">
+        <img src="https://www.lavanguardia.com/andro4all/hero/2021/08/oie30192116XI2yY881.jpg?width=1200" alt="Imagen 3">
+      </div>
+      <div class="col-md-3">
+        <img src="https://www.shutterstock.com/image-photo/two-women-mother-graduated-daughter-600nw-2338766525.jpg" alt="Imagen 3">
+      </div>
+      <div class="col-md-3">
+        <img src="https://universidadbritanica.edu.mx/wp-content/uploads/2023/01/ChaletDouglasPrincipal3.jpg" alt="Imagen 3">
+      </div>
+    </div>
+  </div>
+
+<!-- Cuarta fila -->
+<div class="container-fluid row4">
+  <div style="margin-top: 24px; margin-bottom: 8px;" class="row">
+    <div class="col-md-6">
+      <img src="./Logo1.png" alt=Imagen 3>
+    </div>
+    <div class="col-md-6">
+      <p style="text-align: center;" class="main-heading">"Flexibilidad y control total sobre tu experiencia académica."</p>
+      <p style="text-align: center;" class="custom-paragraph">Inicio de matrícula: 30 de febrero</p>
+      <p style="text-align: center;" class="custom-paragraph">¡Inscríbete ahora mismo!</p>
+      <p style="text-align: center;" class="custom-paragraph">Universidad La Estrella del Mañana (Ejemplo)</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+
