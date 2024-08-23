@@ -10,6 +10,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
+    
+    body{
+      background-color: rgb(33, 33, 33);
+    }
+
     .custom-paragraph {
       font-size: 18px;
       font-weight: bold;
@@ -19,7 +24,7 @@
     .main-heading {
       font-size: 40px;
       font-weight: bold;
-      margin: 36px 12px 12px 12px;
+      margin: 24px 12px 12px 12px;
       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
     img {
@@ -79,24 +84,37 @@
     /* Filas con colores de fondo */
 
     .row {
-      background-color: rgb(255, 231, 250); 
-    }
-
-    .row2 {
-      background-color: rgb(255, 251, 231); 
-    }
-
-    .row3 {
-      background-color: rgb(231, 233, 255);
-    }
-
-    .row4 {
-      background-color: rgb(255, 231, 235);
+      background-color: rgb(33, 33, 33); 
+      color: white;
     }
 
     /* Espaciado para la cuarta fila */
     .row4 .custom-paragraph {
       margin-bottom: 3px;
+    }
+
+    .carousel-item {
+      position: relative;
+    }
+    .carousel-caption {
+      position: absolute;
+      top: 56%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 1400px);
+      text-align: center;
+      padding: 0 15px;
+      color: white; 
+    }
+
+    .nav-pills .nav-link {
+      color: white;
+      background-color: rgba(0, 0, 0, 0)
+    }
+
+    .nav-pills .nav-link.active {
+      color: rgb(255, 255, 255);
+      background-color: rgb(102, 0, 0); 
     }
   </style>
 
@@ -104,15 +122,15 @@
   <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
       <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-      <span style="color: rgb(255, 255, 255); font-size: 14px;" class="fs-4">Universidad la Estrella del Mañana</span>
+      <span style="color: rgb(255, 255, 255); font-size: 14px;" class="fs-4">Netflix</span>
     </a>
 
     <ul class="nav nav-pills">
       <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Inicio</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Pagos</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Cursos</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Matrícula</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Acerca UEM</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Series</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Películas</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Documentales</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Acerca de Netflix</a></li>
     </ul>
 </header>
 <body>
@@ -127,12 +145,24 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="./img/carruselimg1.png" class="d-block w-100" alt="img1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 style="font-size: 24px;">La Casa de Papel: Temporada 5</h5>
+          <p style="text-align: justify; font-size: 12px;">Después de que Lisboa entrase en el Banco de España, la banda vuelve a estar reunida otra vez. Pero no todo van a ser buenas noticias. Sierra encuentra al Profesor tras descurbir su escondite secreto a base de pedir un par de favores, ¿Podría Sierra unirse a la banda? Los protagonistas se ponen manos a la obra para conseguir sacar todo el oro que hay en el Banco de España.</p>
+        </div>
       </div>
       <div class="carousel-item">
         <img src="./img/carruselimg2.png" class="d-block w-100" alt="img2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 style="font-size: 24px;">Formula 1: Drive to Survive Season 4</h5>
+          <p style="text-align: justify; font-size: 12px;">La cuarta temporada de "Formula 1: Drive to Survive" se adentra en la apasionante y dramática temporada 2021 de la Fórmula 1, que estuvo marcada por una de las rivalidades más intensas en la historia reciente del automovilismo: Max Verstappen contra Lewis Hamilton. Esta temporada de la serie documental de Netflix explora los momentos más intensos y emocionantes de la temporada, ofreciendo una visión detrás de escena de las vidas de los pilotos, equipos y personajes clave en el mundo de la F1.</p>
+        </div>
       </div>
       <div class="carousel-item">
         <img src="./img/carruselimg3.png" class="d-block w-100" alt="img3">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 style="font-size: 24px;">One Day</h5>
+          <p style="text-align: justify; font-size: 12px;">Emma y Dexter se conocen el día de su graduación universitaria, un 15 de julio. Ella es una chica idealista y él un joven rico con ganas de comerse el mundo. Durante 20 años, cada 15 de julio, se muestra su vida cotidiana y su amistad indestructible.</p>
+        </div>
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -144,6 +174,7 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+  
 
 
 
@@ -152,10 +183,10 @@
 <div class="container-fluid">
   <div style="margin-top: 24px; margin-bottom: 24px;" class="row">
     <div class="col-md-6">
-      <img src="https://observatorio.tec.mx/wp-content/uploads/2022/05/ScreenShot2021-03-15at4.49.33.png" alt="Imagen 1">
+      <img src="https://media.revistagq.com/photos/5f241bba422afa58933b5e2c/16:9/w_1280,c_limit/la-casa-de-papel.jpg" alt="Imagen 1">
     </div>
     <div class="col-md-6">
-      <p class="main-heading">¡Tu horario, tu ritmo: Organiza tu tiempo, optimiza tu aprendizaje!</p>
+      <p class="main-heading">Descripción de la empresa:</p>
       <ol>
         <li class="custom-paragraph">Referencias sobre nuestros docentes ⭐⭐⭐⭐⭐</li>
         <li class="custom-paragraph">Horarios diversos disponibles 📅</li>
@@ -173,21 +204,21 @@
 <div class="container-fluid row2">
   <div style="margin-top: 24px; margin-bottom: 24px;" class="row">
     <div class="col-md-6">
-      <p class="main-heading">¡Organízate con los turnos de estudios disponibles!</p>
+      <p class="main-heading">Catálogo:</p>
       <div class="turnos">
         <div class="item">
-          <img src="https://cdn-icons-png.flaticon.com/512/2383/2383797.png" alt="Turno Mañana">
-          <p class="custom-paragraph">Turno Mañana</p>
+          <img src="https://cdn1.iconfinder.com/data/icons/smashicons-emoticons-retro-vol-3/44/153_-_Deadpool_emoticon_emoji_face-512.png" alt="Series">
+          <p class="custom-paragraph">Series</p>
           <div class="message">8:00 AM - 12:00 PM</div>
         </div>
         <div class="item">
-          <img src="https://cdn-icons-png.flaticon.com/512/6498/6498985.png" alt="Turno Tarde">
-          <p class="custom-paragraph">Turno Tarde</p>
+          <img src="https://cdn.icon-icons.com/icons2/1713/PNG/512/iconfinder-videoeditorfilmsproduction-3993846_112661.png" alt="Películas">
+          <p class="custom-paragraph">Películas</p>
           <div class="message">1:00 PM - 5:00 PM</div>
         </div>
         <div class="item">
-          <img src="https://images.vexels.com/media/users/3/217105/isolated/preview/14adb8ccf199f2492aebfc74f5ac517e-icono-de-noche-de-luna-y-estrellas.png" alt="Turno Noche">
-          <p class="custom-paragraph">Turno Noche</p>
+          <img src="https://cdn-icons-png.flaticon.com/512/1825/1825462.png" alt="Documentales">
+          <p class="custom-paragraph">Documentales</p>
           <div class="message">6:00 PM - 10:00 PM</div>
         </div>
       </div>
