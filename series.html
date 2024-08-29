@@ -4,11 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Series</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
   <style>
     body {
       background-color: rgb(33, 33, 33);
@@ -173,6 +171,33 @@
       margin: 20px 0; /* Espaciado adicional alrededor del título */
     }
 
+    .container-fluid img {
+      width: 100%;
+      height: auto; /* Mantiene la proporción de la imagen */
+      border-radius: 8px;
+    }
+
+    .modal-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    /* Espaciado para la imagen del modal */
+    .modal-body {
+      display: flex;
+      align-items: center;
+    }
+
+    .modal-body .content {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    .modal-body .image-container {
+      flex: 0 0 200px;
+    }
+
   </style>
 </head>
 <body>
@@ -268,44 +293,72 @@
     </div>
   </div>
 
+
+
   <div class="header">
-    <h1 style="margin-bottom: 33px;"><b>Series populares🔥</b></h1>
+    <h1><b>Series populares🔥</b></h1>
   </div>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3">
-        <img src="./img/breaking.png" alt="Imagen 1" data-carousel-item="carousel-item-1">
-      </div>
-      <div class="col-md-3">
-        <img src="./img/casadepapel.png" alt="Imagen 2" data-carousel-item="carousel-item-2">
-      </div>
-      <div class="col-md-3">
-        <img src="./img/narcos.png" alt="Imagen 3" data-carousel-item="carousel-item-3">
-      </div>
-      <div class="col-md-3">
-        <img src="./img/elite.png" alt="Imagen 4" data-carousel-item="carousel-item-4">
+  <!-- Modal -->
+  <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="movieModalLabel">Título de la Película</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex">
+          <div class="content">
+            <p><strong>Duración:</strong> 120 minutos</p>
+            <p><strong>Descripción:</strong> Esta es una breve descripción de la película.</p>
+          </div>
+          <div class="image-container">
+            <img src="" alt="Imagen del Modal" class="modal-img" id="modalImage">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const images = document.querySelectorAll('.container-fluid img');
-      const carousel = document.querySelector('#carouselExampleAutoplaying');
+      var modal = document.getElementById('movieModal');
+      var modalTitle = modal.querySelector('.modal-title');
+      var modalContent = modal.querySelector('.content');
+      var modalImage = modal.querySelector('#modalImage');
 
-      images.forEach(image => {
-        image.addEventListener('click', function() {
-          const carouselItemId = this.getAttribute('data-carousel-item');
-          const carouselItem = document.querySelector(`#${carouselItemId}`);
-          const carouselInstance = bootstrap.Carousel.getInstance(carousel);
-          
-          if (carouselInstance) {
-            carouselInstance.to(Array.from(carousel.children).indexOf(carouselItem));
-          }
-        });
+      modal.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget; // Imagen que activó el modal
+        var title = button.getAttribute('data-title');
+        var duration = button.getAttribute('data-duration');
+        var description = button.getAttribute('data-description');
+        var imageUrl = button.getAttribute('data-image');
+
+        modalTitle.textContent = title;
+        modalContent.innerHTML = `<p><strong>Duración:</strong> ${duration}</p><p><strong>Descripción:</strong> ${description}</p>`;
+        modalImage.src = imageUrl;
       });
     });
   </script>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="./img/breaking.png" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Breaking Bad" data-duration="50 minutos" data-description="Serie sobre un profesor de química que se convierte en fabricante de metanfetaminas." data-image="https://occ-0-8407-444.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABeJo_eP3qXqDWnaRWhbGbLu1VN_yACCncu6G7-CW4pCSzZD74lWxcVvYw4koEFN9bmO2PERuTLR7KiXVURG1MSTFXlS9GTB0selwbgbCBtTR.png?r=295">
+      </div>
+      <div class="col-md-3">
+        <img src="./img/casadepapel.png" alt="Imagen 2" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="La Casa de Papel" data-duration="60 minutos" data-description="Un grupo de delincuentes lleva a cabo un gran asalto a la Real Casa de la Moneda de España." data-image="https://seeklogo.com/images/L/la-casa-de-papel-logo-80111026D5-seeklogo.com.png">
+      </div>
+      <div class="col-md-3">
+        <img src="./img/narcos.png" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Narcos" data-duration="55 minutos" data-description="Serie que narra la vida del infame narcotraficante Pablo Escobar." data-image="https://c.wallhere.com/photos/f1/d4/Narcos_Pablo_Escobar_Netflix_Wagner_Moura-108608.png!s1">
+      </div>
+      <div class="col-md-3">
+        <img src="./img/elite.png" alt="Imagen 4" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Élite" data-duration="45 minutos" data-description="Drama que sigue a un grupo de adolescentes en una escuela de élite con secretos oscuros." data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Elite_Netflix_Logo_02.svg/2560px-Elite_Netflix_Logo_02.svg.png">
+      </div>
+    </div>
+  </div>
 </body>
 </html>
