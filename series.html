@@ -183,6 +183,18 @@
       border-radius: 8px;
     }
 
+    .container-fluid img {
+      width: 100%;
+      height: auto; /* Mantiene la proporción de la imagen */
+      border-radius: 8px;
+    }
+
+    .modal-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
     /* Espaciado para la imagen del modal */
     .modal-body {
       display: flex;
@@ -301,8 +313,8 @@
 
   <!-- Modal -->
   <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
+    <div class="modal-dialog custom-modal-dialog">
+      <div class="modal-content custom-modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="movieModalLabel">Título de la Película</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -347,7 +359,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3">
-        <img src="./img/breaking.png" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Breaking Bad" data-duration="50 minutos" data-description="Serie sobre un profesor de química que se convierte en fabricante de metanfetaminas." data-image="https://occ-0-8407-444.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABeJo_eP3qXqDWnaRWhbGbLu1VN_yACCncu6G7-CW4pCSzZD74lWxcVvYw4koEFN9bmO2PERuTLR7KiXVURG1MSTFXlS9GTB0selwbgbCBtTR.png?r=295">
+        <img src="./img/breaking.png" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Breaking Bad" data-duration="50 minutos" data-description="Serie sobre un profesor de química que se convierte en fabricante de metanfetaminas." data-image="https://www.pngall.com/wp-content/uploads/13/Breaking-Bad-Logo-PNG-Image.png">
       </div>
       <div class="col-md-3">
         <img src="./img/casadepapel.png" alt="Imagen 2" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="La Casa de Papel" data-duration="60 minutos" data-description="Un grupo de delincuentes lleva a cabo un gran asalto a la Real Casa de la Moneda de España." data-image="https://seeklogo.com/images/L/la-casa-de-papel-logo-80111026D5-seeklogo.com.png">
