@@ -1,21 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Series</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-
-<style>
-    body{
-        background-color: rgb(33, 33, 33);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Series</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <style>
+    body {
+      background-color: rgb(33, 33, 33);
     }
-        .nav-pills .nav-link {
+
+    .custom-paragraph {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0 0 0;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    .main-heading {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 24px 12px 12px 12px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    img {
+      width: 100%;
+    }
+
+    .turnos {
+      display: flex;
+      justify-content: space-between; /* Espacio uniforme */
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto; /* Centrar */
+      position: relative; /* Para la posición del mensaje emergente */
+    }
+
+    .turnos .item {
+      position: relative;
+      text-align: center;
+      margin: 0 10px; /* Espacio horizontal entre objetos */
+      margin-bottom: 140px;
+    }
+
+    .turnos img {
+      width: 80px;
+      height: 80px;
+      display: block;
+      margin: 0 auto;
+      margin-top: 140px;
+    }
+
+    .custom-paragraph {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 16px 0 0 0;
+    }
+
+    /* Mensaje emergente */
+    .message {
+      position: absolute;
+      bottom: 60%; /* Acá se ajusta el mensaje emergente */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: black;
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      white-space: nowrap;
+      display: none;
+      z-index: 1;
+      font-size: 12px;
+    }
+
+    .item:hover .message {
+      display: block;
+    }
+
+    /* Filas con colores de fondo */
+    .row {
+      background-color: rgb(33, 33, 33); 
+      color: white;
+    }
+
+    /* Espaciado para la cuarta fila */
+    .row4 .custom-paragraph {
+      margin-bottom: 3px;
+    }
+
+    .carousel-item {
+      position: relative;
+    }
+    .carousel-caption {
+      position: absolute;
+      top: 60%;
+      left: 14%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 1400px);
+      text-align: justify;
+      padding: 0 15px;
+      color: white; 
+    }
+
+    .nav-pills .nav-link {
       color: rgb(183, 183, 183);
       background-color: rgba(0, 0, 0, 0)
     }
@@ -24,25 +113,264 @@
       color: rgb(255, 255, 255);
       background-color: rgb(102, 0, 0); 
     }
-</style>
-<body>
 
-    <div style="background-color: rgb(33, 33, 33); font-size: 12px;" class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-            <span style="color: rgb(255, 255, 255); font-size: 14px;" class="fs-4">Netflix</span>
-          </a>
-    
-          <ul class="nav nav-pills">
-            <li class="nav-item"><a href="pagina.html" class="nav-link active" aria-current="page">Inicio</a></li>
-            <li class="nav-item"><a href="series.html" class="nav-link">Series</a></li>
-            <li class="nav-item"><a href="peliculas.html" class="nav-link">Películas</a></li>
-            <li class="nav-item"><a href="documentales.html" class="nav-link">Documentales</a></li>
-            <li class="nav-item"><a href="sobre.html" class="nav-link">Acerca de Netflix</a></li>
-          </ul>
-        </header>
+    .text-center {
+      text-align: center;
+    }
+
+    .container1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .slider {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .slide-track {
+      display: flex;
+      animation: scroll 40s linear infinite;
+      width: calc(200px * 21); /* Ajusta el tamaño total según el número de slides */
+    }
+
+    .slide {
+      width: 200px;
+      margin-right: 20px; /* Espacio entre las imágenes */
+    }
+
+    .slide img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-200px * 7)); /* Ajustado para el número de slides visibles */
+      }
+    }
+
+    /* Ajustar el tamaño de las imágenes en el grid */
+    .container-fluid img {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+    }
+
+    .header h1 {
+      font-size: 27px;
+      color: white;
+      text-align: center;
+      margin: 20px 0; /* Espaciado adicional alrededor del título */
+    }
+
+    .container-fluid img {
+      width: 100%;
+      height: auto; /* Mantiene la proporción de la imagen */
+      border-radius: 8px;
+    }
+
+    .modal-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .container-fluid img {
+      width: 100%;
+      height: auto; /* Mantiene la proporción de la imagen */
+      border-radius: 8px;
+    }
+
+    .modal-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    /* Espaciado para la imagen del modal */
+    .modal-body {
+      display: flex;
+      align-items: center;
+    }
+
+    .modal-body .content {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    .modal-body .image-container {
+      flex: 0 0 200px;
+    }
+
+  </style>
+</head>
+<body>
+  <div style="background-color: rgb(33, 33, 33); font-size: 12px;" class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        <span style="color: rgb(255, 255, 255); font-size: 14px;" class="fs-4">Netflix</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="pagina.html" class="nav-link active" aria-current="page">Inicio</a></li>
+        <li class="nav-item"><a href="series.html" class="nav-link">Series</a></li>
+        <li class="nav-item"><a href="peliculas.html" class="nav-link">Películas</a></li>
+        <li class="nav-item"><a href="documentales.html" class="nav-link">Documentales</a></li>
+        <li class="nav-item"><a href="sobre.html" class="nav-link">Acerca de Netflix</a></li>
+      </ul>
+    </header>
+  </div>
+
+  <div id="carouselExampleAutoplaying" class="carousel slider" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" id="carousel-item-1">
+        <img src="./img/breakingcarrusel.png" class="d-block w-100" alt="img1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 style="font-size: 24px;">Breaking Bad</h5>
+          <p style="text-align: justify; font-size: 12px;">Breaking Bad narra la transformación de Walter White, un profesor de química de secundaria que, tras ser diagnosticado con cáncer de pulmón, decide fabricar metanfetamina para asegurar el futuro financiero de su familia. Junto a su antiguo estudiante Jesse Pinkman, Walter se adentra en el peligroso mundo del narcotráfico, donde su moralidad y ética se desmoronan y su vida se complica con traiciones y desafíos. La serie explora cómo el miedo, la ambición y el poder pueden cambiar radicalmente a una persona.</p>
+        </div>
       </div>
-    
+      <div class="carousel-item" id="carousel-item-2">
+        <img src="./img/casadepapelcarrusel.png" class="d-block w-100" alt="img2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 style="font-size: 24px;">La Casa de Papel: Temporada 5</h5>
+          <p style="text-align: justify; font-size: 12px;">Después de que Lisboa entrase en el Banco de España, la banda vuelve a estar reunida otra vez. Pero no todo van a ser buenas noticias. Sierra encuentra al Profesor tras descurbir su escondite secreto a base de pedir un par de favores, ¿Podría Sierra unirse a la banda? Los protagonistas se ponen manos a la obra para conseguir sacar todo el oro que hay en el Banco de España.</p>
+        </div>
+      </div>
+      <div class="carousel-item" id="carousel-item-3">
+        <img src="./img/narcoscarrusell.png" class="d-block w-100" alt="img3">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 style="font-size: 24px;">Narcos</h5>
+          <p style="text-align: justify; font-size: 12px;">Narcos es una serie que sigue la vida de Pablo Escobar y el Cartel de Medellín en Colombia durante los años 80 y 90. La trama explora el ascenso de Escobar al poder como uno de los narcotraficantes más infames de la historia, y su impacto en la política, la sociedad y la violencia en Colombia. A medida que la DEA y las fuerzas del orden tratan de desmantelar el imperio de drogas, la serie también aborda las complejas dinámicas de corrupción, guerra contra las drogas y el efecto devastador del narcotráfico en el país. La narrativa mezcla eventos históricos con dramatización para ofrecer una visión profunda del mundo del crimen organizado.</p>
+        </div>
+      </div>
+      <div class="carousel-item" id="carousel-item-4">
+        <img src="./img/elitecarrusel.png" class="d-block w-100" alt="img3">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 style="font-size: 24px;">Elite</h5>
+          <p style="text-align: justify; font-size: 12px;">Élite es una serie española que sigue la vida de un grupo de estudiantes en un exclusivo colegio privado tras la llegada de tres nuevos alumnos de clase trabajadora. La serie combina drama, misterio y suspenso mientras explora las tensiones y rivalidades entre los estudiantes, que culminan en un trágico asesinato. La trama aborda temas como la desigualdad social, la identidad sexual y los secretos ocultos, revelando cómo las presiones sociales y personales pueden llevar a situaciones extremas. La serie se destaca por su enfoque en el drama adolescente y sus giros sorprendentes, manteniendo a los espectadores en constante tensión.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <div class="container1">
+    <div class="slider">
+      <div class="slide-track">
+        <div class="slide"><img src="./img/auspiciador1.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="./img/auspiciador2.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="./img/auspiciador3.jpg" alt="Auspiciador 3"></div>
+        
+        <div class="slide"><img src="./img/auspiciador1.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="./img/auspiciador2.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="./img/auspiciador3.jpg" alt="Auspiciador 3"></div>
+        
+        <div class="slide"><img src="./img/auspiciador1.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="./img/auspiciador2.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="./img/auspiciador3.jpg" alt="Auspiciador 3"></div>
+
+        <div class="slide"><img src="./img/auspiciador1.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="./img/auspiciador2.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="./img/auspiciador3.jpg" alt="Auspiciador 3"></div>
+
+        <div class="slide"><img src="./img/auspiciador1.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="./img/auspiciador2.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="./img/auspiciador3.jpg" alt="Auspiciador 3"></div>
+
+        <div class="slide"><img src="./img/auspiciador1.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="./img/auspiciador2.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="./img/auspiciador3.jpg" alt="Auspiciador 3"></div>
+
+        <div class="slide"><img src="./img/auspiciador1.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="./img/auspiciador2.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="./img/auspiciador3.jpg" alt="Auspiciador 3"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="header">
+    <h1><b>Series populares🔥</b></h1>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+    <div class="modal-dialog custom-modal-dialog">
+      <div class="modal-content custom-modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="movieModalLabel">Título de la Película</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex">
+          <div class="content">
+            <p><strong>Duración:</strong> 120 minutos</p>
+            <p><strong>Descripción:</strong> Esta es una breve descripción de la película.</p>
+          </div>
+          <div class="image-container">
+            <img src="" alt="Imagen del Modal" class="modal-img" id="modalImage">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var modal = document.getElementById('movieModal');
+      var modalTitle = modal.querySelector('.modal-title');
+      var modalContent = modal.querySelector('.content');
+      var modalImage = modal.querySelector('#modalImage');
+
+      modal.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget; // Imagen que activó el modal
+        var title = button.getAttribute('data-title');
+        var duration = button.getAttribute('data-duration');
+        var description = button.getAttribute('data-description');
+        var imageUrl = button.getAttribute('data-image');
+
+        modalTitle.textContent = title;
+        modalContent.innerHTML = `<p><strong>Duración:</strong> ${duration}</p><p><strong>Descripción:</strong> ${description}</p>`;
+        modalImage.src = imageUrl;
+      });
+    });
+  </script>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="./img/breaking.png" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Breaking Bad" data-duration="50 minutos" data-description="Serie sobre un profesor de química que se convierte en fabricante de metanfetaminas." data-image="https://www.pngall.com/wp-content/uploads/13/Breaking-Bad-Logo-PNG-Image.png">
+      </div>
+      <div class="col-md-3">
+        <img src="./img/casadepapel.png" alt="Imagen 2" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="La Casa de Papel" data-duration="60 minutos" data-description="Un grupo de delincuentes lleva a cabo un gran asalto a la Real Casa de la Moneda de España." data-image="https://seeklogo.com/images/L/la-casa-de-papel-logo-80111026D5-seeklogo.com.png">
+      </div>
+      <div class="col-md-3">
+        <img src="./img/narcos.png" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Narcos" data-duration="55 minutos" data-description="Serie que narra la vida del infame narcotraficante Pablo Escobar." data-image="https://c.wallhere.com/photos/f1/d4/Narcos_Pablo_Escobar_Netflix_Wagner_Moura-108608.png!s1">
+      </div>
+      <div class="col-md-3">
+        <img src="./img/elite.png" alt="Imagen 4" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Élite" data-duration="45 minutos" data-description="Drama que sigue a un grupo de adolescentes en una escuela de élite con secretos oscuros." data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Elite_Netflix_Logo_02.svg/2560px-Elite_Netflix_Logo_02.svg.png">
+      </div>
+    </div>
+  </div>
 </body>
 </html>
