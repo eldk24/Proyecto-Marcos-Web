@@ -120,10 +120,141 @@
       text-align: center;
     }
 
+    /*Netflix logo animación*/
+
+    .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Fondo negro con opacidad */
+            z-index: 999; /* Debajo del logo */
+            opacity: 1;
+            transition: opacity 1s ease-out; /* Transición para el desvanecimiento */
+        }
+        .overlay.fade-out {
+            opacity: 0;
+            pointer-events: none; /* Desactiva la interacción con el fondo mientras está oculto */
+        }
+        .netflix {
+            width: 150px;
+            height: 250px;
+            position: fixed; /* Cambiado a fixed para estar sobre toda la página */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000; /* Asegura que esté sobre otros elementos */
+            opacity: 1;
+            transition: opacity 1s ease-out; /* Transición para el desvanecimiento */
+        }
+        .netflix.fade-out {
+            opacity: 0;
+        }
+        .netflix span {
+            width: 50px;
+            height: 0;
+            background: #db0001;
+            position: absolute;
+        }
+        .left {
+            left: 0;
+            bottom: 0;
+            animation: anim 1s linear forwards;
+            animation-delay: 1s;
+        }
+        .center {
+            top: 0;
+            left: 0;
+            transform: skewX(22deg);
+            transform-origin: top left;
+            box-shadow: 0 0 50px #000;
+            z-index: 2;
+            animation: anim 1s linear forwards;
+            animation-delay: 2s;
+        }
+        .right {
+            right: 0;
+            bottom: 0;
+            animation: anim 1s linear forwards;
+            animation-delay: 3s;
+        }
+        @keyframes anim {
+            100% {
+                height: 100%;
+            }
+        }
+        .container1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .slide {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .slide-track {
+      display: flex;
+      animation: scroll 40s linear infinite;
+      width: calc(200px * 21); /* Ajusta el tamaño total según el número de slides */
+    }
+
+    .slide {
+      width: 200px;
+      margin-right: 20px; /* Espacio entre las imágenes */
+    }
+
+    .slide img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-200px * 6)); /* Ajustado para el número de slides visibles */
+      }
+    }
+
+    .margen{
+      margin-left: 24px;
+      margin-right: 24px;
+    }
+
 
   </style>
 </head>
 <body>
+
+  <div class="overlay" id="overlay"></div>
+
+    <div class="netflix" id="netflix-logo">
+        <span class="left"></span>
+        <span class="center"></span>
+        <span class="right"></span>
+    </div>
+
+    <script>
+        // Obtén los elementos del logo y el overlay
+        const logo = document.getElementById('netflix-logo');
+        const overlay = document.getElementById('overlay');
+
+        // Calcula la duración total de la animación (en este caso 4 segundos: 1s + 1s + 1s + 1s)
+        const animationDuration = 4;
+
+        // Oculta el logo y el fondo después de que termine la animación con un desvanecimiento suave
+        setTimeout(() => {
+            logo.classList.add('fade-out');
+            overlay.classList.add('fade-out');
+        }, animationDuration * 1000); // Multiplica por 1000 para convertir a milisegundos
+    </script>
   <div style="background-color: rgb(33, 33, 33); font-size: 12px;" class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
@@ -134,14 +265,14 @@
       <ul class="nav nav-pills">
         <li class="nav-item"><a href="pagina.html" class="nav-link active" aria-current="page">Inicio</a></li>
         <li class="nav-item"><a href="series.html" class="nav-link">Series</a></li>
-        <li class="nav-item"><a href="peliculas.html" class="nav-link">Películas</a></li>
-        <li class="nav-item"><a href="documentales.html" class="nav-link">Documentales</a></li>
+        <li class="nav-item"><a href="peliculas.html" class="nav-link">Planes</a></li>
+        <li class="nav-item"><a href="documentales.html" class="nav-link">Extras</a></li>
         <li class="nav-item"><a href="sobre.html" class="nav-link">Acerca de Netflix</a></li>
       </ul>
     </header>
   </div>
 
-  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div id="carouselExampleAutoplaying" class="carousel slider" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="./img/carruselimg1.png" class="d-block w-100" alt="img1">
@@ -175,6 +306,53 @@
     </button>
   </div>
 
+<br>
+
+  <div class="container1">
+    <div class="slider">
+      <div style="width: 300%; height: 300%;" class="slide-track">
+        <div class="slide"><img src="./img/netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="./img/proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="./img/dracula.jpg" alt="Auspiciador 3"></div>
+        <div class="slide"><img src="./img/lideres.png" alt="Auspiciador 4"></div>
+
+        <div class="slide"><img src="./img/netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="./img/proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="./img/dracula.jpg" alt="Auspiciador 3"></div>
+        <div class="slide"><img src="./img/lideres.png" alt="Auspiciador 4"></div>
+        
+        <div class="slide"><img src="./img/netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="./img/proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="./img/dracula.jpg" alt="Auspiciador 3"></div>
+        <div class="slide"><img src="./img/lideres.png" alt="Auspiciador 4"></div>
+
+        <div class="slide"><img src="./img/netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="./img/proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="./img/dracula.jpg" alt="Auspiciador 3"></div>
+        <div class="slide"><img src="./img/lideres.png" alt="Auspiciador 4"></div>
+
+        <div class="slide"><img src="./img/netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="./img/proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="./img/dracula.jpg" alt="Auspiciador 3"></div>
+        <div class="slide"><img src="./img/lideres.png" alt="Auspiciador 4"></div>
+
+        <div class="slide"><img src="./img/netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="./img/proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="./img/dracula.jpg" alt="Auspiciador 3"></div>
+        <div class="slide"><img src="./img/lideres.png" alt="Auspiciador 4"></div>
+
+        <div class="slide"><img src="./img/netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="./img/proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="./img/dracula.jpg" alt="Auspiciador 3"></div>
+        <div class="slide"><img src="./img/lideres.png" alt="Auspiciador 4"></div>
+
+
+      </div>
+    </div>
+  </div>
+
+<div class="margen">
+
   <!-- Primera fila -->
   <div class="container-fluid">
     <div style="margin-top: 24px; margin-bottom: 24px;" class="row">
@@ -182,8 +360,8 @@
         <img src="https://media.revistagq.com/photos/5f241bba422afa58933b5e2c/16:9/w_1280,c_limit/la-casa-de-papel.jpg" alt="Imagen 1">
       </div>
       <div class="col-md-6"> 
-        <p style="margin-top: 84px;" class="main-heading text-center">Descripción de la empresa:</p>
-          <p style="margin-bottom: 84px;" class="custom-paragraph text-center">Netflix es un servicio de streaming por suscripción que les permite a sus miembros ver series y películas en un dispositivo con conexión a internet. Además de ofrecer una amplia variedad de contenido, desde producciones originales hasta clásicos de todos los géneros, Netflix también proporciona recomendaciones personalizadas basadas en el historial de visualización de cada usuario. La plataforma está disponible en múltiples dispositivos, incluyendo teléfonos inteligentes, tabletas, computadoras y televisores inteligentes, lo que permite a los usuarios disfrutar de su contenido favorito en cualquier momento y lugar. Netflix se actualiza regularmente con nuevos títulos y temporadas, manteniendo así una oferta fresca y atractiva para sus suscriptores. También ofrece la opción de descargar contenido para verlo sin conexión, lo que resulta especialmente conveniente para quienes viajan o tienen acceso limitado a internet.</p>
+        <p style="margin-top: 64px;" class="main-heading text-center">Descripción de la empresa:</p>
+          <p style="margin-bottom: 64px; margin-left: 60px; margin-right: 60px;" class="custom-paragraph text-justify">Netflix es un servicio de streaming por suscripción que les permite a sus miembros ver series y películas en un dispositivo con conexión a internet. Además de ofrecer una amplia variedad de contenido, desde producciones originales hasta clásicos de todos los géneros, Netflix también proporciona recomendaciones personalizadas basadas en el historial de visualización de cada usuario. La plataforma está disponible en múltiples dispositivos, incluyendo teléfonos inteligentes, tabletas, computadoras y televisores inteligentes, lo que permite a los usuarios disfrutar de su contenido favorito en cualquier momento y lugar. Netflix se actualiza regularmente con nuevos títulos y temporadas, manteniendo así una oferta fresca y atractiva para sus suscriptores. También ofrece la opción de descargar contenido para verlo sin conexión, lo que resulta especialmente conveniente para quienes viajan o tienen acceso limitado a internet.</p>
       </div>
     </div>
   </div>
@@ -193,7 +371,7 @@
     <div style="margin-top: 24px; margin-bottom: 24px;" class="row">
       <div class="col-md-6">
         <p class="main-heading text-center">Misión:</p>
-        <p class="custom-paragraph text-center">
+        <p style="margin-bottom: 64px; margin-left: 60px; margin-right: 60px;" class="custom-paragraph text-justify">
           La misión de Netflix es ofrecer una experiencia de entretenimiento global mediante una amplia variedad de contenido, incluyendo series, películas y documentales, accesible en cualquier momento y lugar. La compañía se enfoca en la innovación y la producción de contenido original para proporcionar una experiencia de visualización única a sus suscriptores.
         </p>
         <div class="turnos">
@@ -246,12 +424,13 @@
       </div>
       <div class="col-md-6">
         <p style="margin-top: 84px; margin-bottom: 12px;" class="main-heading text-center">Visión Empresarial</p>
-        <p style="margin-bottom: 84px;" class="custom-paragraph text-center">
+        <p style="margin-bottom: 64px; margin-left: 60px; margin-right: 60px;" class="custom-paragraph text-justify">
           Ser la plataforma líder a nivel global en la distribución de contenido digital, ofreciendo experiencias personalizadas y accesibles a todos nuestros usuarios. aspiramos a transformar la manera en que las personas disfrutan del entretenimiento, proporcionando una biblioteca diversa y de calidad que conecte culturas y rompa fronteras. nuestra visión es ser reconocidos no solo por nuestra innovación tecnológica, sino también por nuestro compromiso con la excelencia en el servicio y la creación de un impacto positivo en la industria del entretenimiento digital.</p>
         </p>
       </div>
     </div>
   </div>
+</div>
 
 </div>
 </body>
