@@ -10,17 +10,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
-    
     body {
       background-color: rgb(33, 33, 33);
     }
-
     .custom-paragraph {
-   font-size: 18px;
-   font-weight: bold;
-   margin: 16px 0;
-   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
+      font-size: 18px;
+      font-weight: bold;
+      margin: 16px 0;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
     .main-heading {
       font-size: 40px;
       font-weight: bold;
@@ -30,24 +28,21 @@
     img {
       width: 100%;
     }
-
     .turnos {
       display: flex;
-      justify-content: space-between; /* Espacio uniforme */
+      justify-content: space-between;
       align-items: center;
       width: 100%;
       max-width: 600px;
-      margin: 0 auto; /* Centrar */
-      position: relative; /* Para la posición del mensaje emergente */
+      margin: 0 auto;
+      position: relative;
     }
-
     .turnos .item {
       position: relative;
       text-align: center;
-      margin: 0 10px; /* Espacio horizontal entre objetos */
+      margin: 0 10px;
       margin-bottom: 140px;
     }
-
     .turnos img {
       width: 80px;
       height: 80px;
@@ -55,17 +50,14 @@
       margin: 0 auto;
       margin-top: 140px;
     }
-
     .custom-paragraph {
       font-size: 18px;
       font-weight: bold;
       margin: 16px 0 0 0;
     }
-
-    /* Mensaje emergente */
     .message {
       position: absolute;
-      bottom: 60%; /* Acá se ajusta el mensaje emergente */
+      bottom: 60%;
       left: 50%;
       transform: translateX(-50%);
       background-color: black;
@@ -77,22 +69,16 @@
       z-index: 1;
       font-size: 12px;
     }
-
     .item:hover .message {
       display: block;
     }
-
-    /* Filas con colores de fondo */
     .row {
-      background-color: rgb(33, 33, 33); 
+      background-color: rgb(33, 33, 33);
       color: white;
     }
-
-    /* Espaciado para la cuarta fila */
     .row4 .custom-paragraph {
       margin-bottom: 3px;
     }
-
     .carousel-item {
       position: relative;
     }
@@ -104,353 +90,241 @@
       width: calc(100% - 1400px);
       text-align: center;
       padding: 0 15px;
-      color: white; 
+      color: white;
     }
-
     .nav-pills .nav-link {
       color: rgb(183, 183, 183);
       background-color: rgba(0, 0, 0, 0)
     }
-
     .nav-pills .nav-link.active {
       color: rgb(255, 255, 255);
-      background-color: rgb(102, 0, 0); 
+      background-color: rgb(102, 0, 0);
     }
-
     .text-center {
       text-align: center;
     }
-
-    /*Netflix logo animación*/
-
     .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Fondo negro con opacidad */
-            z-index: 999; /* Debajo del logo */
-            opacity: 1;
-            transition: opacity 1s ease-out; /* Transición para el desvanecimiento */
-        }
-        .overlay.fade-out {
-            opacity: 0;
-            pointer-events: none; /* Desactiva la interacción con el fondo mientras está oculto */
-        }
-        .netflix {
-            width: 150px;
-            height: 250px;
-            position: fixed; /* Cambiado a fixed para estar sobre toda la página */
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000; /* Asegura que esté sobre otros elementos */
-            opacity: 1;
-            transition: opacity 1s ease-out; /* Transición para el desvanecimiento */
-        }
-        .netflix.fade-out {
-            opacity: 0;
-        }
-        .netflix span {
-            width: 50px;
-            height: 0;
-            background: #db0001;
-            position: absolute;
-        }
-        .left {
-            left: 0;
-            bottom: 0;
-            animation: anim 1s linear forwards;
-            animation-delay: 1s;
-        }
-        .center {
-            top: 0;
-            left: 0;
-            transform: skewX(22deg);
-            transform-origin: top left;
-            box-shadow: 0 0 50px #000;
-            z-index: 2;
-            animation: anim 1s linear forwards;
-            animation-delay: 2s;
-        }
-        .right {
-            right: 0;
-            bottom: 0;
-            animation: anim 1s linear forwards;
-            animation-delay: 3s;
-        }
-        @keyframes anim {
-            100% {
-                height: 100%;
-            }
-        }
-        .container1 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 999;
+      opacity: 1;
+      transition: opacity 1s ease-out;
+    }
+    .overlay.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .netflix {
+      width: 150px;
+      height: 250px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
+      opacity: 1;
+      transition: opacity 1s ease-out;
+    }
+    .netflix.fade-out {
+      opacity: 0;
+    }
+    .netflix span {
+      width: 50px;
+      height: 0;
+      background: #db0001;
+      position: absolute;
+    }
+    .left {
+      left: 0;
+      bottom: 0;
+      animation: anim 1s linear forwards;
+      animation-delay: 1s;
+    }
+    .center {
+      top: 0;
+      left: 0;
+      transform: skewX(22deg);
+      transform-origin: top left;
+      box-shadow: 0 0 50px #000;
+      z-index: 2;
+      animation: anim 1s linear forwards;
+      animation-delay: 2s;
+    }
+    .right {
+      right: 0;
+      bottom: 0;
+      animation: anim 1s linear forwards;
+      animation-delay: 3s;
+    }
+    @keyframes anim {
+      100% {
+        height: 100%;
+      }
+    }
+    .container1 {
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
       padding: 20px;
     }
-
     .slide {
       width: 100%;
       overflow: hidden;
     }
-
     .slide-track {
       display: flex;
       animation: scroll 40s linear infinite;
-      width: calc(200px * 21); /* Ajusta el tamaño total según el número de slides */
+      width: calc(200px * 21);
     }
-
     .slide {
       width: 200px;
-      margin-right: 20px; /* Espacio entre las imágenes */
+      margin-right: 20px;
     }
-
     .slide img {
       width: 100%;
       display: block;
       border-radius: 8px;
     }
-
     @keyframes scroll {
       0% {
         transform: translateX(0);
       }
       100% {
-        transform: translateX(calc(-200px * 6)); /* Ajustado para el número de slides visibles */
+        transform: translateX(calc(-200px * 6));
       }
     }
-
-    .margen{
+    .margen {
       margin-left: 24px;
       margin-right: 24px;
     }
 
-
+    .feature-box {
+      background-color: #444;
+      color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .feature-box img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 10px;
+    }
+    .feature-box h4 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .feature-box p {
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
 
   <div class="overlay" id="overlay"></div>
 
-    <div class="netflix" id="netflix-logo">
-        <span class="left"></span>
-        <span class="center"></span>
-        <span class="right"></span>
-    </div>
+  <div class="netflix" id="netflix-logo">
+    <span class="left"></span>
+    <span class="center"></span>
+    <span class="right"></span>
+  </div>
 
-    <script>
-        // Obtén los elementos del logo y el overlay
-        const logo = document.getElementById('netflix-logo');
-        const overlay = document.getElementById('overlay'); 
+  <script>
+    const logo = document.getElementById('netflix-logo');
+    const overlay = document.getElementById('overlay');
+    const animationDuration = 4;
+    setTimeout(() => {
+      logo.classList.add('fade-out');
+      overlay.classList.add('fade-out');
+    }, animationDuration * 1000);
+  </script>
 
-        // Calcula la duración total de la animación (en este caso 4 segundos: 1s + 1s + 1s + 1s)
-        const animationDuration = 4;
-
-        // Oculta el logo y el fondo después de que termine la animación con un desvanecimiento suave
-        setTimeout(() => {
-            logo.classList.add('fade-out');
-            overlay.classList.add('fade-out');
-        }, animationDuration * 1000); // Multiplica por 1000 para convertir a milisegundos
-    </script>
   <div style="background-color: rgb(33, 33, 33); font-size: 12px;" class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
         <span style="color: rgb(255, 255, 255); font-size: 14px;" class="fs-4">Netflix</span>
       </a>
-
       <ul class="nav nav-pills">
         <li class="nav-item"><a href="pagina.html" class="nav-link active" aria-current="page">Inicio</a></li>
-        <li class="nav-item"><a href="series.html" class="nav-link">Series</a></li>
-        <li class="nav-item"><a href="peliculas.html" class="nav-link">Planes</a></li>
-        <li class="nav-item"><a href="documentales.html" class="nav-link">Extras</a></li>
-        <li class="nav-item"><a href="sobre.html" class="nav-link">Acerca de Netflix</a></li>
+        <li class="nav-item"><a href="informacion.html" class="nav-link">Más información</a></li>
+        <li class="nav-item"><a href="precios.html" class="nav-link">Precios</a></li>
+        <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
       </ul>
     </header>
-  </div>
-
-  <div id="carouselExampleAutoplaying" class="carousel slider" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="./img/carruselimg1.png" class="d-block w-100" alt="img1">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-size: 24px;">La Casa de Papel: Temporada 5</h5>
-          <p style="text-align: justify; font-size: 12px;">Después de que Lisboa entrase en el Banco de España, la banda vuelve a estar reunida otra vez. Pero no todo van a ser buenas noticias. Sierra encuentra al Profesor tras descurbir su escondite secreto a base de pedir un par de favores, ¿Podría Sierra unirse a la banda? Los protagonistas se ponen manos a la obra para conseguir sacar todo el oro que hay en el Banco de España.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="./img/carruselimg2.png" class="d-block w-100" alt="img2">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-size: 24px;">Formula 1: Drive to Survive Season 4</h5>
-          <p style="text-align: justify; font-size: 12px;">La cuarta temporada de "Formula 1: Drive to Survive" se adentra en la apasionante y dramática temporada 2021 de la Fórmula 1, que estuvo marcada por una de las rivalidades más intensas en la historia reciente del automovilismo: Max Verstappen contra Lewis Hamilton. Esta temporada de la serie documental de Netflix explora los momentos más intensos y emocionantes de la temporada, ofreciendo una visión detrás de escena de las vidas de los pilotos, equipos y personajes clave en el mundo de la F1.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="./img/carruselimg3.png" class="d-block w-100" alt="img3">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-size: 24px;">One Day</h5>
-          <p style="text-align: justify; font-size: 12px;">Emma y Dexter se conocen el día de su graduación universitaria, un 15 de julio. Ella es una chica idealista y él un joven rico con ganas de comerse el mundo. Durante 20 años, cada 15 de julio, se muestra su vida cotidiana y su amistad indestructible.</p>
-        </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1 class="main-heading">¡Bienvenido a Netflix!</h1>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-
-<br>
-
-  <div class="container1">
-    <div class="slider">
-      <div style="width: 300%; height: 300%;" class="slide-track">
-        <div class="slide"><img src="./img/netflixpantala.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="./img/proyectopower.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="./img/dracula.jpg" alt="Auspiciador 3"></div>
-        <div class="slide"><img src="./img/lideres.png" alt="Auspiciador 4"></div>
-
-        <div class="slide"><img src="./img/netflixpantala.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="./img/proyectopower.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="./img/dracula.jpg" alt="Auspiciador 3"></div>
-        <div class="slide"><img src="./img/lideres.png" alt="Auspiciador 4"></div>
-        
-        <div class="slide"><img src="./img/netflixpantala.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="./img/proyectopower.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="./img/dracula.jpg" alt="Auspiciador 3"></div>
-        <div class="slide"><img src="./img/lideres.png" alt="Auspiciador 4"></div>
-
-        <div class="slide"><img src="./img/netflixpantala.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="./img/proyectopower.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="./img/dracula.jpg" alt="Auspiciador 3"></div>
-        <div class="slide"><img src="./img/lideres.png" alt="Auspiciador 4"></div>
-
-        <div class="slide"><img src="./img/netflixpantala.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="./img/proyectopower.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="./img/dracula.jpg" alt="Auspiciador 3"></div>
-        <div class="slide"><img src="./img/lideres.png" alt="Auspiciador 4"></div>
-
-        <div class="slide"><img src="./img/netflixpantala.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="./img/proyectopower.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="./img/dracula.jpg" alt="Auspiciador 3"></div>
-        <div class="slide"><img src="./img/lideres.png" alt="Auspiciador 4"></div>
-
-        <div class="slide"><img src="./img/netflixpantala.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="./img/proyectopower.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="./img/dracula.jpg" alt="Auspiciador 3"></div>
-        <div class="slide"><img src="./img/lideres.png" alt="Auspiciador 4"></div>
-
-
-      </div>
-    </div>
-  </div>
-
-<div class="margen">
-
-<!-- Primera fila -->
-<div class="container-fluid">
-  <div style="margin-top: 24px; margin-bottom: 24px;" class="row align-items-center">
-    <div class="col-md-6">
-      <img src="https://media.revistagq.com/photos/5f241bba422afa58933b5e2c/16:9/w_1280,c_limit/la-casa-de-papel.jpg" alt="Imagen 1" class="img-fluid">
-    </div>
-    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center"> 
-      <p class="main-heading text-center">Descripción de la empresa:</p>
-      <p class="custom-paragraph text-justify text-center" style="margin: 0 60px;">Netflix es un servicio de streaming por suscripción que permite a sus miembros ver series y películas en diversos dispositivos conectados a internet. Ofrece una amplia variedad de contenido, desde producciones originales hasta clásicos de todos los géneros, y proporciona recomendaciones personalizadas según el historial de visualización de cada usuario. Disponible en múltiples dispositivos, como teléfonos, tabletas, computadoras y televisores inteligentes, Netflix permite disfrutar del contenido en cualquier momento y lugar. Además, se actualiza regularmente con nuevos títulos y ofrece la opción de descargar contenido para verlo sin conexión.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Segunda fila -->
-<div class="container-fluid row2">
-  <div style="margin-top: 24px; margin-bottom: 24px;" class="row align-items-center">
-    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
-      <p class="main-heading text-center">Misión:</p>
-      <p class="custom-paragraph text-justify text-center" style="margin: 0 60px;">
-        La misión de Netflix es ofrecer una experiencia de entretenimiento global mediante una amplia variedad de contenido, incluyendo series, películas y documentales, accesible en cualquier momento y lugar. La compañía se enfoca en la innovación y la producción de contenido original para proporcionar una experiencia de visualización única a sus suscriptores.
-      </p>
-      <div class="turnos d-flex justify-content-around w-100">
-        <div class="item text-center">
-          <img src="https://cdn1.iconfinder.com/data/icons/smashicons-emoticons-retro-vol-3/44/153_-_Deadpool_emoticon_emoji_face-512.png" alt="Series" class="img-fluid">
-          <p class="custom-paragraph">Series</p>
-          <div class="message">Disfruta tus...</div>
-        </div>
-        <div class="item text-center">
-          <img src="https://cdn.icon-icons.com/icons2/1713/PNG/512/iconfinder-videoeditorfilmsproduction-3993846_112661.png" alt="Películas" class="img-fluid">
-          <p class="custom-paragraph">Películas</p>
-          <div class="message">Emociónate con las...</div>
-        </div>
-        <div class="item text-center">
-          <img src="https://cdn-icons-png.flaticon.com/512/1825/1825462.png" alt="Documentales" class="img-fluid">
-          <p class="custom-paragraph">Documentales</p>
-          <div class="message">Entretente con los mejores...</div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="turnos">
+          <div class="item">
+            <img src="images/television.png" alt="TV">
+            <div class="message">Disfruta en tu TV<br>Ve en smart TV, PlayStation, Xbox, Chromecast, Apple TV, reproductores de Blu-ray y más.</div>
+          </div>
+          <div class="item">
+            <img src="images/download.png" alt="Descarga">
+            <div class="message">Descarga tus series para verlas offline<br>Guarda tu contenido favorito y siempre tendrás algo para ver.</div>
+          </div>
+          <div class="item">
+            <img src="images/mobile.png" alt="Móvil">
+            <div class="message">Disfruta donde quieras<br>Películas y series ilimitadas en tu teléfono, tablet, laptop y TV.</div>
+          </div>
+          <div class="item">
+            <img src="images/kids.png" alt="Niños">
+            <div class="message">Crea perfiles para niños<br>Los niños vivirán aventuras con sus personajes favoritos en un espacio diseñado exclusivamente para ellos, gratis con tu membresía.</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <img src="https://cdn.marketingandweb.es/wp-content/uploads/mision-vision-y-valores-de-netflix.png" alt="Imagen 2" class="img-fluid">
-    </div>
-  </div>
-</div>
-
-<!-- Tercera fila -->
-<div class="container-fluid row3">
-  <div style="margin-top: 24px; margin-bottom: 24px;" class="row align-items-center">
-    <div class="col-md-6">
-      <img src="https://images.ctfassets.net/4cd45et68cgf/3GKNeghrWyZuILcmSCUyhc/ff1d650ebc53aefdf929ded05fe79657/1997.png" alt="Imagen 3" class="img-fluid">
-    </div>
-    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
-      <p class="main-heading text-center">Visión Empresarial</p>
-      <p class="custom-paragraph text-justify text-center" style="margin: 0 60px;">
-        Ser la plataforma líder a nivel global en la distribución de contenido digital, ofreciendo experiencias personalizadas y accesibles a todos nuestros usuarios. Aspiramos a transformar la manera en que las personas disfrutan del entretenimiento, proporcionando una biblioteca diversa y de calidad que conecte culturas y rompa fronteras. Nuestra visión es ser reconocidos no solo por nuestra innovación tecnológica, sino también por nuestro compromiso con la excelencia en el servicio y la creación de un impacto positivo en la industria del entretenimiento digital.
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- Cuarta fila -->
-<div class="container-fluid row4">
-  <div style="margin-top: 24px; margin-bottom: 24px;" class="row align-items-center">
-    <div class="col-md-6">
-      <img src="https://wordpress.wbur.org/wp-content/uploads/2019/11/GettyImages-695630-1000x666.jpg" alt="Imagen 4" class="img-fluid">
-    </div>
-    <div class="col-md-6 d-flex align-items-center">
-      <div class="text-center">
-        <p class="main-heading">Sobre Nosotros</p>
-        <p class="custom-paragraph text-justify" style="margin: 0 60px;">
-          Netflix es una empresa de entretenimiento estadounidense fundada en 1997 por Reed Hastings y Marc Randolph en Scotts Valley, California. Inicialmente, comenzamos como un servicio de alquiler de DVDs por correo, pero con el tiempo, evolucionamos hasta convertirnos en la plataforma líder de streaming a nivel mundial. Ofrecemos un servicio de streaming que permite a nuestros miembros ver una amplia variedad de series, películas, documentales y contenido original en miles de dispositivos conectados a Internet. Nuestro objetivo es ofrecer entretenimiento de alta calidad a nuestros usuarios dondequiera que estén y en cualquier momento.
-        </p>
+    <div class="container1">
+      <div class="slide">
+        <div class="slide-track">
+          <div class="slide"><img src="images/slide1.jpg" alt="Slide 1"></div>
+          <div class="slide"><img src="images/slide2.jpg" alt="Slide 2"></div>
+          <div class="slide"><img src="images/slide3.jpg" alt="Slide 3"></div>
+          <div class="slide"><img src="images/slide4.jpg" alt="Slide 4"></div>
+          <div class="slide"><img src="images/slide5.jpg" alt="Slide 5"></div>
+          <div class="slide"><img src="images/slide6.jpg" alt="Slide 6"></div>
+          <div class="slide"><img src="images/slide7.jpg" alt="Slide 7"></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Quinta fila -->
-<div class="container-fluid row5">
-  <p style="font-size: 18px; color: white; margin-left: 12px;"><b>Series destacadas</b></p>
-  <div style="margin-top: 24px; margin-bottom: 24px;" class="row text-center">
-    <div class="col-md-3">
-      <img src="https://br.web.img2.acsta.net/pictures/19/07/10/20/01/2331295.jpg" alt="Imagen 5" class="img-fluid">
-    </div>
-    <div class="col-md-3">
-      <img src="https://geektitude.com/wp-content/uploads/2022/09/TheSandman-1200x1778.jpg" alt="Imagen 6" class="img-fluid">
-    </div>
-    <div class="col-md-3">
-      <img src="https://www.vocero.com.mx/wp-content/uploads/2022/10/Enola-Holmes-2-1200x1778.jpeg" alt="Imagen 7" class="img-fluid">
-    </div>
-    <div class="col-md-3">
-      <img src="https://ca-times.brightspotcdn.com/dims4/default/0561ad6/2147483647/strip/true/crop/1500x2222+0+0/resize/1200x1778!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fb7%2F3d%2F37955d8d4b21800d19a0d2e77f5a%2Fen-us-onepiece-teaser-luffy-vertical-27x40-rgb-pre.jpg" alt="Imagen 8" class="img-fluid">
+  <!-- Agregamos la sección de las características -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 feature-box">
+        <img src="images/tv-icon.png" alt="TV">
+        <h4>Disfruta en tu TV</h4>
+        <p>Ve en smart TV, PlayStation, Xbox, Chromecast, Apple TV, reproductores de Blu-ray y más.</p>
+      </div>
+      <div class="col-md-3 feature-box">
+        <img src="images/download-icon.png" alt="Descarga">
+        <h4>Descarga tus series para verlas offline</h4>
+        <p>Guarda tu contenido favorito y siempre tendrás algo para ver.</p>
+      </div>
+      <div class="col-md-3 feature-box">
+        <img src="images/mobile-icon.png" alt="Móvil">
+        <h4>Disfruta donde quieras</h4>
+        <p>Películas y series ilimitadas en tu teléfono, tablet, laptop y TV.</p>
+      </div>
+      <div class="col-md-3 feature-box">
+        <img src="images/kids-icon.png" alt="Niños">
+        <h4>Crea perfiles para niños</h4>
+        <p>Los niños vivirán aventuras con sus personajes favoritos en un espacio diseñado exclusivamente para ellos, gratis con tu membresía.</p>
+      </div>
     </div>
   </div>
-</div>
-
 
 </body>
 </html>
-
