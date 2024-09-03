@@ -93,18 +93,44 @@
       margin-bottom: 3px;
     }
 
-    .carousel-item {
-      position: relative;
-    }
     .carousel-caption {
       position: absolute;
-      top: 56%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: calc(100% - 1400px);
       text-align: center;
       padding: 0 15px;
-      color: white; 
+      color: white;
+    }
+
+    .carousel-caption h5 {
+      font-size: 2rem; /* Ajustado con rem */
+      font-weight: bold;
+    }
+
+    .carousel-caption p {
+      font-size: 1rem; /* Ajustado con rem */
+      text-align: justify;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-caption h5 {
+        font-size: 1.5rem; /* Tamaño de fuente menor en pantallas pequeñas */
+      }
+
+      .carousel-caption p {
+        font-size: 0.875rem; /* Tamaño de fuente menor en pantallas pequeñas */
+      }
+    }
+
+    @media (max-width: 576px) {
+      .carousel-caption h5 {
+        font-size: 1.25rem; /* Tamaño de fuente aún menor en pantallas extra pequeñas */
+      }
+
+      .carousel-caption p {
+        font-size: 0.75rem; /* Tamaño de fuente aún menor en pantallas extra pequeñas */
+      }
     }
 
     .nav-pills .nav-link {
@@ -120,6 +146,28 @@
     .text-center {
       text-align: center;
     }
+
+    .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #222;
+            color: white;
+        }
+        .footer img {
+            margin: 10px;
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+        }
+        .footer .social-media {
+            margin-bottom: 20px;
+        }
+        .footer .reserved {
+            border-top: 1px solid #555;
+            padding-top: 10px;
+            
+        }
+
 
     /*Netflix logo animación*/
 
@@ -201,12 +249,12 @@
     .slide-track {
       display: flex;
       animation: scroll 40s linear infinite;
-      width: calc(200px * 21); /* Ajusta el tamaño total según el número de slides */
+      width: calc(200px * 21);
     }
 
     .slide {
       width: 200px;
-      margin-right: 20px; /* Espacio entre las imágenes */
+      margin-right: 20px;
     }
 
     .slide img {
@@ -220,11 +268,11 @@
         transform: translateX(0);
       }
       100% {
-        transform: translateX(calc(-200px * 6)); /* Ajustado para el número de slides visibles */
+        transform: translateX(calc(-200px * 6));
       }
     }
 
-    .margen{
+    .margen {
       margin-left: 24px;
       margin-right: 24px;
     }
@@ -267,7 +315,7 @@
         <li class="nav-item"><a href="pagina.html" class="nav-link active" aria-current="page">Inicio</a></li>
         <li class="nav-item"><a href="series.html" class="nav-link">Series</a></li>
         <li class="nav-item"><a href="peliculas.html" class="nav-link">Planes</a></li>
-        <li class="nav-item"><a href="documentales.html" class="nav-link">Extras</a></li>
+        <li class="nav-item"><a href="Extras.html" class="nav-link">Extras</a></li>
         <li class="nav-item"><a href="sobre.html" class="nav-link">Acerca de Netflix</a></li>
       </ul>
     </header>
@@ -449,6 +497,40 @@
     </div>
   </div>
 </div>
+
+<div style="display: flex; justify-content: center; align-items: center; background-color: #ffffff; padding: 20px; width: 200px; margin: 0 auto;">
+    <img src="https://www.webhosting.pe/images/pagos/niubiz.png" alt="Medios de Pago y Síguenos">
+</div>
+
+
+<div class="footer">
+    <div class="social-media">
+        <a href="https://www.facebook.com" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram">
+        </a>
+        <a href="https://www.youtube.com" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube">
+        </a>
+    </div>
+    <div class="reserved">
+      <div style="text-align: center;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Logo de la Página" style="width: 90px; vertical-align: middle;">
+    </div>
+    
+</div>
+
+        <p>&copy; <span id="currentYear"></span> Todos los derechos reservados</p>
+    </div>
+</div>
+
+  <script>
+    // Script para actualizar el año automáticamente
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+</script>
+
 
 
 </body>
