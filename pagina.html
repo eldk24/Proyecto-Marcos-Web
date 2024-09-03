@@ -204,17 +204,14 @@
     }
 
     .feature-box {
-      background-color: #444;
+      background-color: #007bff; /* Azul */
       color: #fff;
       padding: 20px;
       border-radius: 8px;
       text-align: center;
       margin-bottom: 20px;
-    }
-    .feature-box img {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 10px;
+      flex: 1;
+      min-width: 220px; /* Ajusta el tamaño mínimo */
     }
     .feature-box h4 {
       font-size: 20px;
@@ -222,6 +219,12 @@
     }
     .feature-box p {
       font-size: 16px;
+    }
+    .feature-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px; /* Espaciado entre los cuadros */
     }
   </style>
 </head>
@@ -245,7 +248,7 @@
     }, animationDuration * 1000);
   </script>
 
-  <div style="background-color: rgb(33, 33, 33); font-size: 12px;" class="container">
+  <div class="container" style="background-color: rgb(33, 33, 33); font-size: 12px;">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
@@ -258,11 +261,13 @@
         <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
       </ul>
     </header>
+
     <div class="row">
       <div class="col-md-12 text-center">
         <h1 class="main-heading">¡Bienvenido a Netflix!</h1>
       </div>
     </div>
+
     <div class="row">
       <div class="col-md-12 text-center">
         <div class="turnos">
@@ -285,6 +290,7 @@
         </div>
       </div>
     </div>
+
     <div class="container1">
       <div class="slide">
         <div class="slide-track">
@@ -298,32 +304,28 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Agregamos la sección de las características -->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 feature-box">
-        <img src="images/tv-icon.png" alt="TV">
-        <h4>Disfruta en tu TV</h4>
-        <p>Ve en smart TV, PlayStation, Xbox, Chromecast, Apple TV, reproductores de Blu-ray y más.</p>
-      </div>
-      <div class="col-md-3 feature-box">
-        <img src="images/download-icon.png" alt="Descarga">
-        <h4>Descarga tus series para verlas offline</h4>
-        <p>Guarda tu contenido favorito y siempre tendrás algo para ver.</p>
-      </div>
-      <div class="col-md-3 feature-box">
-        <img src="images/mobile-icon.png" alt="Móvil">
-        <h4>Disfruta donde quieras</h4>
-        <p>Películas y series ilimitadas en tu teléfono, tablet, laptop y TV.</p>
-      </div>
-      <div class="col-md-3 feature-box">
-        <img src="images/kids-icon.png" alt="Niños">
-        <h4>Crea perfiles para niños</h4>
-        <p>Los niños vivirán aventuras con sus personajes favoritos en un espacio diseñado exclusivamente para ellos, gratis con tu membresía.</p>
+    <div class="container">
+      <div class="row feature-row">
+        <div class="col-md-3 feature-box">
+          <h4>Disfruta en tu TV</h4>
+          <p>Ve en smart TV, PlayStation, Xbox, Chromecast, Apple TV, reproductores de Blu-ray y más.</p>
+        </div>
+        <div class="col-md-3 feature-box">
+          <h4>Descarga tus series para verlas offline</h4>
+          <p>Guarda tu contenido favorito y siempre tendrás algo para ver.</p>
+        </div>
+        <div class="col-md-3 feature-box">
+          <h4>Disfruta donde quieras</h4>
+          <p>Películas y series ilimitadas en tu teléfono, tablet, laptop y TV.</p>
+        </div>
+        <div class="col-md-3 feature-box">
+          <h4>Crea perfiles para niños</h4>
+          <p>Los niños vivirán aventuras con sus personajes favoritos en un espacio diseñado exclusivamente para ellos, gratis con tu membresía.</p>
+        </div>
       </div>
     </div>
+
   </div>
 
 </body>
