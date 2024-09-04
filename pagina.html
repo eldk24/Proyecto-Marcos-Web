@@ -133,15 +133,31 @@
       }
     }
 
+    .fixed-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgb(33, 33, 33);
+      padding: 10px 0;
+    }
+
     .nav-pills .nav-link {
       color: rgb(183, 183, 183);
-      background-color: rgba(0, 0, 0, 0)
+      background-color: rgba(0, 0, 0, 0);
+      padding: 5px 10px;
     }
 
     .nav-pills .nav-link.active {
       color: rgb(255, 255, 255);
-      background-color: rgb(102, 0, 0); 
+      background-color: rgb(102, 0, 0);
     }
+
+    body {
+      padding-top: 100px; /* Ajusta según la altura de la barra */
+    }
+
+
 
     .text-center {
       text-align: center;
@@ -304,20 +320,24 @@
             overlay.classList.add('fade-out');
         }, animationDuration * 1000); // Multiplica por 1000 para convertir a milisegundos
     </script>
-  <div style="background-color: rgb(33, 33, 33); font-size: 12px;" class="container">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+  <div style="background-color: rgb(33, 33, 33); font-size: 12px;" class="container-fluid">
+    <header class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom fixed-header">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none ms-3">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
         <span style="color: rgb(255, 255, 255); font-size: 14px;" class="fs-4">Netflix</span>
       </a>
-
-      <ul class="nav nav-pills">
+  
+      <ul class="nav nav-pills mx-auto">
         <li class="nav-item"><a href="pagina.html" class="nav-link active" aria-current="page">Inicio</a></li>
         <li class="nav-item"><a href="series.html" class="nav-link">Series</a></li>
         <li class="nav-item"><a href="peliculas.html" class="nav-link">Planes</a></li>
         <li class="nav-item"><a href="Extras.html" class="nav-link">Extras</a></li>
         <li class="nav-item"><a href="sobre.html" class="nav-link">Acerca de Netflix</a></li>
       </ul>
+    </header>
+  </div>
+  
+
     </header>
   </div>
 
@@ -420,7 +440,7 @@
   <div style="margin-top: 24px; margin-bottom: 24px;" class="row align-items-center">
     <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
       <p class="main-heading text-center">Misión:</p>
-      <p class="custom-paragraph text-justify text-center" style="margin: 0 60px;">
+      <p class="custom-paragraph text-justify text-justify" style="margin: 0 60px;">
         La misión de Netflix es ofrecer una experiencia de entretenimiento global mediante una amplia variedad de contenido, incluyendo series, películas y documentales, accesible en cualquier momento y lugar. La compañía se enfoca en la innovación y la producción de contenido original para proporcionar una experiencia de visualización única a sus suscriptores.
       </p>
       <div class="turnos d-flex justify-content-around w-100">
@@ -455,7 +475,7 @@
     </div>
     <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
       <p class="main-heading text-center">Visión Empresarial</p>
-      <p class="custom-paragraph text-justify text-center" style="margin: 0 60px;">
+      <p class="custom-paragraph text-justify text-justify" style="margin: 0 60px;">
         Ser la plataforma líder a nivel global en la distribución de contenido digital, ofreciendo experiencias personalizadas y accesibles a todos nuestros usuarios. Aspiramos a transformar la manera en que las personas disfrutan del entretenimiento, proporcionando una biblioteca diversa y de calidad que conecte culturas y rompa fronteras. Nuestra visión es ser reconocidos no solo por nuestra innovación tecnológica, sino también por nuestro compromiso con la excelencia en el servicio y la creación de un impacto positivo en la industria del entretenimiento digital.
       </p>
     </div>
@@ -481,19 +501,19 @@
 
 <!-- Quinta fila -->
 <div class="container-fluid row5">
-  <p style="font-size: 18px; color: white; margin-left: 12px;"><b>Series destacadas</b></p>
-  <div style="margin-top: 24px; margin-bottom: 24px;" class="row text-center">
+  <p style="font-size: 18px; color: white; text-align: center;"><b>Series destacadas</b></p>
+  <div class="row text-center">
     <div class="col-md-3">
-      <img src="https://br.web.img2.acsta.net/pictures/19/07/10/20/01/2331295.jpg" alt="Imagen 5" class="img-fluid">
+      <img style="margin-top: 24px; margin-bottom: 24px;" src="https://br.web.img2.acsta.net/pictures/19/07/10/20/01/2331295.jpg" alt="Imagen 5" class="img-fluid">
     </div>
     <div class="col-md-3">
-      <img src="https://geektitude.com/wp-content/uploads/2022/09/TheSandman-1200x1778.jpg" alt="Imagen 6" class="img-fluid">
+      <img style="margin-top: 24px; margin-bottom: 24px;" src="https://geektitude.com/wp-content/uploads/2022/09/TheSandman-1200x1778.jpg" alt="Imagen 6" class="img-fluid">
     </div>
     <div class="col-md-3">
-      <img src="https://www.vocero.com.mx/wp-content/uploads/2022/10/Enola-Holmes-2-1200x1778.jpeg" alt="Imagen 7" class="img-fluid">
+      <img style="margin-top: 24px; margin-bottom: 24px;" src="https://www.vocero.com.mx/wp-content/uploads/2022/10/Enola-Holmes-2-1200x1778.jpeg" alt="Imagen 7" class="img-fluid">
     </div>
     <div class="col-md-3">
-      <img src="https://ca-times.brightspotcdn.com/dims4/default/0561ad6/2147483647/strip/true/crop/1500x2222+0+0/resize/1200x1778!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fb7%2F3d%2F37955d8d4b21800d19a0d2e77f5a%2Fen-us-onepiece-teaser-luffy-vertical-27x40-rgb-pre.jpg" alt="Imagen 8" class="img-fluid">
+      <img style="margin-top: 24px; margin-bottom: 24px;" src="https://ca-times.brightspotcdn.com/dims4/default/0561ad6/2147483647/strip/true/crop/1500x2222+0+0/resize/1200x1778!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fb7%2F3d%2F37955d8d4b21800d19a0d2e77f5a%2Fen-us-onepiece-teaser-luffy-vertical-27x40-rgb-pre.jpg" alt="Imagen 8" class="img-fluid">
     </div>
   </div>
 </div>

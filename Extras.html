@@ -154,28 +154,41 @@
             }
         }
 
-        .nav-pills .nav-link {
-            font-size: 12px;
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgb(33, 33, 33);
+            padding: 10px 0;
+            }
+
+            .nav-pills .nav-link {
             color: rgb(183, 183, 183);
             background-color: rgba(0, 0, 0, 0);
+            padding: 5px 10px;
             }
 
             .nav-pills .nav-link.active {
-            font-size: 12px; /* Asegura que el tamaño también se aplique a los enlaces activos */
             color: rgb(255, 255, 255);
-            background-color: rgb(102, 0, 0); 
-        }
+            background-color: rgb(102, 0, 0);
+            }
+
+            body {
+            padding-top: 100px; /* Ajusta según la altura de la barra */
+            }
+
     </style>
 </head>
 <body>
-    <div style="background-color: rgb(33, 33, 33); font-size: 12px;" class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+    <div style="background-color: rgb(33, 33, 33); font-size: 12px;" class="container-fluid">
+        <header class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom fixed-header">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none ms-3">
             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
             <span style="color: rgb(255, 255, 255); font-size: 14px;" class="fs-4">Netflix</span>
           </a>
-    
-          <ul class="nav nav-pills">
+      
+          <ul class="nav nav-pills mx-auto">
             <li class="nav-item"><a href="pagina.html" class="nav-link active" aria-current="page">Inicio</a></li>
             <li class="nav-item"><a href="series.html" class="nav-link">Series</a></li>
             <li class="nav-item"><a href="peliculas.html" class="nav-link">Planes</a></li>
