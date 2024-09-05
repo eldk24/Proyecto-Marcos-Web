@@ -6,7 +6,7 @@
   <title>Netflix</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"> <!-- Fuente añadida -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"> 
   <style>
     body {
       background-color: #222;
@@ -49,7 +49,6 @@
       background-size: cover;
       height: 100vh;
     }
-
     .about-section .content {
       position: absolute;
       top: 50%;
@@ -60,49 +59,51 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
       max-width: 800px;
-      margin: 0 auto;
       text-align: center;
     }
-
     .about-section h1 {
-      font-size: 3rem; /* Tamaño de fuente aumentado */
-      font-weight: 700; /* Peso de fuente aumentado */
-      font-family: 'Poppins', sans-serif; /* Aplicar la fuente Poppins */
+      font-size: 3rem; 
+      font-weight: 700; 
+      font-family: 'Poppins', sans-serif; 
       margin-bottom: 20px;
     }
-
     .about-section p {
       font-size: 1.2rem;
       line-height: 1.5;
     }
-
     .info-section {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 40px 20px;
-      min-height: 60vh;
+      justify-content: center; 
+      align-items: center;     
+      gap: 30px;               
+      flex-wrap: wrap;        
+      margin: 40px 20px;      
     }
+<<<<<<< HEAD
 
     .info-section .info-card {
       flex: 3;
       margin: 40px; /* Espaciado aumentado entre tarjetas */
+=======
+    .info-card {
+>>>>>>> f198588100509b99cba5bab3e5c274ed92c9c511
       padding: 20px;
-      background-color: #170235; /* Azul de Bootstrap */
+      background-color: #381a63;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0);
       color: white;
       max-width: 300px;
       text-align: center;
+      flex: 1 1 500px;        
     }
 
-    .info-section h2 {
+    .info-card h2 {
       font-size: 1.5rem;
       margin-bottom: 10px;
       color: white;
     }
 
-    .info-section p {
+    .info-card p {
       font-size: 1rem;
       line-height: 1.5;
     }
@@ -138,8 +139,6 @@
       margin: 5px 0 0;
     }
 
-   
-
     .accordion-item {
       background-color: rgba(0, 0, 0, 0.8);
       margin-bottom: 10px;
@@ -149,24 +148,33 @@
 
     .accordion-button {
       color: #fff;
-      background-color: #444;
+      background-color: #444; 
       border: none;
     }
 
     .accordion-button:not(.collapsed) {
+<<<<<<< HEAD
       background-color: #333;
       color: #ffd000;
+=======
+      background-color: #675b5b; 
+>>>>>>> f198588100509b99cba5bab3e5c274ed92c9c511
     }
 
+
+
     .accordion-body {
-      background-color: #333;
-      color: #fff;
+      background-color: #333; 
+      color: #fff; 
     }
 
     @media (max-width: 768px) {
-      .info-section .info-card {
+      .info-section {
+        flex-direction: column; 
+      }
+
+      .info-card {
         max-width: 100%;
-        margin-bottom: 20px;
       }
     }
 
@@ -179,11 +187,11 @@
         font-size: 1rem;
       }
 
-      .info-section h2 {
+      .info-card h2 {
         font-size: 1.25rem;
       }
 
-      .info-section p {
+      .info-card p {
         font-size: 0.875rem;
       }
     }
@@ -348,3 +356,4 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
