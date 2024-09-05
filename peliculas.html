@@ -1,159 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <style>
         body {
-            background-color: #141414;
-            color: #e5e5e5;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #333;
             margin: 0;
             padding: 0;
-            font-size: 12px;
-        }
-
-        /* Contenedor principal */
-        div {
-            text-align: center;
-            width: 90%; /* Ajuste responsive */
-            max-width: 1200px; /* Máximo ancho para pantallas grandes */
-            margin: auto;
-        }
-
-        /* Calendario con rejilla adaptable */
-        ol {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 0.5em;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Estilos para los días */
-        li {
-            font-size: 1.5em; /* Ajuste de tamaño de fuente */
-            position: relative;
-        }
-
-        /* Título del mes */
-        h2 {
-            margin-bottom: 0.5em;
-            padding: 0;
-            color: #e50914;
-            font-size: 2.5em; /* Ajuste de tamaño de fuente */
-        }
-
-        /* Estilo del primer día */
-        .first-day {
-            grid-column-start: var(--first-day-start, 0);
-        }
-
-        /* Nombres de los días */
-        .day-name {
-            background: #333;
-            color: #e5e5e5;
-            font-weight: bold;
-            font-size: 1em;
-            padding: 0.5em;
             text-align: center;
         }
-
-        /* Botones de navegación */
-        .button-container {
-            margin-top: 1em;
-            text-align: center;
-        }
-
-        button {
-            margin: 0.5em;
-            padding: 0.5em 1em;
-            background-color: #e50914;
+        .notification-bar {
+            background-color: #8a0000;
             color: white;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
+            padding: 10px;
+            text-align: center;
             font-size: 1em;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: top 0.3s;
+            margin-top: 48px;
         }
-
-        button:hover {
-            background-color: #b00710;
-        }
-
-        /* Formulario de película */
-        .movie-form {
-            margin-top: 1em;
-        }
-
-        input[type="text"], input[type="date"] {
-            padding: 0.5em;
-            margin: 0.5em;
-            font-size: 1em;
-        }
-
-        /* Tooltip de película */
-        .movie-tooltip {
-            font-size: 0.75em;
-            color: #e5e5e5;
+        .notification-bar button {
             position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(20, 20, 20, 0.8);
-            padding: 0.5em;
-            border-radius: 4px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        .plans-container {
+            margin: 20px auto;
+            margin-top: 40px; /* Ajuste de margen superior */
+        }
+        .plan {
+            background-color: white;
+            border-radius: 10px;
+            border: 2px solid lightgray;
+            padding: 20px;
+            text-align: left;
+            transition: border-color 0.3s ease;
+            cursor: pointer;
+        }
+        .plan.selected {
+            border-color: #e50914;
+        }
+        .plan h2 {
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .plan ul {
+            list-style: none;
+            padding: 0;
+        }
+        .plan ul li {
+            margin: 10px 0;
+        }
+        .message-box {
+            position: fixed;
+            top: 70px; /* Ajuste de la posición del mensaje para que se vea debajo de la barra */
+            right: 20px;
+            background-color: #ffc850;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            border-radius: 5px;
             display: none;
-            white-space: nowrap;
-            z-index: 10;
+            z-index: 1500; /* Más alto que el z-index de la barra de notificación */
         }
-
-        /* Media queries para pantallas más pequeñas */
-        @media (max-width: 768px) {
-            h2 {
-                font-size: 2em; /* Ajuste de tamaño de fuente para tablet */
-            }
-
-            li {
-                font-size: 1.2em; /* Ajuste de tamaño de fuente para días */
-            }
-
-            .day-name {
-                font-size: 0.8em;
-            }
-
-            button {
-                padding: 0.4em 0.8em;
-                font-size: 0.9em;
-            }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #222;
+            color: white;
         }
-
-        @media (max-width: 480px) {
-            ol {
-                grid-template-columns: repeat(4, 1fr); /* Rejilla de 4 columnas para pantallas más pequeñas */
-            }
-
-            h2 {
-                font-size: 1.5em; /* Ajuste de tamaño de fuente para móviles */
-            }
-
-            li {
-                font-size: 1em;
-            }
-
-            .day-name {
-                font-size: 0.7em;
-            }
-
-            button {
-                padding: 0.3em 0.6em;
-                font-size: 0.8em;
-            }
+        .footer img {
+            margin: 10px;
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
         }
-
+        .footer .social-media {
+            margin-bottom: 20px;
+        }
+        .footer .reserved {
+            border-top: 1px solid #555;
+            padding-top: 10px;
+        }
         .fixed-header {
             position: fixed;
             top: 0;
@@ -161,152 +101,143 @@
             z-index: 1000;
             background-color: rgb(33, 33, 33);
             padding: 10px 0;
-            }
-
-            .nav-pills .nav-link {
+        }
+        .nav-pills {
+            display: flex;
+            justify-content: center;
+        }
+        .nav-pills .nav-link {
             color: rgb(183, 183, 183);
             background-color: rgba(0, 0, 0, 0);
             padding: 5px 10px;
-            }
-
-            .nav-pills .nav-link.active {
+        }
+        .nav-pills .nav-link.active {
             color: rgb(255, 255, 255);
             background-color: rgb(102, 0, 0);
-            }
-
-            body {
-            padding-top: 100px; /* Ajusta según la altura de la barra */
-            }
-
+        }
     </style>
 </head>
 <body>
-    <div style="background-color: rgb(33, 33, 33); font-size: 12px;" class="container-fluid">
-        <header class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom fixed-header">
-          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none ms-3">
-            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-            <span style="color: rgb(255, 255, 255); font-size: 14px;" class="fs-4">Netflix</span>
-          </a>
-      
-          <ul class="nav nav-pills mx-auto">
-            <li class="nav-item"><a href="pagina.html" class="nav-link active" aria-current="page">Inicio</a></li>
-            <li class="nav-item"><a href="series.html" class="nav-link">Series</a></li>
-            <li class="nav-item"><a href="peliculas.html" class="nav-link">Planes</a></li>
-            <li class="nav-item"><a href="Extras.html" class="nav-link">Extras</a></li>
-            <li class="nav-item"><a href="sobre.html" class="nav-link">Acerca de Netflix</a></li>
-          </ul>
+    <div class="container-fluid" style="background-color: rgb(33, 33, 33); font-size: 12px;">
+        <header class="fixed-header d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <span style="color: rgb(255, 255, 255); font-size: 14px; margin-left: 24px;" class="fs-4">Netflix</span>
+            </a>
+            <ul class="nav nav-pills mx-auto">
+                <li class="nav-item"><a href="pagina.html" class="nav-link active" aria-current="page">Inicio</a></li>
+                <li class="nav-item"><a href="series.html" class="nav-link">Series</a></li>
+                <li class="nav-item"><a href="peliculas.html" class="nav-link">Planes</a></li>
+                <li class="nav-item"><a href="Extras.html" class="nav-link">Extras</a></li>
+                <li class="nav-item"><a href="sobre.html" class="nav-link">Acerca de Netflix</a></li>
+            </ul>
         </header>
-      </div>
-
-    <div id="calendar"></div>
-    <div class="button-container">
-        <button id="prevMonth">Anterior</button>
-        <button id="nextMonth">Siguiente</button>
     </div>
 
-    <div class="movie-form">
-        <input type="text" id="movieName" placeholder="Nombre de la película" />
-        <input type="date" id="releaseDate" />
-        <button onclick="addMovie()">Agregar Película</button>
+    <div class="notification-bar">
+        Ahora ves todos los planes.
+        <button onclick="closeNotification()">✖ Descartar</button>
+    </div>
+
+    <h1 style="color: white; font-size: 24px; margin-top: 24px;">Selecciona el plan ideal para ti</h1>
+
+    <div class="message-box" id="messageBox"></div>
+
+    <div class="container plans-container">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <div class="col">
+                <div class="plan" onclick="selectPlan(this, 'Premium 4K + HDR')">
+                    <h2>Premium<br>4K + HDR</h2>
+                    <ul>
+                        <li>Precio al mes: S/47.90</li>
+                        <li>Resolución: 4K (Ultra HD) + HDR</li>
+                        <li>Calidad de video: Excepcional</li>
+                        <li>Dispositivos admitidos: TV, ordenador, móvil, tableta</li>
+                        <li>Descargas: Incluido</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="plan" onclick="selectPlan(this, 'Estándar 1080p')">
+                    <h2>Estándar<br>1080p</h2>
+                    <ul>
+                        <li>Precio al mes: S/42.90</li>
+                        <li>Resolución: 1080p (Full HD)</li>
+                        <li>Calidad de video: Muy buena</li>
+                        <li>Dispositivos admitidos: TV, ordenador, móvil, tableta</li>
+                        <li>Descargas: Incluido</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="plan" onclick="selectPlan(this, 'Estándar con anuncios 1080p')">
+                    <h2>Estándar con anuncios 1080p</h2>
+                    <ul>
+                        <li>Precio al mes: S/35.90</li>
+                        <li>Resolución: 1080p (Full HD)</li>
+                        <li>Calidad de video: Muy buena</li>
+                        <li>Dispositivos admitidos: TV, ordenador, móvil, tableta</li>
+                        <li>Descargas: No incluido</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="plan" onclick="selectPlan(this, 'Básico 720p')">
+                    <h2>Básico<br>720p</h2>
+                    <ul>
+                        <li>Precio al mes: S/27.90</li>
+                        <li>Resolución: 720p (HD)</li>
+                        <li>Calidad de video: Buena</li>
+                        <li>Dispositivos admitidos: TV, ordenador, móvil, tableta</li>
+                        <li>Descargas: Incluido</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="social-media">
+            <a href="https://www.facebook.com" target="_blank">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram">
+            </a>
+            <a href="https://www.youtube.com" target="_blank">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube">
+            </a>
+        </div>
+        <div class="reserved">
+          <div style="text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Logo de la Página" style="width: 90px; vertical-align: middle;">
+        </div>
+        
+    </div>
+    
+            <p>&copy; <span id="currentYear"></span> Todos los derechos reservados</p>
+        </div>
     </div>
 
     <script>
-        const actualYear = 2024;
-        const locale = 'es';
-        let currentMonth = 0;
-        let movies = {};
+        function closeNotification() {
+            document.querySelector('.notification-bar').style.display = 'none';
+        }
 
-        const intlForMonths = new Intl.DateTimeFormat(locale, { month: 'long' });
-        const months = [...Array(12).keys()];
-
-        const intlForWeeks = new Intl.DateTimeFormat(locale, { weekday: 'short' });
-        const weekDays = [...Array(7).keys()].map((dayIndex) =>
-            intlForWeeks.format(new Date(2024, 2, dayIndex + 1))
-        );
-
-        const calendar = months.map((monthIndex) => {
-            const monthName = intlForMonths.format(new Date(actualYear, monthIndex));
-            const nextMonthIndex = (monthIndex + 1) % 12;
-            const daysOfMonth = new Date(actualYear, nextMonthIndex, 0).getDate();
-            const startsOn = new Date(actualYear, monthIndex, 1).getDay();
-
-            return {
-                daysOfMonth,
-                monthName,
-                startsOn,
-            };
-        });
-
-        function renderCalendar() {
-            const { daysOfMonth, monthName, startsOn } = calendar[currentMonth];
-            const days = [...Array(daysOfMonth).keys()];
-            const firstDayAttributes = `class='first-day' style='--first-day-start: ${startsOn + 1}'`;
-            const htmlDaysName = weekDays
-                .map((dayName) => `<li class='day-name'>${dayName}</li>`)
-                .join('');
-            const htmlDays = days
-                .map((day, index) => {
-                    const dayKey = `${actualYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day + 1).padStart(2, '0')}`;
-                    const movieList = movies[dayKey] ? movies[dayKey].join(', ') : '';
-                    return `<li ${index === 0 ? firstDayAttributes : ''} data-date="${dayKey}">
-                        ${day + 1}
-                        <span class='movie-tooltip'>${movieList}</span>
-                    </li>`;
-                })
-                .join('');
-
-            document.querySelector('#calendar').innerHTML = `
-                <h2>${monthName} ${actualYear}</h2>
-                <ol>${htmlDaysName}${htmlDays}</ol>`;
-
-            document.querySelectorAll('#calendar li').forEach(dayElement => {
-                dayElement.addEventListener('mouseover', (event) => {
-                    const tooltip = event.currentTarget.querySelector('.movie-tooltip');
-                    if (tooltip) tooltip.style.display = 'block';
-                });
-
-                dayElement.addEventListener('mouseout', (event) => {
-                    const tooltip = event.currentTarget.querySelector('.movie-tooltip');
-                    if (tooltip) tooltip.style.display = 'none';
-                });
+        function selectPlan(planElement, planName) {
+            var plans = document.querySelectorAll('.plan');
+            plans.forEach(function(plan) {
+                plan.classList.remove('selected');
             });
+            planElement.classList.add('selected');
+
+            var messageBox = document.getElementById('messageBox');
+            messageBox.textContent = 'Has seleccionado el plan: ' + planName;
+            messageBox.style.display = 'block';
+
+            setTimeout(function() {
+                messageBox.style.display = 'none';
+            }, 3000);
         }
-
-        function nextMonth() {
-            currentMonth = (currentMonth + 1) % 12;
-            renderCalendar();
-        }
-
-        function prevMonth() {
-            currentMonth = (currentMonth - 1 + 12) % 12;
-            renderCalendar();
-        }
-
-        function addMovie() {
-            const movieName = document.getElementById('movieName').value;
-            const releaseDate = new Date(document.getElementById('releaseDate').value);
-
-            if (movieName && releaseDate) {
-                const month = releaseDate.getMonth();
-                const day = releaseDate.getDate();
-                const year = releaseDate.getFullYear();
-
-                const key = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                if (!movies[key]) {
-                    movies[key] = [];
-                }
-                movies[key].push(movieName);
-
-                renderCalendar();
-                document.getElementById('movieName').value = '';
-                document.getElementById('releaseDate').value = '';
-            }
-        }
-
-        document.querySelector('#nextMonth').addEventListener('click', nextMonth);
-        document.querySelector('#prevMonth').addEventListener('click', prevMonth);
-
-        renderCalendar();
     </script>
 </body>
 </html>

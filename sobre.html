@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrusel de Reseñas</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .carousel-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-text {
+      flex: 1;
+      padding: 20px;
+    }
+    .carousel-image {
+      flex: 1;
+      padding: 20px;
+    }
+    .carousel-image img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+<div id="carouselReviews" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 carousel-text">
+            <h5>Reseña 1</h5>
+            <p>Este es el texto de la primera reseña. Aquí puedes agregar la descripción o comentario relacionado con la reseña.</p>
+          </div>
+          <div class="col-md-6 carousel-image">
+            <img src="imagen1.jpg" alt="Imagen 1">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 carousel-text">
+            <h5>Reseña 2</h5>
+            <p>Texto para la segunda reseña. Aquí puedes describir o comentar sobre la reseña.</p>
+          </div>
+          <div class="col-md-6 carousel-image">
+            <img src="imagen2.jpg" alt="Imagen 2">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Puedes agregar más items de carrusel aquí -->
+  </div>
+  <a class="carousel-control-prev" href="#carouselReviews" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Anterior</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselReviews" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Siguiente</span>
+  </a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
