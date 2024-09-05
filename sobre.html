@@ -37,7 +37,12 @@
 
     .container {
       max-width: 100%;
-      margin: auto auto;
+      margin: auto;
+    }
+
+    .contenido {
+      max-width: 100%;
+      margin: auto;
     }
 
     .about-section {
@@ -92,7 +97,7 @@
       color: white;
       max-width: 300px;
       text-align: center;
-      flex: 1 1 500px;        
+      flex: 1 1 300px;        
     }
 
     .info-card h2 {
@@ -106,59 +111,62 @@
       line-height: 1.5;
     }
 
-    .trends-section, .features-section, .faq-section {
-      padding: 40px 20px;
-    }
+    .contenido {
+  max-width: 1200px; /* Ajusta el ancho máximo según tu diseño */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  padding: 0 15px; /* Añade un poco de relleno horizontal */
+}
 
-    .trends-section h2, .features-section h2, .faq-section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-align: center;
-    }
+.features-section, .faq-section {
+  padding: 40px 20px;
+  background-color: #333; /* Fondo opcional para diferenciar secciones */
+  border-radius: 10px; /* Bordes redondeados opcionales */
+}
 
-    .trends-list, .features-list {
-      list-style-type: none;
-      padding: 0;
-    }
+.features-list {
+  list-style-type: none;
+  padding: 0;
+}
 
-    .trends-list li, .features-list li {
-      background-color: #444;
-      margin: 10px 0;
-      padding: 15px;
-      border-radius: 8px;
-    }
+.features-list li {
+  background-color: #444;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+}
 
-    .trends-list li h3, .features-list li h3 {
-      margin: 0;
-      font-size: 1.2rem;
-    }
+.features-list li h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
 
-    .trends-list li p, .features-list li p {
-      margin: 5px 0 0;
-    }
+.features-list li p {
+  margin: 5px 0 0;
+}
 
-    .accordion-item {
-      background-color: rgba(0, 0, 0, 0.8);
-      margin-bottom: 10px;
-      border: none;
-      border-radius: 8px;
-    }
+.accordion-item {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 8px;
+}
 
-    .accordion-button {
-      color: #fff;
-      background-color: #444; 
-      border: none;
-    }
+.accordion-button {
+  color: #fff;
+  background-color: #444; 
+  border: none;
+}
 
-    .accordion-button:not(.collapsed) {
-      background-color: #675b5b; 
-      color: #ffd000;
-    }
+.accordion-button:not(.collapsed) {
+  background-color: #675b5b; 
+  color: #ffd000;
+}
 
-    .accordion-body {
-      background-color: #333; 
-      color: #fff; 
-    }
+.accordion-body {
+  background-color: #333; 
+  color: #fff; 
+}
+
 
     @media (max-width: 768px) {
       .info-section {
@@ -220,21 +228,19 @@
   </style>
 </head>
 <body>
-  <div class="container-fluid">
-    <header class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom fixed-header">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none ms-3">
-        <span style="color: rgb(255, 255, 255); font-size: 14px;" class="fs-4">Netflix</span>
-      </a>
-  
-      <ul class="nav nav-pills mx-auto">
-        <li class="nav-item"><a href="pagina.html" class="nav-link active" aria-current="page">Inicio</a></li>
-        <li class="nav-item"><a href="series.html" class="nav-link">Series</a></li>
-        <li class="nav-item"><a href="peliculas.html" class="nav-link">Planes</a></li>
-        <li class="nav-item"><a href="Extras.html" class="nav-link">Extras</a></li>
-        <li class="nav-item"><a href="sobre.html" class="nav-link">Acerca de Netflix</a></li>
-      </ul>
-    </header>
-  </div>
+  <header class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom fixed-header">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none ms-3">
+      <span class="fs-4" style="color: rgb(255, 255, 255); font-size: 14px;">Netflix</span>
+    </a>
+
+    <ul class="nav nav-pills mx-auto">
+      <li class="nav-item"><a href="pagina.html" class="nav-link active" aria-current="page">Inicio</a></li>
+      <li class="nav-item"><a href="series.html" class="nav-link">Series</a></li>
+      <li class="nav-item"><a href="peliculas.html" class="nav-link">Planes</a></li>
+      <li class="nav-item"><a href="Extras.html" class="nav-link">Extras</a></li>
+      <li class="nav-item"><a href="sobre.html" class="nav-link">Acerca de Netflix</a></li>
+    </ul>
+  </header>
 
   <div class="about-section">
     <div class="content">
@@ -242,9 +248,8 @@
     </div>
   </div>
 
-
-
-  <div class="container info-section">
+  <br>
+  <div class="contenido info-section">
     <div class="info-card">
       <h2>Misión</h2>
       <p>Nuestra misión es ofrecer entretenimiento de calidad que inspire y conecte a personas de todo el mundo. Buscamos innovar continuamente para proporcionar una experiencia única y satisfactoria a nuestros suscriptores.</p>
@@ -259,7 +264,9 @@
     </div>
   </div>
 
-  <div class="container features-section">
+  <br>
+
+  <div class="contenido features-section">
     <h2>Más motivos para unirte</h2>
     <ul class="features-list">
       <li><h3>Sin límites</h3><p>Accede a una vasta biblioteca de contenido sin restricciones de horarios ni dispositivos.</p></li>
@@ -268,7 +275,9 @@
     </ul>
   </div>
 
-  <div class="container faq-section">
+  <br>
+  
+  <div class="contenido faq-section">
     <h2>Preguntas Frecuentes</h2>
     <div class="accordion" id="accordionExample">
       <div class="accordion-item">
@@ -309,6 +318,7 @@
       </div>
     </div>
   </div>
+  
 
   <div style="display: flex; justify-content: center; align-items: center; background-color: #ffffff; padding: 20px; width: 200px; margin: 0 auto; margin-top: 24px;">
     <img src="https://www.webhosting.pe/images/pagos/niubiz.png" alt="Medios de Pago y Síguenos" style="width: 90px; vertical-align: middle;">
