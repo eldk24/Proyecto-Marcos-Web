@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"> <!-- Fuente añadida -->
   <style>
     body {
-      background-color: rgb(0, 0, 0);
+      background-color: #222;
       margin: 0;
       padding: 0;
       color: #fff;
@@ -85,7 +85,7 @@
     }
 
     .info-section .info-card {
-      flex: 1;
+      flex: 3;
       margin: 40px; /* Espaciado aumentado entre tarjetas */
       padding: 20px;
       background-color: #170235; /* Azul de Bootstrap */
@@ -155,6 +155,7 @@
 
     .accordion-button:not(.collapsed) {
       background-color: #333;
+      color: #ffd000;
     }
 
     .accordion-body {
@@ -186,6 +187,34 @@
         font-size: 0.875rem;
       }
     }
+
+    .iframe-container {
+            display: flex;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente (si es necesario) */
+            height: auto; /* Opcional: Ajusta el alto del contenedor si deseas centrar verticalmente */
+        }
+      
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #222;
+            color: white;
+        }
+        .footer img {
+            margin: 10px;
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+        }
+        .footer .social-media {
+            margin-bottom: 20px;
+        }
+        .footer .reserved {
+            border-top: 1px solid #555;
+            padding-top: 10px;
+            
+        }
   </style>
 </head>
 <body>
@@ -211,6 +240,10 @@
     </div>
   </div>
 
+  <h1 style="text-align: center; font-size: 24px; margin-top: 24px; margin-bottom: 24px;">Video Presentación:</h1>
+  <div class="iframe-container">
+    <iframe width="560" height="315" src="https://youtu.be/qxf4wdwbq2U?si=EfvUwShUkRyg6rbs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
   <div class="container info-section">
     <div class="info-card">
       <h2>Misión</h2>
@@ -276,6 +309,41 @@
       </div>
     </div>
   </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; background-color: #ffffff; padding: 20px; width: 200px; margin: 0 auto; margin-top: 24px;">
+    <img src="https://www.webhosting.pe/images/pagos/niubiz.png" alt="Medios de Pago y Síguenos" style="width: 90px; vertical-align: middle;">
+</div>
+
+
+<div class="footer">
+    <div class="social-media">
+        <a href="https://www.facebook.com" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram">
+        </a>
+        <a href="https://www.youtube.com" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube">
+        </a>
+    </div>
+    <div class="reserved">
+      <div style="text-align: center;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Logo de la Página" style="width: 90px; vertical-align: middle;">
+    </div>
+    
+</div>
+
+        <p>&copy; <span id="currentYear"></span> Todos los derechos reservados</p>
+    </div>
+</div>
+
+  <script>
+    // Script para actualizar el año automáticamente
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+    
+</script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
