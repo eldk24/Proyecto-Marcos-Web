@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Extras</title>
+    <title>Calendario de Estrenos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <style>
@@ -11,147 +11,141 @@
             background-color: #141414;
             color: #e5e5e5;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            margin: 0;
+            margin-top: 90px;
             padding: 0;
             font-size: 12px;
         }
 
-        /* Contenedor principal */
-        div {
-            text-align: center;
-            width: 90%; /* Ajuste responsive */
-            max-width: 1200px; /* Máximo ancho para pantallas grandes */
-            margin: auto;
+        /* Estilos para el calendario */
+        #calendar {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 500px;
         }
 
-        /* Calendario con rejilla adaptable */
-        ol {
+        #calendar h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        #calendar ol {
             list-style: none;
+            padding: 0;
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 0.5em;
-            margin: 0;
-            padding: 0;
+            gap: 5px;
         }
 
-        /* Estilos para los días */
-        li {
-            font-size: 1.5em; /* Ajuste de tamaño de fuente */
+        #calendar li {
+            background-color: #2b2b2b;
+            padding: 10px;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            color: #e5e5e5;
             position: relative;
         }
 
-        /* Título del mes */
-        h2 {
-            margin-bottom: 0.5em;
-            padding: 0;
-            color: #e50914;
-            font-size: 2.5em; /* Ajuste de tamaño de fuente */
+        #calendar li:hover {
+            background-color: #3b3b3b;
         }
 
-        /* Estilo del primer día */
-        .first-day {
-            grid-column-start: var(--first-day-start, 0);
-        }
-
-        /* Nombres de los días */
         .day-name {
-            background: #333;
-            color: #e5e5e5;
             font-weight: bold;
-            font-size: 1em;
-            padding: 0.5em;
-            text-align: center;
+            color: #aaa;
         }
 
-        /* Botones de navegación */
-        .button-container {
-            margin-top: 1em;
-            text-align: center;
+        .has-movie {
+            background-color: yellow; /* Fondo amarillo para días con películas */
+            border: 1px solid #444;
+            color: #000; /* Texto negro para mejor contraste */
         }
 
-        button {
-            margin: 0.5em;
-            padding: 0.5em 1em;
-            background-color: #e50914;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1em;
-        }
-
-        button:hover {
-            background-color: #b00710;
-        }
-
-        /* Formulario de película */
-        .movie-form {
-            margin-top: 1em;
-        }
-
-        input[type="text"], input[type="date"] {
-            padding: 0.5em;
-            margin: 0.5em;
-            font-size: 1em;
-        }
-
-        /* Tooltip de película */
         .movie-tooltip {
-            font-size: 0.75em;
-            color: #e5e5e5;
+            display: none;
             position: absolute;
-            top: -30px;
+            top: -20px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: rgba(20, 20, 20, 0.8);
-            padding: 0.5em;
-            border-radius: 4px;
-            display: none;
+            background-color: #000;
+            color: #fff;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 10px;
             white-space: nowrap;
-            z-index: 10;
         }
 
-        /* Media queries para pantallas más pequeñas */
-        @media (max-width: 768px) {
-            h2 {
-                font-size: 2em; /* Ajuste de tamaño de fuente para tablet */
-            }
-
-            li {
-                font-size: 1.2em; /* Ajuste de tamaño de fuente para días */
-            }
-
-            .day-name {
-                font-size: 0.8em;
-            }
-
-            button {
-                padding: 0.4em 0.8em;
-                font-size: 0.9em;
-            }
+        /* Estilos para el modal */
+        .modal-dialog-centered {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100% - 1rem);
         }
 
-        @media (max-width: 480px) {
-            ol {
-                grid-template-columns: repeat(4, 1fr); /* Rejilla de 4 columnas para pantallas más pequeñas */
-            }
+        .modal-content {
+            background-color: #1f1f1f;
+            border-radius: 0.5rem;
+        }
 
-            h2 {
-                font-size: 1.5em; /* Ajuste de tamaño de fuente para móviles */
-            }
+        .modal-header, .modal-body, .modal-footer {
+            padding: 1rem;
+        }
 
-            li {
-                font-size: 1em;
-            }
+        .modal-title {
+            color: #ffffff;
+        }
 
-            .day-name {
-                font-size: 0.7em;
-            }
+        .modal-body img {
+            max-width: 100%;
+            height: auto;
+        }
 
-            button {
-                padding: 0.3em 0.6em;
-                font-size: 0.8em;
-            }
+        .modal-footer {
+            border-top: 1px solid #444;
+            display: flex;
+            justify-content: flex-end;
+            background-color: #252525;
+        }
+
+        .btn-close {
+            filter: invert(1);
+        }
+
+        .btn-secondary {
+            background-color: #00ff6a;
+            border-color: #6c757d;
+            color: black;
+        }
+
+        .btn-secondary:hover {
+            background-color: #850000;
+            border-color: #545b62;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .button-container button {
+            background-color: rgb(255, 157, 0);
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button-container button:hover {
+            background-color: #8b0000;
+            color: white;
         }
 
         .fixed-header {
@@ -161,60 +155,77 @@
             z-index: 1000;
             background-color: rgb(33, 33, 33);
             padding: 10px 0;
-            }
-
-            .nav-pills .nav-link {
+        }
+        .nav-pills {
+            display: flex;
+            justify-content: center;
+        }
+        .nav-pills .nav-link {
             color: rgb(183, 183, 183);
             background-color: rgba(0, 0, 0, 0);
             padding: 5px 10px;
-            }
-
-            .nav-pills .nav-link.active {
+        }
+        .nav-pills .nav-link.active {
             color: rgb(255, 255, 255);
             background-color: rgb(102, 0, 0);
-            }
-
-            body {
-            padding-top: 100px; /* Ajusta según la altura de la barra */
-            }
-
+        }
     </style>
 </head>
 <body>
-    <div style="background-color: rgb(33, 33, 33); font-size: 12px;" class="container-fluid">
-        <header class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom fixed-header">
-          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none ms-3">
-            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-            <span style="color: rgb(255, 255, 255); font-size: 14px;" class="fs-4">Netflix</span>
-          </a>
-      
-          <ul class="nav nav-pills mx-auto">
-            <li class="nav-item"><a href="pagina.html" class="nav-link active" aria-current="page">Inicio</a></li>
-            <li class="nav-item"><a href="series.html" class="nav-link">Series</a></li>
-            <li class="nav-item"><a href="peliculas.html" class="nav-link">Planes</a></li>
-            <li class="nav-item"><a href="Extras.html" class="nav-link">Extras</a></li>
-            <li class="nav-item"><a href="sobre.html" class="nav-link">Acerca de Netflix</a></li>
-          </ul>
-        </header>
-      </div>
 
+    <div class="container-fluid" style="background-color: rgb(33, 33, 33); font-size: 12px;">
+        <header class="fixed-header d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <span style="color: rgb(255, 255, 255); font-size: 14px; margin-left: 24px;" class="fs-4">Netflix</span>
+            </a>
+            <ul class="nav nav-pills mx-auto">
+                <li class="nav-item"><a href="pagina.html" class="nav-link active" aria-current="page">Inicio</a></li>
+                <li class="nav-item"><a href="series.html" class="nav-link">Series</a></li>
+                <li class="nav-item"><a href="peliculas.html" class="nav-link">Planes</a></li>
+                <li class="nav-item"><a href="Extras.html" class="nav-link">Extras</a></li>
+                <li class="nav-item"><a href="sobre.html" class="nav-link">Acerca de Netflix</a></li>
+            </ul>
+        </header>
+    </div>
+
+    <!-- Contenido del calendario y botones -->
     <div id="calendar"></div>
     <div class="button-container">
         <button id="prevMonth">Anterior</button>
         <button id="nextMonth">Siguiente</button>
     </div>
 
-    <div class="movie-form">
-        <input type="text" id="movieName" placeholder="Nombre de la película" />
-        <input type="date" id="releaseDate" />
-        <button onclick="addMovie()">Agregar Película</button>
+    <!-- Modal -->
+    <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="movieModalLabel">Título de la Película</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex flex-column align-items-center">
+                        <img id="moviePoster" src="" alt="Poster de la película">
+                        <p id="movieDescription">Descripción de la película...</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <!-- Script para el calendario y modal -->
     <script>
         const actualYear = 2024;
         const locale = 'es';
         let currentMonth = 0;
-        let movies = {};
+        let movies = {
+            '2024-09-15': { title: 'El Hoyo 2', description: 'A medida que un líder misterioso impone su ley en el Hoyo, una nueva inquilina se implica en la batalla contra este controvertido método para luchar contra el brutal sistema de alimentación. Pero cuando alimentarte del plato equivocado se convierte en una sentencia de muerte, ¿hasta dónde estarías dispuesto a llegar para salvar tu vida? Secuela de El hoyo', poster: 'https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUqYZhPMKcc1mh9cKo6ifXWfPqu73eof7nYPhn_08dIWxV79KsYIF1EIgmGYy8IW_yKOIVAz54_8ezS2NsC7XSXVxt5ZdIXRDeBoD4wnFuOL.png?r=9fe' },
+            '2024-09-25': { title: 'Time Cut', description: 'Una estudiante de secundaria viaja accidentalmente a 2003 y decide detener al asesino en serie que asesinó a su hermana.', poster: 'https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABeTZx41tm9x0TT2G_c3gmJOoK_1n9hhvRhzE76D5f3vwwNaWOEBJDLRl5mU1R3BVXhYYU_okqrGzn_qM-3nUJNqUK8QAETNIh4RZy2M7V7726S4tlW3gvd6KtIF_utcjO714L4rQ7ib3sM2ZhnDLF111_nkdewygq9av5vHduwqf1MgPoP5NIQ.png?r=867' },
+            '2024-10-05': { title: 'The Imaginary', description: 'Cuando Jessica vuelve con su familia a la casa de su infancia, Alice, su hijastra más pequeña, comienza a desarrollar un extraño apego hacia Chauncey, el oso de peluche que encuentra en el sótano. En un primer momento, Alice y Chauncey se entretienen con juegos aparentemente divertidos que, poco a poco, irán volviéndose más siniestros y peligrosos. A medida que el comportamiento de Alice se va volviendo más inquietante, Jessica decide intervenir, pero cuando lo hace se da cuenta de que Chauncey es mucho más que un inofensivo oso de peluche.', poster: 'https://cineypalomitas.com/wp-content/uploads/2024/04/the-imaginary-netflix.jpg' }
+        };
 
         const intlForMonths = new Intl.DateTimeFormat(locale, { month: 'long' });
         const months = [...Array(12).keys()];
@@ -247,10 +258,12 @@
             const htmlDays = days
                 .map((day, index) => {
                     const dayKey = `${actualYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day + 1).padStart(2, '0')}`;
-                    const movieList = movies[dayKey] ? movies[dayKey].join(', ') : '';
-                    return `<li ${index === 0 ? firstDayAttributes : ''} data-date="${dayKey}">
+                    const movie = movies[dayKey];
+                    const movieContent = movie ? `<span class='movie-tooltip'>${movie.title}</span>` : '';
+                    const hasMovieClass = movie ? 'has-movie' : '';
+                    return `<li ${index === 0 ? firstDayAttributes : ''} data-date="${dayKey}" class="${hasMovieClass}">
                         ${day + 1}
-                        <span class='movie-tooltip'>${movieList}</span>
+                        ${movieContent}
                     </li>`;
                 })
                 .join('');
@@ -259,52 +272,29 @@
                 <h2>${monthName} ${actualYear}</h2>
                 <ol>${htmlDaysName}${htmlDays}</ol>`;
 
-            document.querySelectorAll('#calendar li').forEach(dayElement => {
-                dayElement.addEventListener('mouseover', (event) => {
-                    const tooltip = event.currentTarget.querySelector('.movie-tooltip');
-                    if (tooltip) tooltip.style.display = 'block';
-                });
-
-                dayElement.addEventListener('mouseout', (event) => {
-                    const tooltip = event.currentTarget.querySelector('.movie-tooltip');
-                    if (tooltip) tooltip.style.display = 'none';
-                });
+            document.querySelectorAll('#calendar li.has-movie').forEach((movieLi) => {
+                movieLi.onclick = function () {
+                    const date = movieLi.getAttribute('data-date');
+                    const movie = movies[date];
+                    if (movie) {
+                        document.getElementById('movieModalLabel').innerText = movie.title;
+                        document.getElementById('moviePoster').setAttribute('src', movie.poster);
+                        document.getElementById('movieDescription').innerText = movie.description;
+                        new bootstrap.Modal(document.getElementById('movieModal')).show();
+                    }
+                };
             });
         }
 
-        function nextMonth() {
+        document.getElementById('nextMonth').onclick = () => {
             currentMonth = (currentMonth + 1) % 12;
             renderCalendar();
-        }
+        };
 
-        function prevMonth() {
+        document.getElementById('prevMonth').onclick = () => {
             currentMonth = (currentMonth - 1 + 12) % 12;
             renderCalendar();
-        }
-
-        function addMovie() {
-            const movieName = document.getElementById('movieName').value;
-            const releaseDate = new Date(document.getElementById('releaseDate').value);
-
-            if (movieName && releaseDate) {
-                const month = releaseDate.getMonth();
-                const day = releaseDate.getDate();
-                const year = releaseDate.getFullYear();
-
-                const key = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                if (!movies[key]) {
-                    movies[key] = [];
-                }
-                movies[key].push(movieName);
-
-                renderCalendar();
-                document.getElementById('movieName').value = '';
-                document.getElementById('releaseDate').value = '';
-            }
-        }
-
-        document.querySelector('#nextMonth').addEventListener('click', nextMonth);
-        document.querySelector('#prevMonth').addEventListener('click', prevMonth);
+        };
 
         renderCalendar();
     </script>

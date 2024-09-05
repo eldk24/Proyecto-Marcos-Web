@@ -90,19 +90,47 @@
       margin-bottom: 3px;
     }
 
-    .carousel-item {
-      position: relative;
-    }
     .carousel-caption {
-      position: absolute;
-      top: 60%;
-      left: 14%;
-      transform: translate(-50%, -50%);
-      width: calc(100% - 1400px);
-      text-align: justify;
-      padding: 0 15px;
-      color: white; 
-    }
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 24px; /* Ajuste de posición para móviles */
+        }
+        .carousel-caption h5 {
+            font-size: 1.5rem; /* Tamaño del texto del título */
+        }
+        .carousel-caption p {
+            font-size: 1rem; /* Tamaño del texto del párrafo */
+        }
+
+        /* Ajustes de texto para pantallas pequeñas */
+        @media (max-width: 1200px) {
+            .carousel-caption h5 {
+                font-size: 1.25rem;
+            }
+            .carousel-caption p {
+                font-size: 0.875rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .carousel-caption h5 {
+                font-size: 1rem;
+            }
+            .carousel-caption p {
+                font-size: 0.75rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .carousel-caption {
+                margin-bottom: 0; /* Quitar margen inferior en pantallas muy pequeñas */
+            }
+            .carousel-caption h5 {
+                font-size: 0.875rem;
+            }
+            .carousel-caption p {
+                font-size: 0.65rem;
+            }
+        }
 
     .fixed-header {
   position: fixed;
@@ -272,46 +300,47 @@ body {
   
   
 
-  <div id="carouselExampleAutoplaying" class="carousel slider" data-bs-ride="carousel">
+  <div id="carouselExampleAutoplaying" class="carousel sliderr" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active" id="carousel-item-1">
-        <img src="./img/breakingcarrusel.png" class="d-block w-100" alt="img1">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-size: 24px;">Breaking Bad</h5>
-          <p style="text-align: justify; font-size: 12px;">Breaking Bad narra la transformación de Walter White, un profesor de química de secundaria que, tras ser diagnosticado con cáncer de pulmón, decide fabricar metanfetamina para asegurar el futuro financiero de su familia. Junto a su antiguo estudiante Jesse Pinkman, Walter se adentra en el peligroso mundo del narcotráfico, donde su moralidad y ética se desmoronan y su vida se complica con traiciones y desafíos. La serie explora cómo el miedo, la ambición y el poder pueden cambiar radicalmente a una persona.</p>
+        <div class="carousel-item active">
+            <img src="./img/breakingcarrusel.png" class="d-block w-100" alt="img1">
+            <div class="carousel-caption">
+                <h5>Breaking Bad</h5>
+                <p>Breaking Bad narra la transformación de Walter White, un profesor de química de secundaria que, tras ser diagnosticado con cáncer de pulmón, decide fabricar metanfetamina para asegurar el futuro financiero de su familia. Junto a su antiguo estudiante Jesse Pinkman, Walter se adentra en el peligroso mundo del narcotráfico, donde su moralidad y ética se desmoronan.</p>
+            </div>
         </div>
-      </div>
-      <div class="carousel-item" id="carousel-item-2">
-        <img src="./img/casadepapelcarrusel.png" class="d-block w-100" alt="img2">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-size: 24px;">La Casa de Papel: Temporada 5</h5>
-          <p style="text-align: justify; font-size: 12px;">Después de que Lisboa entrase en el Banco de España, la banda vuelve a estar reunida otra vez. Pero no todo van a ser buenas noticias. Sierra encuentra al Profesor tras descurbir su escondite secreto a base de pedir un par de favores, ¿Podría Sierra unirse a la banda? Los protagonistas se ponen manos a la obra para conseguir sacar todo el oro que hay en el Banco de España.</p>
+        <div class="carousel-item">
+            <img src="./img/casadepapelcarrusel.png" class="d-block w-100" alt="img2">
+            <div class="carousel-caption">
+                <h5>La Casa de Papel: Temporada 5</h5>
+                <p>Después de que Lisboa entrase en el Banco de España, la banda vuelve a estar reunida otra vez. Pero no todo van a ser buenas noticias. Sierra encuentra al Profesor tras descubrir su escondite secreto a base de pedir un par de favores, ¿Podría Sierra unirse a la banda? Los protagonistas se ponen manos a la obra para conseguir sacar todo el oro que hay en el Banco de España.</p>
+            </div>
         </div>
-      </div>
-      <div class="carousel-item" id="carousel-item-3">
-        <img src="./img/narcoscarrusell.png" class="d-block w-100" alt="img3">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-size: 24px;">Narcos</h5>
-          <p style="text-align: justify; font-size: 12px;">Narcos es una serie que sigue la vida de Pablo Escobar y el Cartel de Medellín en Colombia durante los años 80 y 90. La trama explora el ascenso de Escobar al poder como uno de los narcotraficantes más infames de la historia, y su impacto en la política, la sociedad y la violencia en Colombia. A medida que la DEA y las fuerzas del orden tratan de desmantelar el imperio de drogas, la serie también aborda las complejas dinámicas de corrupción, guerra contra las drogas y el efecto devastador del narcotráfico en el país. La narrativa mezcla eventos históricos con dramatización para ofrecer una visión profunda del mundo del crimen organizado.</p>
+        <div class="carousel-item">
+            <img src="./img/narcoscarrusell.png" class="d-block w-100" alt="img3">
+            <div class="carousel-caption">
+                <h5>Narcos</h5>
+                <p>Narcos es una serie que sigue la vida de Pablo Escobar y el Cartel de Medellín en Colombia durante los años 80 y 90. La trama explora el ascenso de Escobar al poder como uno de los narcotraficantes más infames de la historia, y su impacto en la política, la sociedad y la violencia en Colombia.</p>
+            </div>
         </div>
-      </div>
-      <div class="carousel-item" id="carousel-item-4">
-        <img src="./img/elitecarrusel.png" class="d-block w-100" alt="img3">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-size: 24px;">Elite</h5>
-          <p style="text-align: justify; font-size: 12px;">Élite es una serie española que sigue la vida de un grupo de estudiantes en un exclusivo colegio privado tras la llegada de tres nuevos alumnos de clase trabajadora. La serie combina drama, misterio y suspenso mientras explora las tensiones y rivalidades entre los estudiantes, que culminan en un trágico asesinato. La trama aborda temas como la desigualdad social, la identidad sexual y los secretos ocultos, revelando cómo las presiones sociales y personales pueden llevar a situaciones extremas. La serie se destaca por su enfoque en el drama adolescente y sus giros sorprendentes, manteniendo a los espectadores en constante tensión.</p>
+        <div class="carousel-item">
+            <img src="./img/elitecarrusel.png" class="d-block w-100" alt="img4">
+            <div class="carousel-caption">
+                <h5>Elite</h5>
+                <p>Élite es una serie española que sigue la vida de un grupo de estudiantes en un exclusivo colegio privado tras la llegada de tres nuevos alumnos de clase trabajadora. La serie combina drama, misterio y suspenso mientras explora las tensiones y rivalidades entre los estudiantes, que culminan en un trágico asesinato.</p>
+            </div>
         </div>
-      </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
     </button>
-  </div>
+</div>
+
 
   <br>
 
