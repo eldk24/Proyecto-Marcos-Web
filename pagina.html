@@ -4,12 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Netflix</title>
+      <!-- Bootstrap JS and dependencies -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+  
+
   <style>
     
     body {
@@ -614,17 +626,105 @@
 <div class="container-fluid row5">
   <p style="font-size: 18px; color: white; text-align: center;"><b>Series destacadas</b></p>
   <div class="row text-center">
-    <div class="col-md-3">
-      <img style="margin-top: 24px; margin-bottom: 24px;" src="https://br.web.img2.acsta.net/pictures/19/07/10/20/01/2331295.jpg" alt="Imagen 5" class="img-fluid">
+    <div class="container mt-4">
+      <div class="row">
+        <!-- Stranger Things -->
+        <div class="col-md-3">
+          <img style="margin-top: 24px; margin-bottom: 24px;" src="https://br.web.img2.acsta.net/pictures/19/07/10/20/01/2331295.jpg" alt="Imagen 5" class="img-fluid" data-toggle="modal" data-target="#modalStrangerThings">
+        </div>
+        <!-- The Sandman -->
+        <div class="col-md-3">
+          <img style="margin-top: 24px; margin-bottom: 24px;" src="https://geektitude.com/wp-content/uploads/2022/09/TheSandman-1200x1778.jpg" alt="Imagen 6" class="img-fluid" data-toggle="modal" data-target="#modalSandman">
+        </div>
+        <!-- Enola Holmes -->
+        <div class="col-md-3">
+          <img style="margin-top: 24px; margin-bottom: 24px;" src="https://www.vocero.com.mx/wp-content/uploads/2022/10/Enola-Holmes-2-1200x1778.jpeg" alt="Imagen 7" class="img-fluid" data-toggle="modal" data-target="#modalEnolaHolmes">
+        </div>
+        <!-- One Piece -->
+        <div class="col-md-3">
+          <img style="margin-top: 24px; margin-bottom: 24px;" src="https://ca-times.brightspotcdn.com/dims4/default/0561ad6/2147483647/strip/true/crop/1500x2222+0+0/resize/1200x1778!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fb7%2F3d%2F37955d8d4b21800d19a0d2e77f5a%2Fen-us-onepiece-teaser-luffy-vertical-27x40-rgb-pre.jpg" alt="Imagen 8" class="img-fluid" data-toggle="modal" data-target="#modalOnePiece">
+        </div>
+      </div>
     </div>
-    <div class="col-md-3">
-      <img style="margin-top: 24px; margin-bottom: 24px;" src="https://geektitude.com/wp-content/uploads/2022/09/TheSandman-1200x1778.jpg" alt="Imagen 6" class="img-fluid">
+  </div>
+
+  <!-- Modal Stranger Things -->
+  <div class="modal fade" id="modalStrangerThings" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Stranger Things 👾</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size: 18px;">Stranger Things es una serie de ciencia ficción y horror ambientada en los años 80 👾. Sigue a un grupo de niños en la pequeña ciudad de Hawkins, Indiana, donde cosas extrañas comienzan a suceder cuando uno de ellos desaparece misteriosamente 🌲🛸.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
     </div>
-    <div class="col-md-3">
-      <img style="margin-top: 24px; margin-bottom: 24px;" src="https://www.vocero.com.mx/wp-content/uploads/2022/10/Enola-Holmes-2-1200x1778.jpeg" alt="Imagen 7" class="img-fluid">
+  </div>
+
+  <!-- Modal The Sandman -->
+  <div class="modal fade" id="modalSandman" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">The Sandman 🌙</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size: 18px;">The Sandman sigue a Morfeo, la personificación del sueño 😴, mientras intenta restaurar su reino tras haber estado cautivo por más de un siglo ⏳. Una trama llena de mitología y reflexiones sobre la vida y el destino 🌌.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
     </div>
-    <div class="col-md-3">
-      <img style="margin-top: 24px; margin-bottom: 24px;" src="https://ca-times.brightspotcdn.com/dims4/default/0561ad6/2147483647/strip/true/crop/1500x2222+0+0/resize/1200x1778!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fb7%2F3d%2F37955d8d4b21800d19a0d2e77f5a%2Fen-us-onepiece-teaser-luffy-vertical-27x40-rgb-pre.jpg" alt="Imagen 8" class="img-fluid">
+  </div>
+
+  <!-- Modal Enola Holmes -->
+  <div class="modal fade" id="modalEnolaHolmes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Enola Holmes 🕵️‍♀️</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size: 18px;">Enola Holmes sigue a la hermana menor de Sherlock Holmes 🕵️‍♂️ en una emocionante aventura mientras busca a su madre desaparecida, enfrentando peligros y misterios 🕵️‍♀️💥 en la sociedad victoriana de Londres.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal One Piece -->
+  <div class="modal fade" id="modalOnePiece" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">One Piece 🏴‍☠️</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size: 18px;">One Piece sigue las aventuras del joven pirata Monkey D. Luffy 🏴‍☠️ y su tripulación en la búsqueda del legendario tesoro "One Piece" 💰. Enfrentan desafíos épicos en los mares llenos de peligros 🌊⚔️.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
