@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Netflix</title>
-      <!-- Bootstrap JS and dependencies -->
+<!-- Bootstrap JS and dependencies -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -49,7 +49,7 @@
       justify-content: space-between; /* Espacio uniforme */
       align-items: center;
       width: 100%;
-      max-width: 600px;
+      max-width: 800px;
       margin: 0 auto; /* Centrar */
       position: relative; /* Para la posición del mensaje emergente */
     }
@@ -62,8 +62,8 @@
     }
 
     .turnos img {
-      width: 80px;
-      height: 80px;
+      width: 180px;
+      height: auto;
       display: block;
       margin: 0 auto;
       margin-top: 140px;
@@ -107,44 +107,46 @@
     }
 
     .carousel-caption {
-      position: absolute;
-      top: 52%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      padding: 0 15px;
-      color: white;
-    }
+            background-color: rgba(0, 0, 0, 0);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 260px; /* Ajuste de posición para móviles */
+        }
+        .carousel-caption h5 {
+            font-size: 1.5rem; /* Tamaño del texto del título */
+        }
+        .carousel-caption p {
+            font-size: 1rem; /* Tamaño del texto del párrafo */
+        }
 
-    .carousel-caption h5 {
-      font-size: 2rem; /* Ajustado con rem */
-      font-weight: bold;
-    }
-
-    .carousel-caption p {
-      font-size: 1rem; /* Ajustado con rem */
-      text-align: justify;
-    }
-
-    @media (max-width: 768px) {
-      .carousel-caption h5 {
-        font-size: 1.5rem; /* Tamaño de fuente menor en pantallas pequeñas */
-      }
-
-      .carousel-caption p {
-        font-size: 0.875rem; /* Tamaño de fuente menor en pantallas pequeñas */
-      }
-    }
-
-    @media (max-width: 576px) {
-      .carousel-caption h5 {
-        font-size: 1.25rem; /* Tamaño de fuente aún menor en pantallas extra pequeñas */
-      }
-
-      .carousel-caption p {
-        font-size: 0.75rem; /* Tamaño de fuente aún menor en pantallas extra pequeñas */
-      }
-    }
+        /* Ajustes de texto para pantallas pequeñas */
+        @media (max-width: 1200px) {
+            .carousel-caption h5 {
+                font-size: 1.25rem;
+            }
+            .carousel-caption p {
+                font-size: 0.875rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .carousel-caption h5 {
+                font-size: 1rem;
+            }
+            .carousel-caption p {
+                font-size: 0.75rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .carousel-caption {
+                margin-bottom: 0; /* Quitar margen inferior en pantallas muy pequeñas */
+            }
+            .carousel-caption h5 {
+                font-size: 0.875rem;
+            }
+            .carousel-caption p {
+                font-size: 0.65rem;
+            }
+        }
 
     .fixed-header {
       position: fixed;
@@ -362,36 +364,6 @@
             padding: 10px 0;
         }
 
-        /* CSS para centrar las barras de progreso */
-        .progress-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: auto;
-            margin: 0; /* Elimina el margen alrededor del contenedor */
-        }
-        .progress {
-            width: 80%;
-            max-width: 600px;
-            margin: 5px 0; /* Reduce el margen entre las barras de progreso */
-            height: 2rem; /* Aumenta la altura de las barras */
-            position: relative;
-        }
-        .progress-bar {
-            height: 100%; /* Asegura que la barra de progreso use toda la altura del contenedor */
-            position: relative;
-        }
-        .progress-bar-text {
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            color: white;
-            font-weight: bold;
-            line-height: 2rem; /* Ajusta esto para que coincida con la altura de la barra */
-        }
-
-
   </style>
 </head>
 <body>
@@ -445,21 +417,22 @@
         <img src="./img/carruselimg1.png" class="d-block w-300" alt="img1">
         <div class="carousel-caption">
           <h5 style="font-size: auto;">La Casa de Papel: Temporada 5</h5>
-          <p style="text-align: justify; font-size: auto;"></p>
+          <p style="text-align: justify; font-size: auto;">La Banda lleva encerrada más de 100 horas en el Banco de España, han conseguido rescatar a Lisboa pero viven uno de sus peores momentos tras haber perdido a uno de los suyos. El Profesor ha sido capturado por Sierra y, por primera vez, no cuenta con un plan para escapar. Cuando parece que nada puede ir a peor, llegará un nuevo enemigo mucho más poderoso que cualquiera de los anteriores: el ejército. Se acerca el final del mayor atraco de la historia y lo que empezó siendo un robo ahora se transformará en una guerra</p>
+        </p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="./img/carruselimg2.png" class="d-block w-100" alt="img2">
         <div class="carousel-caption">
           <h5 style="font-size: auto;">Formula 1: Drive to Survive Season 4</h5>
-          <p style="text-align: justify; font-size: auto;"></p>
+          <p style="text-align: justify; font-size: auto;">En la Temporada 4 de "Formula 1: Drive to Survive", se exploran los intensos y emocionantes momentos de la temporada 2021 de Fórmula 1, centrados en la feroz rivalidad entre Max Verstappen y Lewis Hamilton. La serie ofrece una visión profunda de las estrategias, desafíos y conflictos de los equipos y pilotos, capturando la presión y la dinámica de una de las temporadas más disputadas de la historia del automovilismo. A través de historias personales y eventos clave, "Drive to Survive" revela el drama y la emoción que definen la élite del deporte motor.</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="./img/carruselimg3.png" class="d-block w-100" alt="img3">
         <div class="carousel-caption">
           <h5 style="font-size: auto;">One Day</h5>
-          <p style="text-align: justify; font-size: auto;"></p>
+          <p style="text-align: justify; font-size: auto;">"One Day" es una película romántica basada en la novela homónima de David Nicholls. La historia sigue a Emma Morley y Dexter Mayhew, quienes se conocen el 15 de julio de 1988 en su graduación de la universidad. A partir de esa fecha, la película narra su relación a lo largo de los años, mostrando cómo sus vidas se entrelazan a través de amistades, amores y desengaños. Cada año, en el mismo día, la trama se centra en cómo han cambiado y evolucionado sus vidas, y cómo sus caminos se cruzan y divergen en momentos cruciales. A través de las alegrías y los desafíos, "One Day" explora el amor verdadero y el impacto de las decisiones personales en el destino.</p>
         </div>
       </div>
     </div>
@@ -518,30 +491,23 @@
     </div>
   </div>
 
-  <div class="progress-container">
-    <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-            <span class="progress-bar-text">25%</span>
-        </div>
+  <div class="turnos d-flex justify-content-around w-100">
+    <div class="item text-center">
+      <img src="https://cdn1.iconfinder.com/data/icons/smashicons-emoticons-retro-vol-3/44/153_-_Deadpool_emoticon_emoji_face-512.png" alt="Series" class="img-fluid">
+      <p style="color: white;" class="custom-paragraph">Series</p>
+      <div class="message">Disfruta tus...</div>
     </div>
-    <div class="progress">
-        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-            <span class="progress-bar-text">50%</span>
-        </div>
+    <div class="item text-center">
+      <img src="https://cdn.icon-icons.com/icons2/1713/PNG/512/iconfinder-videoeditorfilmsproduction-3993846_112661.png" alt="Películas" class="img-fluid">
+      <p style="color: white;" class="custom-paragraph">Películas</p>
+      <div class="message">Emociónate con las...</div>
     </div>
-    <div class="progress">
-        <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-            <span class="progress-bar-text">75%</span>
-        </div>
-    </div>
-    <div class="progress">
-        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-            <span class="progress-bar-text">100%</span>
-        </div>
+    <div class="item text-center">
+      <img src="https://cdn-icons-png.flaticon.com/512/1825/1825462.png" alt="Documentales" class="img-fluid">
+      <p style="color: white;" class="custom-paragraph">Documentales</p>
+      <div class="message">Entretente con los mejores...</div>
     </div>
   </div>
-  
-
 
 <div class="margen">
 
@@ -549,100 +515,54 @@
 <div class="container-fluid">
   <div style="margin-top: 24px; margin-bottom: 24px;" class="row align-items-center">
     <div class="col-md-6">
-      <img src="https://media.revistagq.com/photos/5f241bba422afa58933b5e2c/16:9/w_1280,c_limit/la-casa-de-papel.jpg" alt="Imagen 1" class="img-fluid">
+      <div id="carouselExampleAutoplaying" class="carousel slider" data-bs-ride="carousel">
+        <div style="border-radius: 8px;" class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./img/onepiece.jpg" class="d-block w-300" alt="img1">
+            <div class="carousel-caption">
+            </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="./img/publi.png" class="d-block w-100" alt="img2">
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="./img/f1drivetosurvive.png" class="d-block w-100" alt="img3">
+            <div class="carousel-caption">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-md-6 d-flex flex-column justify-content-center align-items-center"> 
-      <p class="main-heading text-center">Descripción de la empresa:</p>
-      <p class="custom-paragraph text-justify" style="margin: 0 12px;">Netflix es un servicio de streaming por suscripción que brinda acceso a una extensa selección de series y películas en dispositivos conectados a internet. Ofrece recomendaciones personalizadas según el historial de visualización y se actualiza con nuevos títulos regularmente. Los usuarios pueden disfrutar del contenido en cualquier momento y lugar, y también descargar videos para ver sin conexión.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Segunda fila -->
-<div class="container-fluid row2">
-  <div style="margin-top: 24px; margin-bottom: 24px;" class="row align-items-center">
-    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
-      <p class="main-heading text-center">Misión:</p>
-      <p class="custom-paragraph text-justify text-justify" style="margin: 0 12px;">
-        La misión de Netflix es ofrecer una experiencia de entretenimiento global mediante una amplia variedad de contenido, incluyendo series, películas y documentales, accesible en cualquier momento y lugar. La compañía se enfoca en la innovación y la producción de contenido original para proporcionar una experiencia de visualización única a sus suscriptores.
-      </p>
-      <div class="turnos d-flex justify-content-around w-100">
-        <div class="item text-center">
-          <img src="https://cdn1.iconfinder.com/data/icons/smashicons-emoticons-retro-vol-3/44/153_-_Deadpool_emoticon_emoji_face-512.png" alt="Series" class="img-fluid">
-          <p class="custom-paragraph">Series</p>
-          <div class="message">Disfruta tus...</div>
-        </div>
-        <div class="item text-center">
-          <img src="https://cdn.icon-icons.com/icons2/1713/PNG/512/iconfinder-videoeditorfilmsproduction-3993846_112661.png" alt="Películas" class="img-fluid">
-          <p class="custom-paragraph">Películas</p>
-          <div class="message">Emociónate con las...</div>
-        </div>
-        <div class="item text-center">
-          <img src="https://cdn-icons-png.flaticon.com/512/1825/1825462.png" alt="Documentales" class="img-fluid">
-          <p class="custom-paragraph">Documentales</p>
-          <div class="message">Entretente con los mejores...</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <img src="https://cdn.marketingandweb.es/wp-content/uploads/mision-vision-y-valores-de-netflix.png" alt="Imagen 2" class="img-fluid">
-    </div>
-  </div>
-</div>
-
-<!-- Tercera fila -->
-<div class="container-fluid row3">
-  <div style="margin-top: 24px; margin-bottom: 24px;" class="row align-items-center">
-    <div class="col-md-6">
-      <img src="https://images.ctfassets.net/4cd45et68cgf/3GKNeghrWyZuILcmSCUyhc/ff1d650ebc53aefdf929ded05fe79657/1997.png" alt="Imagen 3" class="img-fluid">
-    </div>
-    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
-      <p class="main-heading text-center">Visión Empresarial</p>
-      <p class="custom-paragraph text-justify text-justify" style="margin: 0 12px;">
-        Ser la plataforma líder a nivel global en la distribución de contenido digital, ofreciendo experiencias personalizadas y accesibles a todos nuestros usuarios. Aspiramos a transformar la manera en que las personas disfrutan del entretenimiento, proporcionando una biblioteca diversa y de calidad que conecte culturas y rompa fronteras. Nuestra visión es ser reconocidos no solo por nuestra innovación tecnológica, sino también por nuestro compromiso con la excelencia en el servicio y la creación de un impacto positivo en la industria del entretenimiento digital.
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- Cuarta fila -->
-<div class="container-fluid row4">
-  <div style="margin-top: 24px; margin-bottom: 24px;" class="row align-items-center">
-    <div class="col-md-6">
-      <img src="https://wordpress.wbur.org/wp-content/uploads/2019/11/GettyImages-695630-1000x666.jpg" alt="Imagen 4" class="img-fluid">
-    </div>
-    <div class="col-md-6 d-flex align-items-center">
-      <div class="text-center">
-        <p class="main-heading">Sobre Nosotros</p>
-        <p class="custom-paragraph text-justify" style="margin: 0 12px;">
-          Netflix es una empresa de entretenimiento estadounidense fundada en 1997 por Reed Hastings y Marc Randolph en Scotts Valley, California. Inicialmente, comenzamos como un servicio de alquiler de DVDs por correo, pero con el tiempo, evolucionamos hasta convertirnos en la plataforma líder de streaming a nivel mundial. Ofrecemos un servicio de streaming que permite a nuestros miembros ver una amplia variedad de series, películas, documentales y contenido original en miles de dispositivos conectados a Internet. Nuestro objetivo es ofrecer entretenimiento de alta calidad a nuestros usuarios dondequiera que estén y en cualquier momento.
-        </p>
-      </div>
+      <p class="custom-paragraph text-justify" style="margin: 0 12px;">"Somos la plataforma de streaming más grande del mundo, ofreciendo una biblioteca incomparable de contenido exclusivo y popular, experiencias personalizadas para cada usuario, y tecnología de vanguardia para una reproducción sin interrupciones y en alta calidad. Con nuestro compromiso continuo con la innovación y el servicio al cliente, garantizamos que siempre encuentres algo nuevo y emocionante para ver."</p>
     </div>
   </div>
 </div>
 
 <!-- Quinta fila -->
 <div class="container-fluid row5">
-  <p style="font-size: 18px; color: white; text-align: center;"><b>Series destacadas</b></p>
+  <p style="font-size: 18px; color: white; text-align: center; margin-top: 12px;"><b>Series destacadas</b></p>
   <div class="row text-center">
-    <div class="container mt-4">
+<div class="container mt-4">
       <div class="row">
         <!-- Stranger Things -->
-        <div class="col-md-3">
-          <img style="margin-top: 24px; margin-bottom: 24px;" src="https://br.web.img2.acsta.net/pictures/19/07/10/20/01/2331295.jpg" alt="Imagen 5" class="img-fluid" data-toggle="modal" data-target="#modalStrangerThings">
-        </div>
-        <!-- The Sandman -->
-        <div class="col-md-3">
-          <img style="margin-top: 24px; margin-bottom: 24px;" src="https://geektitude.com/wp-content/uploads/2022/09/TheSandman-1200x1778.jpg" alt="Imagen 6" class="img-fluid" data-toggle="modal" data-target="#modalSandman">
-        </div>
-        <!-- Enola Holmes -->
-        <div class="col-md-3">
-          <img style="margin-top: 24px; margin-bottom: 24px;" src="https://www.vocero.com.mx/wp-content/uploads/2022/10/Enola-Holmes-2-1200x1778.jpeg" alt="Imagen 7" class="img-fluid" data-toggle="modal" data-target="#modalEnolaHolmes">
-        </div>
-        <!-- One Piece -->
-        <div class="col-md-3">
-          <img style="margin-top: 24px; margin-bottom: 24px;" src="https://ca-times.brightspotcdn.com/dims4/default/0561ad6/2147483647/strip/true/crop/1500x2222+0+0/resize/1200x1778!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fb7%2F3d%2F37955d8d4b21800d19a0d2e77f5a%2Fen-us-onepiece-teaser-luffy-vertical-27x40-rgb-pre.jpg" alt="Imagen 8" class="img-fluid" data-toggle="modal" data-target="#modalOnePiece">
+    <div class="col-md-3">
+      <img style="margin-top: 24px; margin-bottom: 24px;" src="https://br.web.img2.acsta.net/pictures/19/07/10/20/01/2331295.jpg" alt="Imagen 5" class="img-fluid" data-toggle="modal" data-target="#modalStrangerThings">
+    </div>
+<!-- The Sandman -->
+    <div class="col-md-3">
+      <img style="margin-top: 24px; margin-bottom: 24px;" src="https://geektitude.com/wp-content/uploads/2022/09/TheSandman-1200x1778.jpg" alt="Imagen 6" class="img-fluid" data-toggle="modal" data-target="#modalSandman">
+    </div>
+<!-- Enola Holmes -->
+    <div class="col-md-3">
+      <img style="margin-top: 24px; margin-bottom: 24px;" src="https://www.vocero.com.mx/wp-content/uploads/2022/10/Enola-Holmes-2-1200x1778.jpeg" alt="Imagen 7" class="img-fluid" data-toggle="modal" data-target="#modalEnolaHolmes">
+    </div>
+<!-- One Piece -->
+    <div class="col-md-3">
+      <img style="margin-top: 24px; margin-bottom: 24px;" src="https://ca-times.brightspotcdn.com/dims4/default/0561ad6/2147483647/strip/true/crop/1500x2222+0+0/resize/1200x1778!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fb7%2F3d%2F37955d8d4b21800d19a0d2e77f5a%2Fen-us-onepiece-teaser-luffy-vertical-27x40-rgb-pre.jpg" alt="Imagen 8" class="img-fluid" data-toggle="modal" data-target="#modalOnePiece">
         </div>
       </div>
     </div>
