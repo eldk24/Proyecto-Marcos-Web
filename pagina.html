@@ -362,35 +362,6 @@
             padding: 10px 0;
         }
 
-        /* CSS para centrar las barras de progreso */
-        .progress-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: auto;
-            margin: 0; /* Elimina el margen alrededor del contenedor */
-        }
-        .progress {
-            width: 80%;
-            max-width: 600px;
-            margin: 5px 0; /* Reduce el margen entre las barras de progreso */
-            height: 2rem; /* Aumenta la altura de las barras */
-            position: relative;
-        }
-        .progress-bar {
-            height: 100%; /* Asegura que la barra de progreso use toda la altura del contenedor */
-            position: relative;
-        }
-        .progress-bar-text {
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            color: white;
-            font-weight: bold;
-            line-height: 2rem; /* Ajusta esto para que coincida con la altura de la barra */
-        }
-
 
   </style>
 </head>
@@ -518,31 +489,6 @@
     </div>
   </div>
 
-  <div class="progress-container">
-    <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-            <span class="progress-bar-text">25%</span>
-        </div>
-    </div>
-    <div class="progress">
-        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-            <span class="progress-bar-text">50%</span>
-        </div>
-    </div>
-    <div class="progress">
-        <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-            <span class="progress-bar-text">75%</span>
-        </div>
-    </div>
-    <div class="progress">
-        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-            <span class="progress-bar-text">100%</span>
-        </div>
-    </div>
-  </div>
-  
-
-
 <div class="margen">
 
 <!-- Primera fila -->
@@ -661,9 +607,6 @@
         <div class="modal-body">
           <p style="font-size: 18px;">Stranger Things es una serie de ciencia ficción y horror ambientada en los años 80 👾. Sigue a un grupo de niños en la pequeña ciudad de Hawkins, Indiana, donde cosas extrañas comienzan a suceder cuando uno de ellos desaparece misteriosamente 🌲🛸.</p>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        </div>
       </div>
     </div>
   </div>
@@ -680,9 +623,6 @@
         </div>
         <div class="modal-body">
           <p style="font-size: 18px;">The Sandman sigue a Morfeo, la personificación del sueño 😴, mientras intenta restaurar su reino tras haber estado cautivo por más de un siglo ⏳. Una trama llena de mitología y reflexiones sobre la vida y el destino 🌌.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -701,9 +641,6 @@
         <div class="modal-body">
           <p style="font-size: 18px;">Enola Holmes sigue a la hermana menor de Sherlock Holmes 🕵️‍♂️ en una emocionante aventura mientras busca a su madre desaparecida, enfrentando peligros y misterios 🕵️‍♀️💥 en la sociedad victoriana de Londres.</p>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        </div>
       </div>
     </div>
   </div>
@@ -721,14 +658,11 @@
         <div class="modal-body">
           <p style="font-size: 18px;">One Piece sigue las aventuras del joven pirata Monkey D. Luffy 🏴‍☠️ y su tripulación en la búsqueda del legendario tesoro "One Piece" 💰. Enfrentan desafíos épicos en los mares llenos de peligros 🌊⚔️.</p>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
         </div>
       </div>
     </div>
-  </div>
-</div>
-
+ 
 
 <div class="container-fluid">
   <div class="row">
@@ -981,7 +915,6 @@
 </div>
       
 
-
   <!-- Controles del Carrusel -->
 
 </div>
@@ -1017,7 +950,6 @@
     // Script para actualizar el año automáticamente
     document.getElementById("currentYear").textContent = new Date().getFullYear();
 </script>
-
 
 </body>
 </html>
