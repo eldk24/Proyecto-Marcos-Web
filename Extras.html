@@ -169,6 +169,68 @@
             color: rgb(255, 255, 255);
             background-color: rgb(102, 0, 0);
         }
+
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 24px; /* Ajuste de posición para móviles */
+        }
+        .carousel-caption h5 {
+            font-size: 1.5rem; /* Tamaño del texto del título */
+        }
+        .carousel-caption p {
+            font-size: 1rem; /* Tamaño del texto del párrafo */
+        }
+
+        /* Ajustes de texto para pantallas pequeñas */
+        @media (max-width: 1200px) {
+            .carousel-caption h5 {
+                font-size: 1.25rem;
+            }
+            .carousel-caption p {
+                font-size: 0.875rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .carousel-caption h5 {
+                font-size: 1rem;
+            }
+            .carousel-caption p {
+                font-size: 0.75rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .carousel-caption {
+                margin-bottom: 0; /* Quitar margen inferior en pantallas muy pequeñas */
+            }
+            .carousel-caption h5 {
+                font-size: 0.875rem;
+            }
+            .carousel-caption p {
+                font-size: 0.65rem;
+            }
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #222;
+            color: white;
+        }
+        .footer img {
+            margin: 10px;
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+        }
+        .footer .social-media {
+            margin-bottom: 20px;
+        }
+        .footer .reserved {
+            border-top: 1px solid #555;
+            padding-top: 10px;
+            
+        }
     </style>
 </head>
 <body>
@@ -186,6 +248,40 @@
                 <li class="nav-item"><a href="sobre.html" class="nav-link">Acerca de Netflix</a></li>
             </ul>
         </header>
+    </div>
+
+    <div id="carouselExampleAutoplaying" class="carousel sliderr" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./img/elhoyo2banner.png" class="d-block w-100" alt="img1">
+                <div class="carousel-caption">
+                    <h5>El Hoyo 2: 04 de octubre</h5>
+                    <p>A medida que un líder misterioso impone su ley en el Hoyo, una nueva inquilina se implica en la batalla contra este controvertido método para luchar contra el brutal sistema de alimentación. Pero cuando alimentarte del plato equivocado se convierte en una sentencia de muerte, ¿hasta dónde estarías dispuesto a llegar para salvar tu vida? Secuela de El hoyo'</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./img/theimaginarybanner.png" class="d-block w-100" alt="img2">
+                <div class="carousel-caption">
+                    <h5>The Imaginary: 05 de noviembre</h5>
+                    <p>Cuando Jessica vuelve con su familia a la casa de su infancia, Alice, su hijastra más pequeña, comienza a desarrollar un extraño apego hacia Chauncey, el oso de peluche que encuentra en el sótano. En un primer momento, Alice y Chauncey se entretienen con juegos aparentemente divertidos que, poco a poco, irán volviéndose más siniestros y peligrosos. A medida que el comportamiento de Alice se va volviendo más inquietante, Jessica decide intervenir, pero cuando lo hace se da cuenta de que Chauncey es mucho más que un inofensivo oso de peluche.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./img/time cut banner.png" class="d-block w-100" alt="img3">
+                <div class="carousel-caption">
+                    <h5>Time Cut: 30 de octubre</h5>
+                    <p>Una estudiante de secundaria viaja accidentalmente a 2003 y decide detener al asesino en serie que asesinó a su hermana.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 
     <!-- Contenido del calendario y botones -->
@@ -216,15 +312,50 @@
         </div>
     </div>
 
+    <div style="display: flex; justify-content: center; align-items: center; background-color: #ffffff; padding: 20px; width: 200px; margin: 0 auto; margin-top: 24px;">
+        <img src="https://www.webhosting.pe/images/pagos/niubiz.png" alt="Medios de Pago y Síguenos" style="width: 90px; vertical-align: middle;">
+    </div>
+    
+    
+    <div class="footer">
+        <div class="social-media">
+            <a href="https://www.facebook.com" target="_blank">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram">
+            </a>
+            <a href="https://www.youtube.com" target="_blank">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube">
+            </a>
+        </div>
+        <div class="reserved">
+          <div style="text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Logo de la Página" style="width: 90px; vertical-align: middle;">
+        </div>
+        
+    </div>
+    
+            <p>&copy; <span id="currentYear"></span> Todos los derechos reservados</p>
+        </div>
+    </div>
+    
+      <script>
+        // Script para actualizar el año automáticamente
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+    
+        
+    </script>
+
     <!-- Script para el calendario y modal -->
     <script>
         const actualYear = 2024;
         const locale = 'es';
         let currentMonth = 0;
         let movies = {
-            '2024-09-15': { title: 'El Hoyo 2', description: 'A medida que un líder misterioso impone su ley en el Hoyo, una nueva inquilina se implica en la batalla contra este controvertido método para luchar contra el brutal sistema de alimentación. Pero cuando alimentarte del plato equivocado se convierte en una sentencia de muerte, ¿hasta dónde estarías dispuesto a llegar para salvar tu vida? Secuela de El hoyo', poster: 'https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUqYZhPMKcc1mh9cKo6ifXWfPqu73eof7nYPhn_08dIWxV79KsYIF1EIgmGYy8IW_yKOIVAz54_8ezS2NsC7XSXVxt5ZdIXRDeBoD4wnFuOL.png?r=9fe' },
-            '2024-09-25': { title: 'Time Cut', description: 'Una estudiante de secundaria viaja accidentalmente a 2003 y decide detener al asesino en serie que asesinó a su hermana.', poster: 'https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABeTZx41tm9x0TT2G_c3gmJOoK_1n9hhvRhzE76D5f3vwwNaWOEBJDLRl5mU1R3BVXhYYU_okqrGzn_qM-3nUJNqUK8QAETNIh4RZy2M7V7726S4tlW3gvd6KtIF_utcjO714L4rQ7ib3sM2ZhnDLF111_nkdewygq9av5vHduwqf1MgPoP5NIQ.png?r=867' },
-            '2024-10-05': { title: 'The Imaginary', description: 'Cuando Jessica vuelve con su familia a la casa de su infancia, Alice, su hijastra más pequeña, comienza a desarrollar un extraño apego hacia Chauncey, el oso de peluche que encuentra en el sótano. En un primer momento, Alice y Chauncey se entretienen con juegos aparentemente divertidos que, poco a poco, irán volviéndose más siniestros y peligrosos. A medida que el comportamiento de Alice se va volviendo más inquietante, Jessica decide intervenir, pero cuando lo hace se da cuenta de que Chauncey es mucho más que un inofensivo oso de peluche.', poster: 'https://cineypalomitas.com/wp-content/uploads/2024/04/the-imaginary-netflix.jpg' }
+            '2024-10-04': { title: 'El Hoyo 2', description: 'A medida que un líder misterioso impone su ley en el Hoyo, una nueva inquilina se implica en la batalla contra este controvertido método para luchar contra el brutal sistema de alimentación. Pero cuando alimentarte del plato equivocado se convierte en una sentencia de muerte, ¿hasta dónde estarías dispuesto a llegar para salvar tu vida? Secuela de El hoyo', poster: 'https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUqYZhPMKcc1mh9cKo6ifXWfPqu73eof7nYPhn_08dIWxV79KsYIF1EIgmGYy8IW_yKOIVAz54_8ezS2NsC7XSXVxt5ZdIXRDeBoD4wnFuOL.png?r=9fe' },
+            '2024-10-30': { title: 'Time Cut', description: 'Una estudiante de secundaria viaja accidentalmente a 2003 y decide detener al asesino en serie que asesinó a su hermana.', poster: 'https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABeTZx41tm9x0TT2G_c3gmJOoK_1n9hhvRhzE76D5f3vwwNaWOEBJDLRl5mU1R3BVXhYYU_okqrGzn_qM-3nUJNqUK8QAETNIh4RZy2M7V7726S4tlW3gvd6KtIF_utcjO714L4rQ7ib3sM2ZhnDLF111_nkdewygq9av5vHduwqf1MgPoP5NIQ.png?r=867' },
+            '2024-11-05': { title: 'The Imaginary', description: 'Cuando Jessica vuelve con su familia a la casa de su infancia, Alice, su hijastra más pequeña, comienza a desarrollar un extraño apego hacia Chauncey, el oso de peluche que encuentra en el sótano. En un primer momento, Alice y Chauncey se entretienen con juegos aparentemente divertidos que, poco a poco, irán volviéndose más siniestros y peligrosos. A medida que el comportamiento de Alice se va volviendo más inquietante, Jessica decide intervenir, pero cuando lo hace se da cuenta de que Chauncey es mucho más que un inofensivo oso de peluche.', poster: 'https://cineypalomitas.com/wp-content/uploads/2024/04/the-imaginary-netflix.jpg' }
         };
 
         const intlForMonths = new Intl.DateTimeFormat(locale, { month: 'long' });
