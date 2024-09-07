@@ -350,6 +350,35 @@
             padding: 10px 0;
         }
 
+        /* CSS para centrar las barras de progreso */
+        .progress-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            margin: 0; /* Elimina el margen alrededor del contenedor */
+        }
+        .progress {
+            width: 80%;
+            max-width: 600px;
+            margin: 5px 0; /* Reduce el margen entre las barras de progreso */
+            height: 2rem; /* Aumenta la altura de las barras */
+            position: relative;
+        }
+        .progress-bar {
+            height: 100%; /* Asegura que la barra de progreso use toda la altura del contenedor */
+            position: relative;
+        }
+        .progress-bar-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            line-height: 2rem; /* Ajusta esto para que coincida con la altura de la barra */
+        }
+
 
   </style>
 </head>
@@ -477,6 +506,31 @@
     </div>
   </div>
 
+  <div class="progress-container">
+    <div class="progress">
+        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-bar-text">25%</span>
+        </div>
+    </div>
+    <div class="progress">
+        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-bar-text">50%</span>
+        </div>
+    </div>
+    <div class="progress">
+        <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-bar-text">75%</span>
+        </div>
+    </div>
+    <div class="progress">
+        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-bar-text">100%</span>
+        </div>
+    </div>
+  </div>
+  
+
+
 <div class="margen">
 
 <!-- Primera fila -->
@@ -574,7 +628,6 @@
     </div>
   </div>
 </div>
-
 
 
 <div class="container-fluid">
@@ -864,7 +917,6 @@
     // Script para actualizar el año automáticamente
     document.getElementById("currentYear").textContent = new Date().getFullYear();
 </script>
-
 
 
 </body>
