@@ -3,40 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Netflix</title>
-      <!-- Bootstrap JS and dependencies -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <title>Series</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- CSS de Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- JavaScript de Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-
+  
   <style>
-    
     body {
       background-color: rgb(33, 33, 33);
     }
 
     .custom-paragraph {
-   font-size: 18px;
-   font-weight: bold;
-   margin: 16px 0;
-   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0 0 0;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
     .main-heading {
       font-size: 40px;
       font-weight: bold;
@@ -110,73 +91,165 @@
     }
 
     .carousel-caption {
-      position: absolute;
-      top: 52%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      padding: 0 15px;
-      color: white;
-    }
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 24px; /* Ajuste de posición para móviles */
+        }
+        .carousel-caption h5 {
+            font-size: 1.5rem; /* Tamaño del texto del título */
+        }
+        .carousel-caption p {
+            font-size: 1rem; /* Tamaño del texto del párrafo */
+        }
 
-    .carousel-caption h5 {
-      font-size: 2rem; /* Ajustado con rem */
-      font-weight: bold;
-    }
-
-    .carousel-caption p {
-      font-size: 1rem; /* Ajustado con rem */
-      text-align: justify;
-    }
-
-    @media (max-width: 768px) {
-      .carousel-caption h5 {
-        font-size: 1.5rem; /* Tamaño de fuente menor en pantallas pequeñas */
-      }
-
-      .carousel-caption p {
-        font-size: 0.875rem; /* Tamaño de fuente menor en pantallas pequeñas */
-      }
-    }
-
-    @media (max-width: 576px) {
-      .carousel-caption h5 {
-        font-size: 1.25rem; /* Tamaño de fuente aún menor en pantallas extra pequeñas */
-      }
-
-      .carousel-caption p {
-        font-size: 0.75rem; /* Tamaño de fuente aún menor en pantallas extra pequeñas */
-      }
-    }
+        /* Ajustes de texto para pantallas pequeñas */
+        @media (max-width: 1200px) {
+            .carousel-caption h5 {
+                font-size: 1.25rem;
+            }
+            .carousel-caption p {
+                font-size: 0.875rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .carousel-caption h5 {
+                font-size: 1rem;
+            }
+            .carousel-caption p {
+                font-size: 0.75rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .carousel-caption {
+                margin-bottom: 0; /* Quitar margen inferior en pantallas muy pequeñas */
+            }
+            .carousel-caption h5 {
+                font-size: 0.875rem;
+            }
+            .carousel-caption p {
+                font-size: 0.65rem;
+            }
+        }
 
     .fixed-header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background-color: rgb(33, 33, 33);
-      padding: 10px 0;
-    }
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgb(33, 33, 33);
+  padding: 10px 0;
+}
 
-    .nav-pills .nav-link {
-      color: rgb(183, 183, 183);
-      background-color: rgba(0, 0, 0, 0);
-      padding: 5px 10px;
-    }
+.nav-pills .nav-link {
+  color: rgb(183, 183, 183);
+  background-color: rgba(0, 0, 0, 0);
+  padding: 5px 10px;
+}
 
-    .nav-pills .nav-link.active {
-      color: rgb(255, 255, 255);
-      background-color: rgb(102, 0, 0);
-    }
+.nav-pills .nav-link.active {
+  color: rgb(255, 255, 255);
+  background-color: rgb(102, 0, 0);
+}
 
-    body {
-      padding-top: 100px; /* Ajusta según la altura de la barra */
-    }
-
-
+body {
+  padding-top: 100px; /* Ajusta según la altura de la barra */
+}
 
     .text-center {
       text-align: center;
+    }
+
+    .container1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .slider {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .slide-track {
+      display: flex;
+      animation: scroll 40s linear infinite;
+      width: calc(200px * 21); /* Ajusta el tamaño total según el número de slides */
+    }
+
+    .slide {
+      width: 200px;
+      margin-right: 20px; /* Espacio entre las imágenes */
+    }
+
+    .slide img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-200px * 7)); /* Ajustado para el número de slides visibles */
+      }
+    }
+
+    /* Ajustar el tamaño de las imágenes en el grid */
+    .container-fluid img {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+    }
+
+    .header h1 {
+      font-size: 27px;
+      color: white;
+      text-align: center;
+      margin: 20px 0; /* Espaciado adicional alrededor del título */
+    }
+
+    .container-fluid img {
+      width: 100%;
+      height: auto; /* Mantiene la proporción de la imagen */
+      border-radius: 8px;
+    }
+
+    .modal-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .container-fluid img {
+      width: 100%;
+      height: auto; /* Mantiene la proporción de la imagen */
+      border-radius: 8px;
+    }
+
+    .modal-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    /* Espaciado para la imagen del modal */
+    .modal-body {
+      display: flex;
+      align-items: center;
+    }
+
+    .modal-body .content {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    .modal-body .image-container {
+      flex: 0 0 200px;
     }
 
     .footer {
@@ -200,8 +273,63 @@
             
         }
 
+        .review-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            margin: 20px;
+            margin-top: 84px;
+            background-color: #fff9e4;
+        }
+        .review-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .review-title {
+            font-size: 20px;
+            margin: 0;
+            text-align: left;
+            color: black;
+        }
+        .review-body {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .review-images {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .review-images img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .stars {
+            font-size: 18px;
+            color: #FFD700;
+        }
+        .review-text {
+            font-size: 14px;
+            line-height: 1.5;
+            color: black;
+        }
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgb(33, 33, 33);
+            padding: 10px 0;
+        }
 
-    /*Netflix logo animación*/
+        /*Netflix logo animación*/
 
     .overlay {
             position: fixed;
@@ -273,191 +401,31 @@
       padding: 20px;
     }
 
-    .slide {
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .slide-track {
-      display: flex;
-      animation: scroll 40s linear infinite;
-      width: calc(200px * 21);
-    }
-
-    .slide {
-      width: 200px;
-      margin-right: 20px;
-    }
-
-    .slide img {
-      width: 100%;
-      display: block;
-      border-radius: 8px;
-    }
-
-    @keyframes scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(calc(-200px * 6));
-      }
-    }
-
-    .margen {
-      margin-left: 24px;
-      margin-right: 24px;
-    }
-
-    .review-container {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-            margin: 20px;
-            margin-top: 84px;
-            background-color: #fff9e4;
-        }
-        .review-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 15px;
-        }
-        .review-title {
-            font-size: 20px;
-            margin: 0;
-            text-align: left;
-            color: black;
-        }
-        .review-body {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        .review-images {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .review-images img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        .stars {
-            font-size: 18px;
-            color: #FFD700;
-        }
-        .review-text {
-            font-size: 14px;
-            line-height: 1.5;
-            color: black;
-        }
-        .fixed-header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: rgb(33, 33, 33);
-            padding: 10px 0;
-        }
-
-        .header h1 {
-      font-size: 27px;
-      color: white;
-      text-align: center;
-      margin: 20px 0; /* Espaciado adicional alrededor del título */
-    }
-
-    .container-fluid img {
-      width: 100%;
-      height: auto; /* Mantiene la proporción de la imagen */
-      border-radius: 8px;
-    }
-
-    .modal-img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    .container-fluid img {
-      width: 100%;
-      height: auto; /* Mantiene la proporción de la imagen */
-      border-radius: 8px;
-    }
-
-    .modal-img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    /* Espaciado para la imagen del modal */
-    .modal-body {
-      display: flex;
-      align-items: center;
-    }
-
-    .modal-body .content {
-      flex: 1;
-      margin-right: 20px;
-    }
-
-    .modal-body .image-container {
-      flex: 0 0 200px;
-    }
-
-    .footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #222;
-            color: white;
-        }
-        .footer img {
-            margin: 10px;
-            width: 30px;
-            height: 30px;
-            vertical-align: middle;
-        }
-        .footer .social-media {
-            margin-bottom: 20px;
-        }
-        .footer .reserved {
-            border-top: 1px solid #555;
-            padding-top: 10px;
-            
-        }
-
   </style>
 </head>
 <body>
-
   <div class="overlay" id="overlay"></div>
 
-    <div class="netflix" id="netflix-logo">
-        <span class="left"></span>
-        <span class="center"></span>
-        <span class="right"></span>
-    </div>
+  <div class="netflix" id="netflix-logo">
+      <span class="left"></span>
+      <span class="center"></span>
+      <span class="right"></span>
+  </div>
 
-    <script>
-        // Obtén los elementos del logo y el overlay
-        const logo = document.getElementById('netflix-logo');
-        const overlay = document.getElementById('overlay'); 
+  <script>
+      // Obtén los elementos del logo y el overlay
+      const logo = document.getElementById('netflix-logo');
+      const overlay = document.getElementById('overlay'); 
 
-        // Calcula la duración total de la animación (en este caso 4 segundos: 1s + 1s + 1s + 1s)
-        const animationDuration = 4;
+      // Calcula la duración total de la animación (en este caso 4 segundos: 1s + 1s + 1s + 1s)
+      const animationDuration = 4;
 
-        // Oculta el logo y el fondo después de que termine la animación con un desvanecimiento suave
-        setTimeout(() => {
-            logo.classList.add('fade-out');
-            overlay.classList.add('fade-out');
-        }, animationDuration * 1000); // Multiplica por 1000 para convertir a milisegundos
-    </script>
+      // Oculta el logo y el fondo después de que termine la animación con un desvanecimiento suave
+      setTimeout(() => {
+          logo.classList.add('fade-out');
+          overlay.classList.add('fade-out');
+      }, animationDuration * 1000); // Multiplica por 1000 para convertir a milisegundos
+  </script>
   <div style="background-color: rgb(33, 33, 33); font-size: 12px;" class="container-fluid">
     <header class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom fixed-header">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none ms-3">
@@ -466,182 +434,216 @@
       </a>
   
       <ul class="nav nav-pills mx-auto">
-        <li class="nav-item"><a href="/pagina" class="nav-link active" aria-current="page">Inicio</a></li>
-        <li class="nav-item"><a href="/series" class="nav-link">Series</a></li>
-        <li class="nav-item"><a href="/peliculas" class="nav-link">Planes</a></li>
+        <li class="nav-item"><a href="/peliculas" class="nav-link">Inicio</a></li>
         <li class="nav-item"><a href="/Extras" class="nav-link">Extras</a></li>
         <li class="nav-item"><a href="/sobre" class="nav-link">Acerca de Netflix</a></li>
-        <li class="nav-item"><a href="/Registro" class="nav-link">Registro/iniciar sesion</a></li>
-      </ul>
-
+        <li class="nav-item"><a href="/cerrar?email=user@example.com" class="nav-link">Cerrar</a></li>
+        <li class="nav-item"><a href="/perfil" class="nav-link">Perfil</a></li>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      </nav>
+</ul>
     </header>
   </div>
-    </header>
-  </div>
+  
+  
+  
 
-  <div id="carouselExampleAutoplaying" class="carousel slider" data-bs-ride="carousel">
+  <div id="carouselExampleAutoplaying" class="carousel sliderr" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="carruselimg1.png" class="d-block w-300" alt="img1">
-        <div class="carousel-caption">
-          <h5 style="font-size: auto;">La Casa de Papel: Temporada 5</h5>
-          <p style="text-align: justify; font-size: auto;"></p>
+        <div class="carousel-item active">
+            <img src="breakingcarrusel.png" class="d-block w-100" alt="img1">
+            <div class="carousel-caption">
+                <h5>Breaking Bad</h5>
+                <p>Breaking Bad narra la transformación de Walter White, un profesor de química de secundaria que, tras ser diagnosticado con cáncer de pulmón, decide fabricar metanfetamina para asegurar el futuro financiero de su familia. Junto a su antiguo estudiante Jesse Pinkman, Walter se adentra en el peligroso mundo del narcotráfico, donde su moralidad y ética se desmoronan.</p>
+            </div>
         </div>
-      </div>
-      <div class="carousel-item">
-        <img src="carruselimg2.png" class="d-block w-100" alt="img2">
-        <div class="carousel-caption">
-          <h5 style="font-size: auto;">Formula 1: Drive to Survive Season 4</h5>
-          <p style="text-align: justify; font-size: auto;"></p>
+        <div class="carousel-item">
+            <img src="casadepapelcarrusel.png" class="d-block w-100" alt="img2">
+            <div class="carousel-caption">
+                <h5>La Casa de Papel: Temporada 5</h5>
+                <p>Después de que Lisboa entrase en el Banco de España, la banda vuelve a estar reunida otra vez. Pero no todo van a ser buenas noticias. Sierra encuentra al Profesor tras descubrir su escondite secreto a base de pedir un par de favores, ¿Podría Sierra unirse a la banda? Los protagonistas se ponen manos a la obra para conseguir sacar todo el oro que hay en el Banco de España.</p>
+            </div>
         </div>
-      </div>
-      <div class="carousel-item">
-        <img src="carruselimg3.png" class="d-block w-100" alt="img3">
-        <div class="carousel-caption">
-          <h5 style="font-size: auto;">One Day</h5>
-          <p style="text-align: justify; font-size: auto;"></p>
+        <div class="carousel-item">
+            <img src="narcoscarrusell.png" class="d-block w-100" alt="img3">
+            <div class="carousel-caption">
+                <h5>Narcos</h5>
+                <p>Narcos es una serie que sigue la vida de Pablo Escobar y el Cartel de Medellín en Colombia durante los años 80 y 90. La trama explora el ascenso de Escobar al poder como uno de los narcotraficantes más infames de la historia, y su impacto en la política, la sociedad y la violencia en Colombia.</p>
+            </div>
         </div>
+        <div class="carousel-item">
+            <img src="elitecarrusel.png" class="d-block w-100" alt="img4">
+            <div class="carousel-caption">
+                <h5>Elite</h5>
+                <p>Élite es una serie española que sigue la vida de un grupo de estudiantes en un exclusivo colegio privado tras la llegada de tres nuevos alumnos de clase trabajadora. La serie combina drama, misterio y suspenso mientras explora las tensiones y rivalidades entre los estudiantes, que culminan en un trágico asesinato.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+          <img src="carruselimg2.png" class="d-block w-100" alt="img4">
+          <div class="carousel-caption">
+              <h5>Formula 1: Drive to Survive Season 4</h5>
+              <p>F1 ofrece una mirada intensa y personal a la temporada 2021 de Fórmula 1, destacando las rivalidades y dramas entre los equipos y pilotos. A través de entrevistas exclusivas y un acceso detrás de las cámaras, la serie captura la emoción de las carreras y las tensiones que rodean a las escuderías, especialmente la batalla entre Lewis Hamilton y Max Verstappen por el campeonato. Es una celebración del deporte y un examen de la presión que enfrentan los competidores en la pista.</p>
+          </div>
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
     </button>
-  </div>
+</div>
 
-<br>
+
+  <br>
 
   <div class="container1">
     <div class="slider">
-      <div style="width: 300%; height: 300%;" class="slide-track">
+      <div class="slide-track">
         <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
         <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
         <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
-        <div class="slide"><img src="lideres.png" alt="Auspiciador 4"></div>
-
-        <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
-        <div class="slide"><img src="lideres.png" alt="Auspiciador 4"></div>
         
         <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
         <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
         <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
-        <div class="slide"><img src="lideres.png" alt="Auspiciador 4"></div>
+        
+        <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
+        
+        <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
 
         <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
         <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
         <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
-        <div class="slide"><img src="lideres.png" alt="Auspiciador 4"></div>
+        
+        <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
 
         <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
         <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
         <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
-        <div class="slide"><img src="lideres.png" alt="Auspiciador 4"></div>
-
-        <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
-        <div class="slide"><img src="lideres.png" alt="Auspiciador 4"></div>
-
-        <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
-        <div class="slide"><img src="lideres.png" alt="Auspiciador 4"></div>
-
-
       </div>
     </div>
   </div>
+
+
 
   <div class="header">
-    <h1><b>Series populares🔥</b></h1>
+    <h1><b>Dramas🎭</b></h1>
   </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
-    <div class="modal-dialog custom-modal-dialog">
+<!-- Modal -->
+<div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+  <div class="modal-dialog custom-modal-dialog">
       <div class="modal-content custom-modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="movieModalLabel">Título de la Película</h5>
-
-        </div>
-        <div class="modal-body d-flex">
-          <div class="content">
-            <p><strong>Duración:</strong> 120 minutos</p>
-            <p><strong>Descripción:</strong> Esta es una breve descripción de la película.</p>
+          <div class="modal-header">
+              <h5 class="modal-title" id="movieModalLabel">Título de la Película</h5>
           </div>
-          <div class="image-container">
-            <img src="" alt="Imagen del Modal" class="modal-img" id="modalImage">
+          <div class="modal-body d-flex">
+              <div class="content">
+                  <p><strong>Duración:</strong> 120 minutos</p>
+                  <p><strong>Descripción:</strong> Esta es una breve descripción de la película.</p>
+              </div>
+              <div class="image-container">
+                  <img src="" alt="Imagen del Modal" class="modal-img" id="modalImage">
+              </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button style="background-color: rgb(146, 0, 0);" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        </div>
+          <div class="modal-footer">
+              <button style="background-color: rgb(146, 0, 0);" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button style="background-color: rgb(0, 123, 255);" type="button" class="btn btn-primary" id="modalButton">Ver serie</button>
+          </div>
       </div>
-    </div>
   </div>
+</div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
       var modal = document.getElementById('movieModal');
       var modalTitle = modal.querySelector('.modal-title');
       var modalContent = modal.querySelector('.content');
       var modalImage = modal.querySelector('#modalImage');
+      var modalButton = modal.querySelector('#modalButton'); // Botón "Ver serie"
 
       modal.addEventListener('show.bs.modal', function (event) {
-        var button = event.relatedTarget; // Imagen que activó el modal
-        var title = button.getAttribute('data-title');
-        var duration = button.getAttribute('data-duration');
-        var description = button.getAttribute('data-description');
-        var imageUrl = button.getAttribute('data-image');
+          var button = event.relatedTarget; // Imagen que activó el modal
+          var title = button.getAttribute('data-title');
+          var duration = button.getAttribute('data-duration');
+          var description = button.getAttribute('data-description');
+          var imageUrl = button.getAttribute('data-image');
+          var url = button.getAttribute('data-url'); // Captura de la URL
 
-        modalTitle.textContent = title;
-        modalContent.innerHTML = `<p><strong>Duración:</strong> ${duration}</p><p><strong>Descripción:</strong> ${description}</p>`;
-        modalImage.src = imageUrl;
+          modalTitle.textContent = title;
+          modalContent.innerHTML = `<p><strong>Duración:</strong> ${duration}</p><p><strong>Descripción:</strong> ${description}</p>`;
+          modalImage.src = imageUrl;
+
+          // Cambia la acción del botón "Ver serie"
+          modalButton.onclick = function() {
+              window.open(url, '_blank'); // Abre la URL del botón
+          };
       });
-    });
-  </script>
+  });
+</script>
 
-  <div class="container-fluid">
-    <div class="row">
+<div class="container-fluid">
+  <div class="row">
       <div class="col-md-3">
-        <img style="margin-top: 16px;" src="breaking.png" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Breaking Bad" data-duration="60 horas" data-description="Serie sobre un profesor de química que se convierte en fabricante de metanfetaminas." data-image="https://www.pngall.com/wp-content/uploads/13/Breaking-Bad-Logo-PNG-Image.png">
+          <img style="margin-top: 16px;" src="class.jpg" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Itaewon class" data-duration="16 horas" data-description="Itaewon Class sigue la historia de Park Sae-ro-yi, un joven que, tras ser expulsado de la escuela secundaria, decide abrir un bar en el vibrante distrito de Itaewon, Seúl. La serie comienza después de la muerte de su padre, quien fue víctima de un accidente relacionado con el imperio de un poderoso conglomerado de alimentos. Sae-ro-yi, impulsado por el deseo de venganza y la ambición de alcanzar el éxito, reúne a un grupo de inadaptados y luchadores sociales que lo apoyan en su viaje. A medida que lucha contra la corrupción y enfrenta la adversidad, también se enfrenta a sus propios demonios personales, explorando temas de amistad, amor y perseverancia. La serie destaca la importancia de seguir tus sueños y la lucha por la justicia en un mundo lleno de desigualdades." data-image="https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABXsB-iCiaN9Lwbuni5AUcw83xyDWRNlw2l_Y5atvxK0syQHSu2JsYZulKVSWZeFOLMK7Nx_wdXJEQ6puDPLHnmXrJnx9YNy_2UEFe0KWGvpOYK_mRXFEVMbkmLPr5JMPM_PdZF3Y5zJGEd-iKky6Yyso13Ln4S7fleq86Y53L3MhyUBiXSTicg.png?r=bf3" data-url="https://youtu.be/DQpSBSiS_nM?si=TsAxa4bMrSn4a2Js">
       </div>
       <div class="col-md-3">
-        <img style="margin-top: 16px;" src="casadepapel.png" alt="Imagen 2" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="La Casa de Papel" data-duration="37 horas" data-description="Un grupo de delincuentes lleva a cabo un gran asalto a la Real Casa de la Moneda de España." data-image="https://seeklogo.com/images/L/la-casa-de-papel-logo-80111026D5-seeklogo.com.png">
+          <img style="margin-top: 16px;" src="casadepapel.png" alt="Imagen 2" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="La Casa de Papel" data-duration="37 horas" data-description="Un grupo de delincuentes lleva a cabo un gran asalto a la Real Casa de la Moneda de España." data-image="https://seeklogo.com/images/L/la-casa-de-papel-logo-80111026D5-seeklogo.com.png" data-url="https://youtu.be/V0xZcOYuzNo?si=mCx4NfGwG-V1B2Xa">
       </div>
       <div class="col-md-3">
-        <img style="margin-top: 16px;" src="narcos.png" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Narcos" data-duration="31 horas" data-description="Serie que narra la vida del infame narcotraficante Pablo Escobar." data-image="https://c.wallhere.com/photos/f1/d4/Narcos_Pablo_Escobar_Netflix_Wagner_Moura-108608.png!s1">
+          <img style="margin-top: 16px;" src="plaboral.jpg" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Propuesta Laboral" data-duration="8 horas" data-description="María, una joven profesional, recibe una inesperada oferta de trabajo de Alejandro, un empresario carismático que busca una visión fresca para su empresa. Mientras navega por los desafíos laborales y la intensa competencia de sus colegas, surge una atracción entre ellos que complica su vida profesional. Entre risas y enredos, María debe decidir si arriesgar su corazón por una oportunidad que podría cambiar su vida." data-image="https://occ-0-8407-114.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABVuHXqXJg5EOUGm7dqRnWohQJ6_oHji2Oj5pZw87jXnrgeWnEs65ThMTAAHTiVMm61dtWvz809j1LDg9XS69LK8DCDb00bo4roR1-MH5itXtT3l_oRChIVDz3tsKCOgWUFgx1FYb6dsN4ihZ7cM5wTFa9DBXxyr8FwOri2NrY2ns36WAtylTEA.png?r=c95" data-url="https://youtu.be/fWYMiAAyouM?si=lpD2KgNSVlG3rm2c">
       </div>
       <div class="col-md-3">
-        <img style="margin-top: 16px;" src="elite.png" alt="Imagen 4" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Élite" data-duration="25 horas" data-description="Drama que sigue a un grupo de adolescentes en una escuela de élite con secretos oscuros." data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Elite_Netflix_Logo_02.svg/2560px-Elite_Netflix_Logo_02.svg.png">
+          <img style="margin-top: 16px;" src="dios.jpg" alt="Imagen 4" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="La novia del Dios del agua" data-duration="9 horas" data-description="La historia sigue a So Eun, una joven que se convierte en la novia del Dios del Agua, Hoo Yeon, después de que su vida se entrelaza con el mundo sobrenatural. A medida que ambos se conocen, enfrentan desafíos tanto en el reino humano como en el divino, mientras luchan contra fuerzas malignas y descubren secretos ocultos sobre su pasado. La serie explora temas de amor, sacrificio y el destino que une a los seres humanos con los dioses." data-image="https://e0.pxfuel.com/wallpapers/697/293/desktop-wallpaper-bride-of-the-water-god-k-drama-asiachan-kpop-board-the-bride-of-habaek.jpg" data-url="https://youtu.be/kJ3nusexNGM?si=RsChbaotfkJ1B467">
       </div>
-    </div>
   </div>
-  <div class="container-fluid">
-    <div class="row">
+</div>
+
+<div class="container-fluid">
+  <div class="row">
       <div class="col-md-3">
-        <img style="margin-top: 16px;" src="greenhouse.jpg" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Greenhouse Academy" data-duration="12 horas" data-description="Greenhouse Academy sigue a los hermanos Hayley y Alex Woods mientras ingresan a una exclusiva escuela de élite llena de secretos y misterios. En medio de desafíos académicos y deportivos, descubren oscuros secretos que podrían poner en peligro sus vidas." data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKRebnQLrwyaC6BKE0ArnIoqhQ1HXuGxBnnjFc97louWuaeWMeUFG1GHBDm3aJmhRyzUA&usqp=CAU">
+          <img style="margin-top: 16px;" src="boys.jpg" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Itaewon class" data-duration="16 horas" data-description="Boys Over Flowers sigue a Geum Jan-di, una chica de clase baja que asiste a una escuela de élite y se enfrenta al F4, un grupo de chicos ricos. Tras desafiar a su líder, Gu Jun-pyo, comienza un complicado romance lleno de rivalidades y conflictos de clase." data-image="https://occ-0-8407-1001.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABdJxAHR5a9bfq5IdZTEtY6QSMv9RD2ZVqI3Kcuhk_gytnXdfTJePvjoVqxTpuSTp6tpXJ7L1N22gBdaimMc4gjs9m3uldGbWoUdn0ViSPLRy.png?r=8b2" data-url="https://youtu.be/3F67Q5NL5RU?si=FcCgM-n3_ElcVrjc">
       </div>
       <div class="col-md-3">
-        <img style="margin-top: 16px;" src="toyboy.jpg" alt="Imagen 2" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Toy Boy" data-duration="15 horas" data-description="*Toy Boy es una serie española que sigue a Hugo Beltrán, un stripper que sale de prisión tras cumplir una condena por un crimen que no cometió. Al reintegrarse a la sociedad, busca descubrir la verdad detrás de su condena mientras navega por un mundo de lujo, engaños y traiciones." data-image="https://planoaplano.es/wp-content/uploads/2018/12/toy-boy-logo.png">
+          <img style="margin-top: 16px;" src="jardin.jpg" alt="Imagen 2" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Jardín de meteoros" data-duration="16 horas" data-description="Narra la historia de Shan Cai, una estudiante de clase baja que asiste a una prestigiosa escuela. Allí, se enfrenta al temido grupo F4, liderado por el carismático Dao Ming Si, quien inicialmente la hostiga. Sin embargo, a medida que Shan Cai se mantiene firme, comienza un romance inesperado con Dao Ming Si, desafiando las diferencias sociales y los obstáculos en su camino." data-image="data:image/jpeg;base64,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" data-url="https://youtu.be/PAruHh0SH0s?si=zz1BAki8Sm3r3JeI">
       </div>
       <div class="col-md-3">
-        <img style="margin-top: 16px;" src="vivirdosveces.jpg" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Vivir Dos Veces" data-duration="2 horas" data-description="Vivir dos veces es una película española que sigue a Emilio, un profesor de matemáticas jubilado que enfrenta el diagnóstico de Alzheimer. Decidiendo hacer un último esfuerzo por encontrar a su amor de juventud, se embarca en un viaje con su hija y su nieta. A lo largo del viaje, la familia enfrenta desafíos y descubren nuevas dimensiones en sus relaciones y en la vida de Emilio." data-image="https://es.web.img3.acsta.net/pictures/20/05/04/19/33/3400659.jpg">
+          <img style="margin-top: 16px;" src="vincenzo.jpg" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Vincenzo" data-duration="17 horas" data-description="Un abogado de la mafia, Vincenzo Cassano, regresa a Corea del Sur después de años en Italia para recuperar un oro escondido en un antiguo edificio. Sin embargo, se enfrenta a una poderosa corporación que intenta tomar el control del inmueble. Al unirse a los inquilinos del edificio, Vincenzo se convierte en su defensor y utiliza sus habilidades legales y tácticas mafiosas para enfrentarse a sus enemigos en un juego de poder y venganza." data-image="https://logos.textgiraffe.com/logos/logo-name/Vincenzo-designstyle-jungle-m.png" data-url="https://youtu.be/jLSkHuWR_IM?si=wsy_AIknFleFGa6N">
       </div>
       <div class="col-md-3">
-        <img style="margin-top: 16px;" src="rétame.jpg" alt="Imagen 4" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Rétame" data-duration="5 horas" data-description="Rétame es una serie de Netflix que sigue a un grupo de amigos que, en busca de aventuras y desafíos, se inscriben en un reality show extremo. En el transcurso del programa, deben enfrentarse a pruebas físicas y psicológicas, revelando secretos personales y poniendo a prueba sus lealtades. A medida que el concurso se intensifica, las tensiones y los conflictos surgen, llevando a sorprendentes giros y revelaciones." data-image="https://es.web.img2.acsta.net/c_162_216/pictures/20/03/25/12/08/1126742.jpg">
+          <img style="margin-top: 16px;" src="love.jpg" alt="Imagen 4" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="La novia del Dios del agua" data-duration="9 horas" data-description="En un mundo donde una aplicación revela si alguien dentro de un radio de 10 metros ama a la persona que la utiliza, una joven se encuentra atrapada entre dos chicos: su amigo de la infancia y un nuevo interés amoroso. A medida que las relaciones se complican, deben enfrentar los efectos de la tecnología en sus vidas y en sus corazones." data-image="https://play-lh.googleusercontent.com/pjB5Omm5cZG_qy69giFcnnM4neWZp1cmQk5lp5l89L3X9mIj5bscNXb5rGFOWe1Pv9VO=w600-h300-pc0xffffff-pd" data-url="https://youtu.be/cvOelWibFMA?si=fPghW5isoCpmqW9F">
       </div>
-    </div>
   </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-md-3">
+          <img style="margin-top: 16px;" src="chachacha.jpg" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Itaewon class" data-duration="16 horas" data-description="Es una serie que sigue la vida de un grupo de amigos que exploran el amor y las relaciones en el contexto de un mundo contemporáneo. A medida que enfrentan desafíos personales y románticos, descubren que el amor, al igual que el chachachá, requiere ritmo, pasión y una buena dosis de diversión. La serie combina humor y drama mientras los personajes buscan su camino hacia el amor verdadero." data-image="https://i5.walmartimages.com/seo/Hometown-Cha-Cha-Cha-Korean-TV-Drama-DVD_3f665905-63df-47b4-9976-704d803cc3aa.274872c79b553730cb7f11cbf1ab47be.png" data-url="https://youtu.be/VDE5R_-i5pc?si=_JBUE0j7wz9Xn0RH">
+      </div>
+      <div class="col-md-3">
+          <img style="margin-top: 16px;" src="tomorrow.jpg" alt="Imagen 2" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Tomorrow" data-duration="18 horas" data-description="Tomorrow es una serie surcoreana que sigue la historia de Choi Joon-woong, un joven que, tras un accidente, se convierte en parte de un equipo que ayuda a las almas a encontrar la paz y evitar el suicidio. A través de sus interacciones con seres sobrenaturales y humanos, Joon-woong explora temas de vida, muerte y redención. A medida que enfrenta sus propios desafíos emocionales, aprende sobre el valor de la vida y las conexiones humanas." data-image="https://workable-application-form.s3.amazonaws.com/advanced/production/611bc8a0407176c6a6f20d4e/fbc56250-6b8a-9296-a1a0-8d3541e4131e" data-url="https://youtu.be/rdogRbRqCEY?si=OWDFBO5QjVfZXM_w">
+      </div>
+      <div class="col-md-3">
+          <img style="margin-top: 16px;" src="predestinado.jpg" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Un amor predestinado" data-duration="19 horas" data-description="La historia sigue a dos jóvenes, un hombre y una mujer, que se encuentran por casualidad y desarrollan una conexión mágica. Sin embargo, deben enfrentar obstáculos que desafían su amor, incluyendo secretos familiares y circunstancias del destino que podrían separarlos. A medida que luchan por su amor, descubren que están destinados a estar juntos, lo que les lleva a tomar decisiones que cambiarán sus vidas para siempre." data-image="https://images.justwatch.com/poster/307105930/s718/destined-with-you.jpg" data-url="https://youtu.be/aAc4Gu0khig?si=JhBCkYpqw9q1iU4a">
+      </div>
+      <div class="col-md-3">
+          <img style="margin-top: 16px;" src="herederos.jpg" alt="Imagen 4" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Herederos" data-duration="47 horas" data-description="Es una serie que sigue la vida de una familia adinerada enfrentando intrigas, secretos y luchas de poder tras la muerte del patriarca. Mientras los miembros de la familia intentan hacerse con la herencia, surgen conflictos que ponen a prueba sus lealtades y revelan verdades ocultas, desatando una intensa lucha por el control de la fortuna familiar." data-image="https://www.lavanguardia.com/peliculas-series/images/serie/poster/2013/10/w1280/9WpuYlfCM5hJb2HM2hbqTHNbuCL.jpg" data-url="https://youtu.be/oSi-0cNMjt8?si=7ARP1DwN0qLrWL0A">
+      </div>
+  </div>
+</div>
 
   <div class="header">
-    <h1 style="margin-top: 48px;"><b>Estrenos🎥</b></h1>
+    <h1 style="margin-top: 48px;"><b>Acción🎬</b></h1>
   </div>
 
   <div class="container-fluid">
@@ -660,426 +662,33 @@
       </div>
     </div>
   </div>
-
-  <div style="display: flex; justify-content: center; align-items: center; background-color: #ffffff; padding: 20px; width: 200px; margin: 0 auto; margin-top: 24px;">
-    <img src="https://www.webhosting.pe/images/pagos/niubiz.png" alt="Medios de Pago y Síguenos">
-</div>
-
-
-<div class="footer">
-    <div class="social-media">
-        <a href="https://www.facebook.com" target="_blank">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" alt="Facebook">
-        </a>
-        <a href="https://www.instagram.com" target="_blank">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram">
-        </a>
-        <a href="https://www.youtube.com" target="_blank">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube">
-        </a>
-    </div>
-    <div class="reserved">
-      <div style="text-align: center;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Logo de la Página" style="width: 90px; vertical-align: middle;">
-    </div>
-    
-</div>
-
-        <p>&copy; <span id="currentYear"></span> Todos los derechos reservados</p>
-    </div>
-</div>
-
-  <script>
-    // Script para actualizar el año automáticamente
-    document.getElementById("currentYear").textContent = new Date().getFullYear();
-
-    
-</script>
-
-<!-- Quinta fila -->
-<div class="container-fluid row5">
-  <p style="font-size: 18px; color: white; text-align: center;"><b>Series destacadas</b></p>
-  <div class="row text-center">
-    <div class="container mt-4">
-      <div class="row">
-        <!-- Stranger Things -->
-        <div class="col-md-3">
-          <img style="margin-top: 24px; margin-bottom: 24px;" src="https://br.web.img2.acsta.net/pictures/19/07/10/20/01/2331295.jpg" alt="Imagen 5" class="img-fluid" data-toggle="modal" data-target="#modalStrangerThings">
-        </div>
-        <!-- The Sandman -->
-        <div class="col-md-3">
-          <img style="margin-top: 24px; margin-bottom: 24px;" src="https://geektitude.com/wp-content/uploads/2022/09/TheSandman-1200x1778.jpg" alt="Imagen 6" class="img-fluid" data-toggle="modal" data-target="#modalSandman">
-        </div>
-        <!-- Enola Holmes -->
-        <div class="col-md-3">
-          <img style="margin-top: 24px; margin-bottom: 24px;" src="https://www.vocero.com.mx/wp-content/uploads/2022/10/Enola-Holmes-2-1200x1778.jpeg" alt="Imagen 7" class="img-fluid" data-toggle="modal" data-target="#modalEnolaHolmes">
-        </div>
-        <!-- One Piece -->
-        <div class="col-md-3">
-          <img style="margin-top: 24px; margin-bottom: 24px;" src="https://ca-times.brightspotcdn.com/dims4/default/0561ad6/2147483647/strip/true/crop/1500x2222+0+0/resize/1200x1778!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fb7%2F3d%2F37955d8d4b21800d19a0d2e77f5a%2Fen-us-onepiece-teaser-luffy-vertical-27x40-rgb-pre.jpg" alt="Imagen 8" class="img-fluid" data-toggle="modal" data-target="#modalOnePiece">
-        </div>
+  
+  <div class="footer">
+      <div class="social-media">
+          <a href="https://www.facebook.com" target="_blank">
+              <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" alt="Facebook">
+          </a>
+          <a href="https://www.instagram.com" target="_blank">
+              <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram">
+          </a>
+          <a href="https://www.youtube.com" target="_blank">
+              <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube">
+          </a>
       </div>
-    </div>
+      <div class="reserved">
+        <div style="text-align: center;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Logo de la Página" style="width: 90px; vertical-align: middle;">
+      </div>
   </div>
-
-  <!-- Modal Stranger Things -->
-  <div class="modal fade" id="modalStrangerThings" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Stranger Things 👾</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p style="font-size: 18px;">Stranger Things es una serie de ciencia ficción y horror ambientada en los años 80 👾. Sigue a un grupo de niños en la pequeña ciudad de Hawkins, Indiana, donde cosas extrañas comienzan a suceder cuando uno de ellos desaparece misteriosamente 🌲🛸.</p>
-        </div>
+  
+          <p>&copy; <span id="currentYear"></span> Todos los derechos reservados</p>
       </div>
-    </div>
   </div>
-
-  <!-- Modal The Sandman -->
-  <div class="modal fade" id="modalSandman" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">The Sandman 🌙</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p style="font-size: 18px;">The Sandman sigue a Morfeo, la personificación del sueño 😴, mientras intenta restaurar su reino tras haber estado cautivo por más de un siglo ⏳. Una trama llena de mitología y reflexiones sobre la vida y el destino 🌌.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Enola Holmes -->
-  <div class="modal fade" id="modalEnolaHolmes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Enola Holmes 🕵️‍♀️</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p style="font-size: 18px;">Enola Holmes sigue a la hermana menor de Sherlock Holmes 🕵️‍♂️ en una emocionante aventura mientras busca a su madre desaparecida, enfrentando peligros y misterios 🕵️‍♀️💥 en la sociedad victoriana de Londres.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal One Piece -->
-  <div class="modal fade" id="modalOnePiece" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">One Piece 🏴‍☠️</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p style="font-size: 18px;">One Piece sigue las aventuras del joven pirata Monkey D. Luffy 🏴‍☠️ y su tripulación en la búsqueda del legendario tesoro "One Piece" 💰. Enfrentan desafíos épicos en los mares llenos de peligros 🌊⚔️.</p>
-        </div>
-
-        </div>
-      </div>
-    </div>
- 
-
-<div class="container-fluid">
-  <div class="row">
-    <!-- Columna 1 -->
-    <div class="col-md-4">
-      <div id="reviewCarousel1" class="carousel slider" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <!-- Reseña 1 -->
-          <div class="carousel-item active">
-            <div class="review-container">
-              <div class="review-header">
-                <h3 class="review-title">Stranger Things 3:</h3>
-                <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                </div>
-              </div>
-              <div class="review-body">
-                <p class="review-text">¡La tercera temporada de Stranger Things es increíble! La trama se mantiene emocionante con un gran ritmo, y el elenco sigue haciendo un trabajo fantástico. Los efectos especiales están muy bien logrados, y la mezcla de nostalgia de los 80 con el suspense es simplemente perfecta. Además, la nueva amenaza y los giros inesperados mantienen la serie fresca y adictiva.</p>
-              </div>
-              <div class="review-images">
-                <img src="https://i.blogs.es/4e7fc0/cartel-stranger-things/840_560.jpg" alt="Stranger Things">
-                <img src="https://hips.hearstapps.com/hmg-prod/images/stranger-things-3-sinopsis-oficial-1560504408.jpg?crop=0.7xw:1xh;center,top&resize=1200:*" alt="Producto 2">
-              </div>
-            </div>
-          </div>
-          <!-- Reseña 2 -->
-          <div class="carousel-item">
-            <div class="review-container">
-              <div class="review-header">
-                <h3 class="review-title">Sandman</h3>
-                <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <i class="far fa-star"></i>
-                </div>
-              </div>
-              <div class="review-body">
-                <p class="review-text">Acabo de terminar 'Sandman' y me ha sorprendido gratamente. La trama es tan única y fascinante que no pude dejar de leer. Los personajes están muy bien desarrollados, y el mundo que construye Neil Gaiman es increíblemente inmersivo. ¡Definitivamente lo recomiendo para cualquier amante de la fantasía y el buen storytelling!</p>
-              </div>
-              <div class="review-images">
-                <img src="https://media.revistagq.com/photos/62f0be63fb28d86a38828a7f/3:2/w_1011,h_674,c_limit/final-sandman-netflix-explicacion.jpg" alt="Producto 3">
-                <img src="https://d.newsweek.com/en/full/2088866/sandman.jpg?w=1200&f=2c866c3f505b86b9618c7d9de82d6da9" alt="Producto 4">
-              </div>
-            </div>
-          </div>
-          <!-- Reseña 3 -->
-          <div class="carousel-item">
-            <div class="review-container">
-              <div class="review-header">
-                <h3 class="review-title">La Casa de Papel: Temporada 4</h3>
-                <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-              </div>
-              <div class="review-body">
-                <p class="review-text">¡La cuarta temporada de 'La Casa de Papel' es increíble! La acción y el suspenso están a otro nivel. Los giros en la trama te mantienen al borde del asiento y los personajes siguen sorprendiendo. Si te gustaron las anteriores, esta temporada no te decepcionará.<br><br></p>
-              </div>
-              <div class="review-images">
-                <img src="https://i.blogs.es/3e7dc5/papel4/1366_2000.jpeg" alt="Producto 5">
-                <img src="https://i.blogs.es/916c1b/papel-reparto-2-/1366_521.jpeg" alt="Producto 6">
-              </div>
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#reviewCarousel1" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#reviewCarousel1" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- Columna 2 -->
-    <div class="col-md-4">
-      <div id="reviewCarousel2" class="carousel slider" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <!-- Reseña 1 -->
-          <div class="carousel-item active">
-            <div class="review-container">
-              <div class="review-header">
-                <h3 class="review-title">Formula 1: Drive to Survive Season 4</h3>
-                <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-              </div>
-              <div class="review-body">
-                <p class="review-text">¡La cuarta temporada de 'Formula 1: Drive to Survive' es emocionante de principio a fin! Las historias detrás de las carreras son fascinantes y la forma en que se muestran las rivalidades y estrategias te atrapa completamente. Ideal para los fans de la F1 y para quienes buscan un buen drama deportivo.<br><br></p>
-              </div>
-              <div class="review-images">
-                <img src="https://statcdn.fandango.com/MPX/image/NBCU_Fandango/463/79/thumb_EF5E7ECB-2915-4A4C-836E-C5ECF2B68022.jpg" alt="Stranger Things">
-                <img src="https://cloudfront-eu-central-1.images.arcpublishing.com/diarioas/R3WCPF4WOBMD3E24BTHAASJKGA.jpg" alt="Producto 2">
-              </div>
-            </div>
-          </div>
-          <!-- Reseña 2 -->
-          <div class="carousel-item">
-            <div class="review-container">
-              <div class="review-header">
-                <h3 class="review-title">One Piece</h3>
-                <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                </div>
-              </div>
-              <div class="review-body">
-                <p class="review-text">¡'One Piece' es una aventura épica! Los personajes son geniales y la trama está llena de sorpresas. Cada episodio es una mezcla perfecta de acción, comedia y emoción. Es una serie que te atrapa y no puedes dejar de ver.<br><br><br></p>
-              </div>
-              <div class="review-images">
-                <img src="https://m.media-amazon.com/images/S/pv-target-images/1595dc2f5bd3654d3d263b4fce60780b118bb31ee3af7a9dc9c99f89ba415934.jpg" alt="Producto 3">
-                <img src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2018/08/one-piece_0.jpg?tf=1200x1200" alt="Producto 4">
-              </div>
-            </div>
-          </div>
-          <!-- Reseña 3 -->
-          <div class="carousel-item">
-            <div class="review-container">
-              <div class="review-header">
-                <h3 class="review-title">Breaking Bad</h3>
-                <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                </div>
-              </div>
-              <div class="review-body">
-                <p class="review-text">‘Breaking Bad’ es una serie increíble. La evolución de los personajes es fascinante, y la trama está llena de giros sorprendentes. Es intensa y adictiva de principio a fin. ¡Definitivamente una de las mejores series que he visto!<br><br><br></p>
-              </div>
-              <div class="review-images">
-                <img src="https://es.web.img3.acsta.net/pictures/18/04/04/22/52/3191575.jpg" alt="Producto 5">
-                <img src="https://static01.nyt.com/images/2019/08/26/espanol/27Pelicula/merlin_76764656_173df8df-9044-456d-9c2d-1c03f1a41042-articleLarge.jpg?quality=75&auto=webp&disable=upscale" alt="Producto 6">
-              </div>
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#reviewCarousel2" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#reviewCarousel2" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- Columna 3 -->
-    <div class="col-md-4">
-      <div id="reviewCarousel3" class="carousel slider" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <!-- Reseña 1 -->
-          <div class="carousel-item active">
-            <div class="review-container">
-              <div class="review-header">
-                <h3 class="review-title">Greenhouse Academy</h3>
-                <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star-half-alt"></i>
-                  <i class="far fa-star"></i>
-                </div>
-              </div>
-              <div class="review-body">
-                <p class="review-text">‘Greenhouse Academy’ es una serie divertida y entretenida. La trama de los estudiantes en una academia con secretos y desafíos es muy adictiva. Me gustaron las relaciones entre los personajes y el toque de misterio. Ideal para pasar el rato.<br><br><br></p>
-              </div>
-              <div class="review-images">
-                <img src="https://static.timesofisrael.com/www/uploads/2017/09/image001-1024x640.jpg" alt="Stranger Things">
-                <img src="https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABV9L63dZn_L3ms03OeB6RilV1WId1txwm22QnvLpfgJ9dGI26jHwcjHUuC_uK-iHlb-mOidEf0aaO8hgR4EE-QRb_F2p6nyhHa0l.jpg?r=543" alt="Producto 2">
-              </div>
-            </div>
-          </div>
-          <!-- Reseña 2 -->
-          <div class="carousel-item">
-            <div class="review-container">
-              <div class="review-header">
-                <h3 class="review-title">Sin Novedad en el Frente</h3>
-                <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                </div>
-              </div>
-              <div class="review-body">
-                <p class="review-text">‘Sin novedad en el frente’ es una película poderosa y conmovedora. Captura la brutalidad y la desesperanza de la guerra de manera impactante. Las actuaciones son intensas y la historia te deja pensando mucho después de que termina. Definitivamente vale la pena verla.<br><br></p>
-              </div>
-              <div class="review-images">
-                <img src="https://hips.hearstapps.com/hmg-prod/images/sin-novedad-en-el-frente-1667385417.jpg" alt="Producto 3">
-                <img src="https://blogs.gestion.pe/el-cine-es-un-espejo/wp-content/uploads/sites/133/2023/03/AllQuietOnTheWesternFront_%EF%BF%BDReinerBajo_02.jpg" alt="Producto 4">
-              </div>
-            </div>
-          </div>
-          <!-- Reseña 3 -->
-          <div class="carousel-item">
-            <div class="review-container">
-              <div class="review-header">
-                <h3 class="review-title">Vivir dos veces</h3>
-                <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-              </div>
-              <div class="review-body">
-                <p class="review-text">‘Vivir dos veces’ es una película entrañable y llena de corazón. La historia es emotiva y las actuaciones son geniales, especialmente la de su protagonista. Te hace reír y llorar, y al final, te deja una sensación cálida y positiva. Muy recomendable.<br><br><br></p>
-              </div>
-              <div class="review-images">
-                <img src="https://www.loslunesseriefilos.com/wp-content/uploads/2020/12/critica-vivir-dos-veces-netflix.jpg" alt="Producto 5">
-                <img src="https://nolich.com/wp-content/uploads/2020/01/Screen-Shot-2020-01-09-at-16.02.31.png" alt="Producto 6">
-              </div>
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#reviewCarousel3" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#reviewCarousel3" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-      
-
-
-  <!-- Controles del Carrusel -->
-
-</div>
-
-<div style="display: flex; justify-content: center; align-items: center; background-color: #ffffff; padding: 20px; width: 200px; margin: 0 auto;">
-    <img src="https://www.webhosting.pe/images/pagos/niubiz.png" alt="Medios de Pago y Síguenos">
-</div>
-
-
-<div class="footer">
-    <div class="social-media">
-        <a href="https://www.facebook.com" target="_blank">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" alt="Facebook">
-        </a>
-        <a href="https://www.instagram.com" target="_blank">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram">
-        </a>
-        <a href="https://www.youtube.com" target="_blank">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube">
-        </a>
-    </div>
-    <div class="reserved">
-      <div style="text-align: center;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Logo de la Página" style="width: 90px; vertical-align: middle;">
-    </div>
-</div>
-
-        <p>&copy; <span id="currentYear"></span> Todos los derechos reservados</p>
-    </div>
-</div>
-
-  <script>
-    // Script para actualizar el año automáticamente
-    document.getElementById("currentYear").textContent = new Date().getFullYear();
-</script>
-
+  
+    <script>
+      // Script para actualizar el año automáticamente
+      document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>

@@ -45,15 +45,16 @@
     <div class="container">
         <h1>Seleccione un Plan</h1>
         <form id="planForm">
-            <input type="hidden" name="email" value="<%= email %>"> <!-- Asegúrate de que esto esté definido -->
+            <input type="hidden" id="emailInput" name="email" value="<%= email || '' %>"> <!-- El email se pasa aquí -->
             <label for="plan">Elija un plan:</label>
             <select name="plan" required>
                 <option value="Plan Básico">Plan Básico</option>
                 <option value="Plan Estándar">Plan Estándar</option>
                 <option value="Plan Premium">Plan Premium</option>
             </select>
-            <button type="submit" class="btn btn-danger mt-3">Seleccionar Plan</button>
+            <button type="submit" class="btn btn-primary">Seleccionar Plan</button>
         </form>
+
         <div id="result" class="mt-3"></div>
     </div>
 
@@ -69,7 +70,7 @@
             })
             .then(response => response.json())
             .then(data => {
-                alert(data.message); // Muestra el mensaje de elección de plan
+                alert(`Usted ha elegido el plan ${data.plan} con el correo ${data.email}`); // Muestra el mensaje de elección de plan
                 // Ahora puedes pedir el pago
                 const paymentEmail = this.email.value; // Obtén el email del formulario
 

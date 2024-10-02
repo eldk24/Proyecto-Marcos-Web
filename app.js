@@ -2,15 +2,25 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const multer = require("multer");
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({ secret: "your_secret_key", resave: false, saveUninitialized: true }));
+app.use(express.static(path.join(__dirname, "img"))); // Servir archivos estáticos
+
+app.set("view engine", "ejs");
+
+// Configuración de sesiones
+app.use(session({
+    secret: "miSecreto",
+    resave: false,
+    saveUninitialized: true
+}));
+
+const upload = multer({ dest: 'img/' }); // Configuración de multer para la subida de imágenes
 
 let users = {};
-
-// Servir archivos estáticos desde la carpeta "img"
-app.use(express.static(path.join(__dirname, "img")));
+let plans = {};
 
 // Ruta para la página principal
 app.get("/", (req, res) => {
@@ -23,8 +33,7 @@ app.get("/peliculas", (req, res) => {
 });
 
 app.get("/series", (req, res) => {
-    const email = req.session.email || ""; // Obtener el email de la sesión
-    res.sendFile(path.join(__dirname, "series.html")); // Asegúrate que se llame series.html
+    res.sendFile(path.join(__dirname, "series.html"));
 });
 
 app.get("/sobre", (req, res) => {
@@ -40,22 +49,23 @@ app.get("/registro", (req, res) => {
     res.sendFile(path.join(__dirname, "registro.html"));
 });
 
+app.get("/perfil", (req, res) => {
+    res.sendFile(path.join(__dirname, "perfil.html"));
+});
+
 // Ruta para manejar el registro de usuario
 app.post("/register", (req, res) => {
     const { nombre, email, contraseña } = req.body;
 
-    // Verificar si el usuario ya está registrado
     if (users[email]) {
         return res.send("El usuario ya está registrado. <a href='/registro'>Volver</a>");
     }
 
-    // Guardar el usuario en la estructura de usuarios
     users[email] = { nombre, contraseña };
-    req.session.email = email; // Guardar el email en la sesión
     res.redirect("/login");
 });
 
-// Ruta para mostrar el formulario de inicio de sesión (login)
+// Ruta para mostrar el formulario de inicio de sesión
 app.get("/login", (req, res) => {
     res.sendFile(path.join(__dirname, "login.html"));
 });
@@ -64,43 +74,80 @@ app.get("/login", (req, res) => {
 app.post("/login", (req, res) => {
     const { email, contraseña } = req.body;
 
-    // Verificar credenciales
     if (!users[email] || users[email].contraseña !== contraseña) {
         return res.send("Credenciales incorrectas. <a href='/login'>Volver</a>");
     }
 
-    // Guardar el email en la sesión
     req.session.email = email;
-    // Redirigir a la página de series si el login es exitoso
-    res.redirect("/series");
+
+    if (plans[email]) {
+        return res.redirect("/peliculas");
+    } else {
+        res.redirect("/series");
+    }
 });
 
-// Ruta para manejar la selección de plan
+// Ruta para seleccionar el plan
 app.post("/select-plan", (req, res) => {
-    const email = req.body.email;
-    const plan = req.body.plan;
+    const { email, plan } = req.body;
 
-    // Asegurarse de que se reciban los datos
     if (!email || !plan) {
-        return res.status(400).json({ message: "Email o plan no definido" });
+        return res.status(400).json({ message: "Datos faltantes" });
     }
 
-    // Guardar la selección del plan en la sesión
-    req.session.plan = plan;
-
-    // Devolver respuesta con un mensaje
-    res.json({ message: `Usted ha elegido el plan: ${plan}` });
+    plans[email] = plan;
+    res.json({ message: `Usted ha elegido el plan ${plan}`, plan, email }); // Asegúrate de enviar el email aquí
 });
 
 // Ruta para manejar el pago
 app.post("/pay", (req, res) => {
-    const email = req.body.email;
+    const { email } = req.body;
 
-    // Aquí puedes manejar la lógica para procesar el pago
+    if (!email) {
+        return res.status(400).json({ message: "Falta el email" });
+    }
+
     console.log(`Email: ${email} ha realizado un pago`);
 
-    // Devolver un mensaje de pago exitoso
-    res.json({ message: "Pago exitoso. Redirigiendo a la página de películas..." });
+    res.json({ message: "Pago exitoso" });
+});
+
+// Ruta para mostrar el perfil del usuario
+app.get("/perfil", (req, res) => {
+    const email = req.session.email; // Obtiene el email de la sesión
+    const user = users[email]; // Obtiene el usuario usando el email
+
+    if (!user) {
+        return res.redirect("/login"); // Redirige a login si no hay usuario
+    }
+
+    res.render("perfil", { nombre: user.nombre, email: email }); // Pasa el nombre y el email a la plantilla
+});
+
+// Ruta para manejar la subida de la foto de perfil
+app.post('/upload', upload.single('image'), (req, res) => {
+    if (!req.file) {
+        return res.send("No se subió ninguna imagen.");
+    }
+
+    // Aquí puedes guardar la información del archivo o actualizar el perfil
+    res.send(`Imagen subida: ${req.file.filename}`);
+});
+
+// Ruta para cerrar sesión
+app.get("/cerrar", (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            return res.send("Error al cerrar sesión");
+        }
+
+        res.send(`
+            <script>
+                alert("Sesión cerrada con éxito.");
+                window.location.href = "/";
+            </script>
+        `);
+    });
 });
 
 // Iniciar servidor en el puerto 3100

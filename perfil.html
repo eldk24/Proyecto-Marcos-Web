@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .profile-container {
+            display: flex;
+            align-items: center;
+        }
+        .profile-pic {
+            width: 100px; /* Ajusta el tamaño de la imagen según tus necesidades */
+            height: 100px;
+            border-radius: 50%; /* Hace que la imagen sea circular */
+            margin-left: 20px; /* Espacio entre el texto y la imagen */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Perfil de Usuario</h1>
+        <div class="profile-container">
+            <div>
+                <p><strong>Nombre:</strong> <%= nombre %></p>
+                <p><strong>Email:</strong> <%= email %></p>
+                <form id="profilePicForm" enctype="multipart/form-data">
+                    <label for="profilePic">Sube tu foto de perfil:</label>
+                    <input type="file" name="profilePic" accept="image/*" required>
+                    <button type="submit" class="btn btn-primary mt-2">Subir Foto</button>
+                </form>
+            </div>
+            <img src="" alt="Foto de perfil" id="profileImage" class="profile-pic" style="display: none;">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('profilePicForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Evita que el formulario se envíe de manera tradicional
+            const formData = new FormData(this);
+
+            fetch('/upload-profile-pic', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message); // Muestra mensaje de éxito
+                document.getElementById('profileImage').src = data.path; // Muestra la imagen subida
+                document.getElementById('profileImage').style.display = 'block'; // Hace visible la imagen
+            });
+        });
+    </script>
+</body>
+</html>
