@@ -1,523 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Series</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  
-  <style>
-    body {
-      background-color: rgb(33, 33, 33);
-    }
-
-    .custom-paragraph {
-      font-size: 18px;
-      font-weight: bold;
-      margin: 10px 0 0 0;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-    .main-heading {
-      font-size: 40px;
-      font-weight: bold;
-      margin: 24px 12px 12px 12px;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
-    img {
-      width: 100%;
-    }
-
-    .turnos {
-      display: flex;
-      justify-content: space-between; /* Espacio uniforme */
-      align-items: center;
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto; /* Centrar */
-      position: relative; /* Para la posición del mensaje emergente */
-    }
-
-    .turnos .item {
-      position: relative;
-      text-align: center;
-      margin: 0 10px; /* Espacio horizontal entre objetos */
-      margin-bottom: 140px;
-    }
-
-    .turnos img {
-      width: 80px;
-      height: 80px;
-      display: block;
-      margin: 0 auto;
-      margin-top: 140px;
-    }
-
-    .custom-paragraph {
-      font-size: 18px;
-      font-weight: bold;
-      margin: 16px 0 0 0;
-    }
-
-    /* Mensaje emergente */
-    .message {
-      position: absolute;
-      bottom: 60%; /* Acá se ajusta el mensaje emergente */
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: black;
-      color: white;
-      padding: 5px;
-      border-radius: 5px;
-      white-space: nowrap;
-      display: none;
-      z-index: 1;
-      font-size: 12px;
-    }
-
-    .item:hover .message {
-      display: block;
-    }
-
-    /* Filas con colores de fondo */
-    .row {
-      background-color: rgb(33, 33, 33); 
-      color: white;
-    }
-
-    /* Espaciado para la cuarta fila */
-    .row4 .custom-paragraph {
-      margin-bottom: 3px;
-    }
-
-    .carousel-caption {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 24px; /* Ajuste de posición para móviles */
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Plan</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #141414; /* Fondo oscuro */
+            color: #ffffff; /* Color del texto */
+            font-family: 'Arial', sans-serif; /* Tipografía */
         }
-        .carousel-caption h5 {
-            font-size: 1.5rem; /* Tamaño del texto del título */
-        }
-        .carousel-caption p {
-            font-size: 1rem; /* Tamaño del texto del párrafo */
-        }
-
-        /* Ajustes de texto para pantallas pequeñas */
-        @media (max-width: 1200px) {
-            .carousel-caption h5 {
-                font-size: 1.25rem;
-            }
-            .carousel-caption p {
-                font-size: 0.875rem;
-            }
-        }
-        @media (max-width: 768px) {
-            .carousel-caption h5 {
-                font-size: 1rem;
-            }
-            .carousel-caption p {
-                font-size: 0.75rem;
-            }
-        }
-        @media (max-width: 576px) {
-            .carousel-caption {
-                margin-bottom: 0; /* Quitar margen inferior en pantallas muy pequeñas */
-            }
-            .carousel-caption h5 {
-                font-size: 0.875rem;
-            }
-            .carousel-caption p {
-                font-size: 0.65rem;
-            }
-        }
-
-    .fixed-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: rgb(33, 33, 33);
-  padding: 10px 0;
-}
-
-.nav-pills .nav-link {
-  color: rgb(183, 183, 183);
-  background-color: rgba(0, 0, 0, 0);
-  padding: 5px 10px;
-}
-
-.nav-pills .nav-link.active {
-  color: rgb(255, 255, 255);
-  background-color: rgb(102, 0, 0);
-}
-
-body {
-  padding-top: 100px; /* Ajusta según la altura de la barra */
-}
-
-
-
-
-
-    .text-center {
-      text-align: center;
-    }
-
-    .container1 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      padding: 20px;
-    }
-
-    .slider {
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .slide-track {
-      display: flex;
-      animation: scroll 40s linear infinite;
-      width: calc(200px * 21); /* Ajusta el tamaño total según el número de slides */
-    }
-
-    .slide {
-      width: 200px;
-      margin-right: 20px; /* Espacio entre las imágenes */
-    }
-
-    .slide img {
-      width: 100%;
-      display: block;
-      border-radius: 8px;
-    }
-
-    @keyframes scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(calc(-200px * 7)); /* Ajustado para el número de slides visibles */
-      }
-    }
-
-    /* Ajustar el tamaño de las imágenes en el grid */
-    .container-fluid img {
-      width: 100%;
-      height: 100%;
-      border-radius: 8px;
-    }
-
-    .header h1 {
-      font-size: 27px;
-      color: white;
-      text-align: center;
-      margin: 20px 0; /* Espaciado adicional alrededor del título */
-    }
-
-    .container-fluid img {
-      width: 100%;
-      height: auto; /* Mantiene la proporción de la imagen */
-      border-radius: 8px;
-    }
-
-    .modal-img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    .container-fluid img {
-      width: 100%;
-      height: auto; /* Mantiene la proporción de la imagen */
-      border-radius: 8px;
-    }
-
-    .modal-img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    /* Espaciado para la imagen del modal */
-    .modal-body {
-      display: flex;
-      align-items: center;
-    }
-
-    .modal-body .content {
-      flex: 1;
-      margin-right: 20px;
-    }
-
-    .modal-body .image-container {
-      flex: 0 0 200px;
-    }
-
-    .footer {
+        h1 {
+            margin-bottom: 30px;
             text-align: center;
+            font-size: 2.5em; /* Tamaño del título */
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #222; /* Fondo del contenedor */
             padding: 20px;
-            background-color: #222;
-            color: white;
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra */
         }
-        .footer img {
-            margin: 10px;
-            width: 30px;
-            height: 30px;
-            vertical-align: middle;
+        label {
+            font-size: 1.2em; /* Tamaño de la etiqueta */
         }
-        .footer .social-media {
-            margin-bottom: 20px;
+        select {
+            background-color: #333; /* Fondo del select */
+            color: #ffffff; /* Color del texto */
+            border: 1px solid #555; /* Borde */
         }
-        .footer .reserved {
-            border-top: 1px solid #555;
-            padding-top: 10px;
-            
+        select:focus {
+            border-color: #e50914; /* Color del borde en foco */
+            outline: none; /* Sin contorno */
         }
-
-  </style>
+        button {
+            width: 100%; /* Botón ocupa todo el ancho */
+        }
+    </style>
 </head>
 <body>
-  <div style="background-color: rgb(33, 33, 33); font-size: 12px;" class="container-fluid">
-    <header class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom fixed-header">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none ms-3">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-        <span style="color: rgb(255, 255, 255); font-size: 14px;" class="fs-4">Netflix</span>
-      </a>
-  
-      <ul class="nav nav-pills mx-auto">
-        <li class="nav-item"><a href="/pagina" class="nav-link active" aria-current="page">Inicio</a></li>
-        <li class="nav-item"><a href="/series" class="nav-link">Series</a></li>
-        <li class="nav-item"><a href="/peliculas" class="nav-link">Planes</a></li>
-        <li class="nav-item"><a href="/Extras" class="nav-link">Extras</a></li>
-        <li class="nav-item"><a href="/sobre" class="nav-link">Acerca de Netflix</a></li>
-        <li class="nav-item"><a href="/Registro" class="nav-link">Registro/iniciar sesion</a></li>
-      </ul>
-    </header>
-  </div>
-  
-  
-  
-
-  <div id="carouselExampleAutoplaying" class="carousel sliderr" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="./img/breakingcarrusel.png" class="d-block w-100" alt="img1">
-            <div class="carousel-caption">
-                <h5>Breaking Bad</h5>
-                <p>Breaking Bad narra la transformación de Walter White, un profesor de química de secundaria que, tras ser diagnosticado con cáncer de pulmón, decide fabricar metanfetamina para asegurar el futuro financiero de su familia. Junto a su antiguo estudiante Jesse Pinkman, Walter se adentra en el peligroso mundo del narcotráfico, donde su moralidad y ética se desmoronan.</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="./img/casadepapelcarrusel.png" class="d-block w-100" alt="img2">
-            <div class="carousel-caption">
-                <h5>La Casa de Papel: Temporada 5</h5>
-                <p>Después de que Lisboa entrase en el Banco de España, la banda vuelve a estar reunida otra vez. Pero no todo van a ser buenas noticias. Sierra encuentra al Profesor tras descubrir su escondite secreto a base de pedir un par de favores, ¿Podría Sierra unirse a la banda? Los protagonistas se ponen manos a la obra para conseguir sacar todo el oro que hay en el Banco de España.</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="./img/narcoscarrusell.png" class="d-block w-100" alt="img3">
-            <div class="carousel-caption">
-                <h5>Narcos</h5>
-                <p>Narcos es una serie que sigue la vida de Pablo Escobar y el Cartel de Medellín en Colombia durante los años 80 y 90. La trama explora el ascenso de Escobar al poder como uno de los narcotraficantes más infames de la historia, y su impacto en la política, la sociedad y la violencia en Colombia.</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="./img/elitecarrusel.png" class="d-block w-100" alt="img4">
-            <div class="carousel-caption">
-                <h5>Elite</h5>
-                <p>Élite es una serie española que sigue la vida de un grupo de estudiantes en un exclusivo colegio privado tras la llegada de tres nuevos alumnos de clase trabajadora. La serie combina drama, misterio y suspenso mientras explora las tensiones y rivalidades entre los estudiantes, que culminan en un trágico asesinato.</p>
-            </div>
-        </div>
+    <div class="container">
+        <h1>Seleccione un Plan</h1>
+        <form id="planForm">
+            <input type="hidden" name="email" value="<%= email %>"> <!-- Asegúrate de que esto esté definido -->
+            <label for="plan">Elija un plan:</label>
+            <select name="plan" required>
+                <option value="Plan Básico">Plan Básico</option>
+                <option value="Plan Estándar">Plan Estándar</option>
+                <option value="Plan Premium">Plan Premium</option>
+            </select>
+            <button type="submit" class="btn btn-danger mt-3">Seleccionar Plan</button>
+        </form>
+        <div id="result" class="mt-3"></div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
 
+    <script>
+        document.getElementById('planForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Evita que el formulario se envíe de manera tradicional
+            const formData = new FormData(this);
+            const params = new URLSearchParams(formData);
 
-  <br>
+            fetch('/select-plan', {
+                method: 'POST',
+                body: params
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message); // Muestra el mensaje de elección de plan
+                // Ahora puedes pedir el pago
+                const paymentEmail = this.email.value; // Obtén el email del formulario
 
-  <div class="container1">
-    <div class="slider">
-      <div class="slide-track">
-        <div class="slide"><img src="./img/auspiciador1.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="./img/auspiciador2.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="./img/auspiciador3.jpg" alt="Auspiciador 3"></div>
-        
-        <div class="slide"><img src="./img/auspiciador1.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="./img/auspiciador2.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="./img/auspiciador3.jpg" alt="Auspiciador 3"></div>
-        
-        <div class="slide"><img src="./img/auspiciador1.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="./img/auspiciador2.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="./img/auspiciador3.jpg" alt="Auspiciador 3"></div>
-
-        <div class="slide"><img src="./img/auspiciador1.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="./img/auspiciador2.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="./img/auspiciador3.jpg" alt="Auspiciador 3"></div>
-
-        <div class="slide"><img src="./img/auspiciador1.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="./img/auspiciador2.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="./img/auspiciador3.jpg" alt="Auspiciador 3"></div>
-
-        <div class="slide"><img src="./img/auspiciador1.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="./img/auspiciador2.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="./img/auspiciador3.jpg" alt="Auspiciador 3"></div>
-
-        <div class="slide"><img src="./img/auspiciador1.jpg" alt="Auspiciador 1"></div>
-        <div class="slide"><img src="./img/auspiciador2.jpg" alt="Auspiciador 2"></div>
-        <div class="slide"><img src="./img/auspiciador3.jpg" alt="Auspiciador 3"></div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="header">
-    <h1><b>Series populares🔥</b></h1>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
-    <div class="modal-dialog custom-modal-dialog">
-      <div class="modal-content custom-modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="movieModalLabel">Título de la Película</h5>
-
-        </div>
-        <div class="modal-body d-flex">
-          <div class="content">
-            <p><strong>Duración:</strong> 120 minutos</p>
-            <p><strong>Descripción:</strong> Esta es una breve descripción de la película.</p>
-          </div>
-          <div class="image-container">
-            <img src="" alt="Imagen del Modal" class="modal-img" id="modalImage">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button style="background-color: rgb(146, 0, 0);" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var modal = document.getElementById('movieModal');
-      var modalTitle = modal.querySelector('.modal-title');
-      var modalContent = modal.querySelector('.content');
-      var modalImage = modal.querySelector('#modalImage');
-
-      modal.addEventListener('show.bs.modal', function (event) {
-        var button = event.relatedTarget; // Imagen que activó el modal
-        var title = button.getAttribute('data-title');
-        var duration = button.getAttribute('data-duration');
-        var description = button.getAttribute('data-description');
-        var imageUrl = button.getAttribute('data-image');
-
-        modalTitle.textContent = title;
-        modalContent.innerHTML = `<p><strong>Duración:</strong> ${duration}</p><p><strong>Descripción:</strong> ${description}</p>`;
-        modalImage.src = imageUrl;
-      });
-    });
-  </script>
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3">
-        <img style="margin-top: 16px;" src="./img/breaking.png" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Breaking Bad" data-duration="60 horas" data-description="Serie sobre un profesor de química que se convierte en fabricante de metanfetaminas." data-image="https://www.pngall.com/wp-content/uploads/13/Breaking-Bad-Logo-PNG-Image.png">
-      </div>
-      <div class="col-md-3">
-        <img style="margin-top: 16px;" src="./img/casadepapel.png" alt="Imagen 2" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="La Casa de Papel" data-duration="37 horas" data-description="Un grupo de delincuentes lleva a cabo un gran asalto a la Real Casa de la Moneda de España." data-image="https://seeklogo.com/images/L/la-casa-de-papel-logo-80111026D5-seeklogo.com.png">
-      </div>
-      <div class="col-md-3">
-        <img style="margin-top: 16px;" src="./img/narcos.png" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Narcos" data-duration="31 horas" data-description="Serie que narra la vida del infame narcotraficante Pablo Escobar." data-image="https://c.wallhere.com/photos/f1/d4/Narcos_Pablo_Escobar_Netflix_Wagner_Moura-108608.png!s1">
-      </div>
-      <div class="col-md-3">
-        <img style="margin-top: 16px;" src="./img/elite.png" alt="Imagen 4" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Élite" data-duration="25 horas" data-description="Drama que sigue a un grupo de adolescentes en una escuela de élite con secretos oscuros." data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Elite_Netflix_Logo_02.svg/2560px-Elite_Netflix_Logo_02.svg.png">
-      </div>
-    </div>
-  </div>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3">
-        <img style="margin-top: 16px;" src="./img/greenhouse.jpg" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Greenhouse Academy" data-duration="12 horas" data-description="Greenhouse Academy sigue a los hermanos Hayley y Alex Woods mientras ingresan a una exclusiva escuela de élite llena de secretos y misterios. En medio de desafíos académicos y deportivos, descubren oscuros secretos que podrían poner en peligro sus vidas." data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKRebnQLrwyaC6BKE0ArnIoqhQ1HXuGxBnnjFc97louWuaeWMeUFG1GHBDm3aJmhRyzUA&usqp=CAU">
-      </div>
-      <div class="col-md-3">
-        <img style="margin-top: 16px;" src="./img/toyboy.jpg" alt="Imagen 2" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Toy Boy" data-duration="15 horas" data-description="*Toy Boy es una serie española que sigue a Hugo Beltrán, un stripper que sale de prisión tras cumplir una condena por un crimen que no cometió. Al reintegrarse a la sociedad, busca descubrir la verdad detrás de su condena mientras navega por un mundo de lujo, engaños y traiciones." data-image="https://planoaplano.es/wp-content/uploads/2018/12/toy-boy-logo.png">
-      </div>
-      <div class="col-md-3">
-        <img style="margin-top: 16px;" src="./img/vivirdosveces.jpg" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Vivir Dos Veces" data-duration="2 horas" data-description="Vivir dos veces es una película española que sigue a Emilio, un profesor de matemáticas jubilado que enfrenta el diagnóstico de Alzheimer. Decidiendo hacer un último esfuerzo por encontrar a su amor de juventud, se embarca en un viaje con su hija y su nieta. A lo largo del viaje, la familia enfrenta desafíos y descubren nuevas dimensiones en sus relaciones y en la vida de Emilio." data-image="https://es.web.img3.acsta.net/pictures/20/05/04/19/33/3400659.jpg">
-      </div>
-      <div class="col-md-3">
-        <img style="margin-top: 16px;" src="./img/rétame.jpg" alt="Imagen 4" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Rétame" data-duration="5 horas" data-description="Rétame es una serie de Netflix que sigue a un grupo de amigos que, en busca de aventuras y desafíos, se inscriben en un reality show extremo. En el transcurso del programa, deben enfrentarse a pruebas físicas y psicológicas, revelando secretos personales y poniendo a prueba sus lealtades. A medida que el concurso se intensifica, las tensiones y los conflictos surgen, llevando a sorprendentes giros y revelaciones." data-image="https://es.web.img2.acsta.net/c_162_216/pictures/20/03/25/12/08/1126742.jpg">
-      </div>
-    </div>
-  </div>
-
-  <div class="header">
-    <h1 style="margin-top: 48px;"><b>Estrenos🎥</b></h1>
-  </div>
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3">
-        <img style="margin-top: 16px;" src="./img/ElHoyo2.jpg" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="El Hoyo 2" data-duration="No disponible" data-description="A medida que un líder misterioso impone su ley en el Hoyo, una nueva inquilina se implica en la batalla contra este controvertido método para luchar contra el brutal sistema de alimentación. Pero cuando alimentarte del plato equivocado se convierte en una sentencia de muerte, ¿hasta dónde estarías dispuesto a llegar para salvar tu vida? Secuela de El hoyo" data-image="https://lachaqueta.news/wp-content/uploads/2024/07/El-Hoyo-2.webp">
-      </div>
-      <div class="col-md-3">
-        <img style="margin-top: 16px;" src="./img/TheImaginary.jpg" alt="Imagen 2" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="The Imaginary" data-duration="No disponible" data-description="Cuando Jessica vuelve con su familia a la casa de su infancia, Alice, su hijastra más pequeña, comienza a desarrollar un extraño apego hacia Chauncey, el oso de peluche que encuentra en el sótano. En un primer momento, Alice y Chauncey se entretienen con juegos aparentemente divertidos que, poco a poco, irán volviéndose más siniestros y peligrosos. A medida que el comportamiento de Alice se va volviendo más inquietante, Jessica decide intervenir, pero cuando lo hace se da cuenta de que Chauncey es mucho más que un inofensivo oso de peluche." data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJFG_ri0KnR5oHmsOFTkBNTLz3zfHEQAelzg&s">
-      </div>
-      <div class="col-md-3">
-        <img style="margin-top: 16px;" src="./img/TimeCut.jpg" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Time Cut" data-duration="No disponible" data-description="Una estudiante de secundaria viaja accidentalmente a 2003 y decide detener al asesino en serie que asesinó a su hermana." data-image="https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABW--_QxaHjDCdf_nTMY6nBLrf6RgtV4O4h3Wiz2xKB0ytK6e7riGJFXoj9J0J4JNay65d5xQPuHjZwxAUTHY4oS7bJ3_S6qf2zK-6hko6HPbXKeDKi-N72K1B8KUNrn8YEtRnw.webp?r=70f">
-      </div>
-      <div class="col-md-3">
-        <img style="margin-top: 16px;" src="./img/Incoming.jpg" alt="Imagen 4" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Rétame" data-duration="No disponible" data-description="En su primera semana de instituto, cuatro estudiantes se desmelenan durante una noche loca donde no faltarán los equívocos." data-image="https://www.nobartv.co.id/wp-content/uploads/2024/08/incoming-netflix-movie-chernin-brothers-august-2024-780x470.jpg">
-      </div>
-    </div>
-  </div>
-
-  <div style="display: flex; justify-content: center; align-items: center; background-color: #ffffff; padding: 20px; width: 200px; margin: 0 auto; margin-top: 24px;">
-    <img src="https://www.webhosting.pe/images/pagos/niubiz.png" alt="Medios de Pago y Síguenos">
-</div>
-
-
-<div class="footer">
-    <div class="social-media">
-        <a href="https://www.facebook.com" target="_blank">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" alt="Facebook">
-        </a>
-        <a href="https://www.instagram.com" target="_blank">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram">
-        </a>
-        <a href="https://www.youtube.com" target="_blank">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube">
-        </a>
-    </div>
-    <div class="reserved">
-      <div style="text-align: center;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Logo de la Página" style="width: 90px; vertical-align: middle;">
-    </div>
-    
-</div>
-
-        <p>&copy; <span id="currentYear"></span> Todos los derechos reservados</p>
-    </div>
-</div>
-
-  <script>
-    // Script para actualizar el año automáticamente
-    document.getElementById("currentYear").textContent = new Date().getFullYear();
-
-    
-</script>
-
+                fetch('/pay', {
+                    method: 'POST',
+                    body: new URLSearchParams({ email: paymentEmail })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message); // Muestra el mensaje de pago exitoso
+                    window.location.href = '/peliculas'; // Redirige a la página de películas
+                });
+            });
+        });
+    </script>
 </body>
 </html>
