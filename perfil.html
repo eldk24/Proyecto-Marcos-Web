@@ -6,20 +6,46 @@
     <title>Perfil de Usuario</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        body {
+            background-color: #141414; /* Fondo oscuro similar a Netflix */
+            color: #ffffff; /* Texto blanco */
+        }
+        .container {
+            margin-top: 50px;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #222222; /* Fondo del contenedor */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra suave */
+        }
         .profile-container {
             display: flex;
             align-items: center;
+            justify-content: space-between; /* Espacio entre texto e imagen */
         }
         .profile-pic {
             width: 100px; /* Ajusta el tamaño de la imagen según tus necesidades */
             height: 100px;
             border-radius: 50%; /* Hace que la imagen sea circular */
             margin-left: 20px; /* Espacio entre el texto y la imagen */
+            border: 2px solid #e50914; /* Borde rojo similar a Netflix */
+        }
+        .btn-primary {
+            background-color: #e50914; /* Color del botón */
+            border: none; /* Sin borde */
+        }
+        .btn-primary:hover {
+            background-color: #f40612; /* Color del botón al pasar el mouse */
+        }
+        h1 {
+            color: #e50914; /* Título en rojo */
+        }
+        label {
+            color: #e50914; /* Color de la etiqueta */
         }
     </style>
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container">
         <h1>Perfil de Usuario</h1>
         <div class="profile-container">
             <div>
@@ -50,7 +76,4 @@
                 document.getElementById('profileImage').src = data.path; // Muestra la imagen subida
                 document.getElementById('profileImage').style.display = 'block'; // Hace visible la imagen
             });
-        });
-    </script>
-</body>
-</html>
+   
