@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"> 
+  <style>
+    body {
+      background-color: #222;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+
+    .fixed-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgb(33, 33, 33);
+      padding: 10px 0;
+    }
+
+    .nav-pills .nav-link {
+      color: rgb(183, 183, 183);
+      background-color: rgba(0, 0, 0, 0);
+      padding: 5px 10px;
+    }
+
+    .nav-pills .nav-link.active {
+      color: rgb(255, 255, 255);
+      background-color: rgb(102, 0, 0);
+    }
+
+    .container {
+      max-width: 100%;
+      margin: auto;
+    }
+
+    .contenido {
+      max-width: 100%;
+      margin: auto;
+    }
+
+    .about-section {
+      position: relative;
+      text-align: center;
+      color: white;
+      padding: 100px 20px;
+      background: url('https://i0.wp.com/latorrenews.com/wp-content/uploads/2024/05/image-344.png?resize=696%2C392&ssl=1') no-repeat center center;
+      background-size: cover;
+      height: 100vh;
+    }
+
+    .about-section .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.8);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .about-section h1 {
+      font-size: 3rem; 
+      font-weight: 700; 
+      font-family: 'Poppins', sans-serif; 
+      margin-bottom: 20px;
+    }
+
+    .about-section p {
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+
+    .info-section {
+      display: flex;
+      justify-content: center; 
+      align-items: center;     
+      gap: 30px;               
+      flex-wrap: wrap;        
+      margin: 40px 20px;      
+    }
+
+    .info-card {
+      padding: 20px;
+      background-color: #381a63;
+      border-radius: 10px;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0);
+      color: white;
+      max-width: 300px;
+      text-align: center;
+      flex: 1 1 300px;        
+    }
+
+    .info-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .info-card p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .contenido {
+  max-width: 1200px; /* Ajusta el ancho máximo según tu diseño */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  padding: 0 15px; /* Añade un poco de relleno horizontal */
+}
+
+.features-section, .faq-section {
+  padding: 40px 20px;
+  background-color: #333; /* Fondo opcional para diferenciar secciones */
+  border-radius: 10px; /* Bordes redondeados opcionales */
+}
+
+.features-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.features-list li {
+  background-color: #444;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.features-list li h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.features-list li p {
+  margin: 5px 0 0;
+}
+
+.accordion-item {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 8px;
+}
+
+.accordion-button {
+  color: #fff;
+  background-color: #444; 
+  border: none;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #675b5b; 
+  color: #ffd000;
+}
+
+.accordion-body {
+  background-color: #333; 
+  color: #fff; 
+}
+
+
+    @media (max-width: 768px) {
+      .info-section {
+        flex-direction: column; 
+      }
+
+      .info-card {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .about-section h1 {
+        font-size: 2rem;
+      }
+
+      .about-section p {
+        font-size: 1rem;
+      }
+
+      .info-card h2 {
+        font-size: 1.25rem;
+      }
+
+      .info-card p {
+        font-size: 0.875rem;
+      }
+    }
+
+    .iframe-container {
+      display: flex;
+      justify-content: center; /* Centra horizontalmente */
+      align-items: center; /* Centra verticalmente (si es necesario) */
+      height: auto; /* Opcional: Ajusta el alto del contenedor si deseas centrar verticalmente */
+    }
+      
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #222;
+      color: white;
+    }
+
+    .footer img {
+      margin: 10px;
+      width: 30px;
+      height: 30px;
+      vertical-align: middle;
+    }
+
+    .footer .social-media {
+      margin-bottom: 20px;
+    }
+
+    .footer .reserved {
+      border-top: 1px solid #555;
+      padding-top: 10px;
+    }
+
+    /* CSS para centrar las barras de progreso */
+    .progress-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            margin: 0; /* Elimina el margen alrededor del contenedor */
+        }
+        .progress {
+            width: 80%;
+            max-width: 600px;
+            margin: 10px 0; /* Reduce el margen entre las barras de progreso */
+            height: 4rem; /* Aumenta la altura de las barras */
+            position: relative;
+        }
+        .progress-bar {
+            height: 100%; /* Asegura que la barra de progreso use toda la altura del contenedor */
+            position: relative;
+        }
+        .progress-bar-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            line-height: 2rem; /* Ajusta esto para que coincida con la altura de la barra */
+        }
+  </style>
+</head>
+<body>
+  <header class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom fixed-header">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none ms-3">
+      <span class="fs-4" style="color: rgb(255, 255, 255); font-size: 14px;">Metflix</span>
+    </a>
+
+    <ul class="nav nav-pills mx-auto">
+      <li class="nav-item"><a href="/peliculas" class="nav-link">Inicio</a></li>
+      <li class="nav-item"><a href="/Extras" class="nav-link">Extras</a></li>
+      <li class="nav-item"><a href="/sobre" class="nav-link">Acerca de Netflix</a></li>
+      <li class="nav-item"><a href="/cerrar?email=user@example.com" class="nav-link">Cerrar</a></li>
+      <li class="nav-item"><a href="/perfil" class="nav-link">Perfil</a></li>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    </nav>
+</ul>
+  </header>
+
+  <div class="about-section">
+    <div class="content">
+      <h1>Películas, series ilimitadas y mucho más</h1>
+    </div>
+  </div>
+
+  <br>
+  <div class="progress-container">
+    <h1 style="color: white; margin-top: 12px; margin-bottom: 24px;">Valoración de la Plataforma:</h1>
+        <div class="progress">
+        <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-bar-text">85% - Variedad</span>
+        </div>
+    </div>
+    <div class="progress">
+        <div class="progress-bar bg-info" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-bar-text">95% - Calidad</span>
+        </div>
+    </div>
+    <div class="progress">
+        <div class="progress-bar bg-warning" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-bar-text">95% - Interfaz Intuitiva</span>
+        </div>
+    </div>
+    <div class="progress">
+        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-bar-text">100% - Contendido</span>
+        </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="contenido info-section">
+    <div class="info-card">
+      <h2>Misión</h2>
+      <p>Nuestra misión es ofrecer entretenimiento de calidad que inspire y conecte a personas de todo el mundo. Buscamos innovar continuamente para proporcionar una experiencia única y satisfactoria a nuestros suscriptores.</p>
+    </div>
+    <div class="info-card">
+      <h2>Visión</h2>
+      <p>Queremos ser la plataforma de entretenimiento líder global, proporcionando contenido que no solo entretenga, sino que también inspire y eduque. Nos dedicamos a estar a la vanguardia de la tecnología y el contenido para mantenernos relevantes en un mundo en constante cambio.</p>
+    </div>
+    <div class="info-card">
+      <h2>¿Qué Hacemos?</h2>
+      <p>Ofrecemos una extensa biblioteca de contenido, incluyendo producciones originales, películas, y series de diversos géneros. Nuestro algoritmo de recomendación personaliza la experiencia para cada usuario, asegurando que encuentres lo que más te gusta.</p>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="contenido features-section">
+    <h2>Más motivos para unirte</h2>
+    <ul class="features-list">
+      <li><h3>Sin límites</h3><p>Accede a una vasta biblioteca de contenido sin restricciones de horarios ni dispositivos.</p></li>
+      <li><h3>Vea donde quieras</h3><p>Disfruta del contenido en tu teléfono móvil, tablet o computadora.</p></li>
+      <li><h3>Sin conexión</h3><p>Descarga tus series y películas favoritas para ver sin conexión.</p></li>
+    </ul>
+  </div>
+
+  <br>
+  
+  <div class="contenido faq-section">
+    <h2>Preguntas Frecuentes</h2>
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            ¿Cuánto cuesta una suscripción?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Ofrecemos varios planes de suscripción, que comienzan desde precios accesibles hasta planes premium con características adicionales.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            ¿Puedo cancelar mi suscripción en cualquier momento?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Sí, puedes cancelar tu suscripción en cualquier momento a través de tu cuenta en nuestro sitio web.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            ¿Puedo ver Netflix en múltiples dispositivos al mismo tiempo?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Sí, dependiendo del plan de suscripción que elijas, puedes ver Netflix en múltiples dispositivos simultáneamente.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div style="display: flex; justify-content: center; align-items: center; background-color: #ffffff; padding: 20px; width: 200px; margin: 0 auto; margin-top: 24px;">
+    <img src="https://www.webhosting.pe/images/pagos/niubiz.png" alt="Medios de Pago y Síguenos" style="width: 90px; vertical-align: middle;">
+  </div>
+
+  <div class="footer">
+    <div class="social-media">
+      <a href="https://www.facebook.com" target="_blank">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" alt="Facebook">
+      </a>
+      <a href="https://www.instagram.com" target="_blank">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram">
+      </a>
+      <a href="https://www.youtube.com" target="_blank">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube">
+      </a>
+    </div>
+    <div class="reserved">
+      <div style="text-align: center;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Logo de la Página" style="width: 90px; vertical-align: middle;">
+      </div>
+      <p>&copy; <span id="currentYear"></span> Todos los derechos reservados</p>
+    </div>
+  </div>
+
+  <script>
+    // Script para actualizar el año automáticamente
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

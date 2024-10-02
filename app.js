@@ -3,12 +3,16 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const multer = require("multer");
+const fs = require("fs");
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "img"))); // Servir archivos estáticos
 
 app.set("view engine", "ejs");
+
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "img"))); // Servir archivos estáticos
+app.use(express.static("public")); // Para servir otros archivos estáticos si es necesario
 
 // Configuración de sesiones
 app.use(session({
@@ -24,33 +28,32 @@ let plans = {};
 
 // Ruta para la página principal
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "pagina.html"));
+    res.render("pagina"); // Renderizar la vista pagina.ejs
 });
 
-// Rutas para otros archivos HTML
+// Rutas para otros archivos EJS
 app.get("/peliculas", (req, res) => {
-    res.sendFile(path.join(__dirname, "peliculas.html"));
+    res.render("peliculas"); // Renderizar la vista peliculas.ejs
 });
 
+// Ruta para la página de series
 app.get("/series", (req, res) => {
-    res.sendFile(path.join(__dirname, "series.html"));
+    const email = req.session.email; // Obtén el email de la sesión
+    res.render("series", { email }); // Pasa el email a la vista
 });
+
 
 app.get("/sobre", (req, res) => {
-    res.sendFile(path.join(__dirname, "sobre.html"));
+    res.render("sobre"); // Renderizar la vista sobre.ejs
 });
 
 app.get("/extras", (req, res) => {
-    res.sendFile(path.join(__dirname, "Extras.html"));
+    res.render("Extras"); // Renderizar la vista Extras.ejs
 });
 
 // Ruta para mostrar el formulario de registro
 app.get("/registro", (req, res) => {
-    res.sendFile(path.join(__dirname, "registro.html"));
-});
-
-app.get("/perfil", (req, res) => {
-    res.sendFile(path.join(__dirname, "perfil.html"));
+    res.render("registro"); // Renderizar la vista registro.ejs
 });
 
 // Ruta para manejar el registro de usuario
@@ -67,7 +70,7 @@ app.post("/register", (req, res) => {
 
 // Ruta para mostrar el formulario de inicio de sesión
 app.get("/login", (req, res) => {
-    res.sendFile(path.join(__dirname, "login.html"));
+    res.render("login"); // Renderizar la vista login.ejs
 });
 
 // Ruta para manejar el inicio de sesión
@@ -96,7 +99,7 @@ app.post("/select-plan", (req, res) => {
     }
 
     plans[email] = plan;
-    res.json({ message: `Usted ha elegido el plan ${plan}`, plan, email }); // Asegúrate de enviar el email aquí
+    res.json({ message: `Usted ha elegido el plan ${plan}`, plan, email });
 });
 
 // Ruta para manejar el pago
@@ -114,24 +117,32 @@ app.post("/pay", (req, res) => {
 
 // Ruta para mostrar el perfil del usuario
 app.get("/perfil", (req, res) => {
-    const email = req.session.email; // Obtiene el email de la sesión
-    const user = users[email]; // Obtiene el usuario usando el email
+    const email = req.session.email;
+    const user = users[email];
 
     if (!user) {
-        return res.redirect("/login"); // Redirige a login si no hay usuario
+        return res.redirect("/login");
     }
 
-    res.render("perfil", { nombre: user.nombre, email: email }); // Pasa el nombre y el email a la plantilla
+    res.render("perfil", { nombre: user.nombre, email: email });
 });
 
 // Ruta para manejar la subida de la foto de perfil
 app.post('/upload', upload.single('image'), (req, res) => {
     if (!req.file) {
-        return res.send("No se subió ninguna imagen.");
+        return res.status(400).json({ message: "No se subió ninguna imagen." });
     }
 
-    // Aquí puedes guardar la información del archivo o actualizar el perfil
-    res.send(`Imagen subida: ${req.file.filename}`);
+    const newFileName = `${req.session.email}.jpg`;
+    const oldPath = path.join(__dirname, 'img', req.file.filename);
+    const newPath = path.join(__dirname, 'img', newFileName);
+
+    fs.rename(oldPath, newPath, (err) => {
+        if (err) {
+            return res.status(500).json({ message: "Error al renombrar la imagen." });
+        }
+        res.json({ message: "Imagen subida exitosamente.", filename: newFileName });
+    });
 });
 
 // Ruta para cerrar sesión

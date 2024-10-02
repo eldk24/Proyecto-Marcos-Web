@@ -45,6 +45,24 @@
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-header">
+        <div class="container">
+            <a class="navbar-brand" href="/peliculas">Metflix</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="/peliculas" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="/Extras" class="nav-link">Extras</a></li>
+                    <li class="nav-item"><a href="/sobre" class="nav-link">Acerca de Netflix</a></li>
+                    <li class="nav-item"><a href="/cerrar" class="nav-link">Cerrar</a></li>
+                    <li class="nav-item"><a href="/perfil" class="nav-link">Perfil</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <h1>Perfil de Usuario</h1>
         <div class="profile-container">
@@ -53,11 +71,11 @@
                 <p><strong>Email:</strong> <%= email %></p>
                 <form id="profilePicForm" enctype="multipart/form-data">
                     <label for="profilePic">Sube tu foto de perfil:</label>
-                    <input type="file" name="profilePic" accept="image/*" required>
+                    <input type="file" name="image" accept="image/*" required>
                     <button type="submit" class="btn btn-primary mt-2">Subir Foto</button>
                 </form>
             </div>
-            <img src="" alt="Foto de perfil" id="profileImage" class="profile-pic" style="display: none;">
+            <img src="/img/<%= email ? email + '.jpg' : 'default.jpg' %>" alt="Foto de perfil" id="profileImage" class="profile-pic" style="display: <%= email ? 'block' : 'none' %>;">
         </div>
     </div>
 
@@ -66,14 +84,24 @@
             e.preventDefault(); // Evita que el formulario se envíe de manera tradicional
             const formData = new FormData(this);
 
-            fetch('/upload-profile-pic', {
+            fetch('/upload', {
                 method: 'POST',
                 body: formData
             })
             .then(response => response.json())
             .then(data => {
-                alert(data.message); // Muestra mensaje de éxito
-                document.getElementById('profileImage').src = data.path; // Muestra la imagen subida
-                document.getElementById('profileImage').style.display = 'block'; // Hace visible la imagen
+                if (data.message) {
+                    alert(data.message); // Muestra mensaje de éxito
+                    document.getElementById('profileImage').src = `/img/${data.filename}`; // Muestra la imagen subida
+                    document.getElementById('profileImage').style.display = 'block'; // Hace visible la imagen
+                } else {
+                    throw new Error("Error al subir la imagen."); // Manejo de errores
+                }
+            })
+            .catch(error => {
+                alert(error.message); // Muestra el error
             });
-   
+        });
+    </script>
+</body>
+</html>
