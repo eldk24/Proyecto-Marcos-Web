@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Netflix</title>
+  <title>Metflix</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"> 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"> 
   <style>
     body {
-      background-color: #222;
+      background-color: #181818;
       margin: 0;
-      padding: 0;
-      color: #fff;
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
     }
 
     .fixed-header {
@@ -20,29 +20,24 @@
       top: 0;
       width: 100%;
       z-index: 1000;
-      background-color: rgb(33, 33, 33);
+      background-color: #222;
       padding: 10px 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
 
     .nav-pills .nav-link {
-      color: rgb(183, 183, 183);
-      background-color: rgba(0, 0, 0, 0);
-      padding: 5px 10px;
+      color: #bbb;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .nav-pills .nav-link:hover {
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.1);
     }
 
     .nav-pills .nav-link.active {
-      color: rgb(255, 255, 255);
-      background-color: rgb(102, 0, 0);
-    }
-
-    .container {
-      max-width: 100%;
-      margin: auto;
-    }
-
-    .contenido {
-      max-width: 100%;
-      margin: auto;
+      color: #fff;
+      background-color: #900;
     }
 
     .about-section {
@@ -65,19 +60,21 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
       max-width: 800px;
-      text-align: center;
     }
 
-    .about-section h1 {
-      font-size: 3rem; 
-      font-weight: 700; 
-      font-family: 'Poppins', sans-serif; 
-      margin-bottom: 20px;
+    .progress-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 40px 0;
     }
 
-    .about-section p {
-      font-size: 1.2rem;
-      line-height: 1.5;
+    .progress {
+      width: 80%;
+      max-width: 600px;
+      margin: 10px 0;
+      height: 4rem;
     }
 
     .info-section {
@@ -93,116 +90,19 @@
       padding: 20px;
       background-color: #381a63;
       border-radius: 10px;
-      box-shadow: 0 4px 4px rgba(0, 0, 0, 0);
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
       color: white;
       max-width: 300px;
       text-align: center;
       flex: 1 1 300px;        
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .info-card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      color: white;
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
 
-    .info-card p {
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    .contenido {
-  max-width: 1200px; /* Ajusta el ancho máximo según tu diseño */
-  margin: 0 auto; /* Centra el contenedor horizontalmente */
-  padding: 0 15px; /* Añade un poco de relleno horizontal */
-}
-
-.features-section, .faq-section {
-  padding: 40px 20px;
-  background-color: #333; /* Fondo opcional para diferenciar secciones */
-  border-radius: 10px; /* Bordes redondeados opcionales */
-}
-
-.features-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.features-list li {
-  background-color: #444;
-  margin: 10px 0;
-  padding: 15px;
-  border-radius: 8px;
-}
-
-.features-list li h3 {
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.features-list li p {
-  margin: 5px 0 0;
-}
-
-.accordion-item {
-  background-color: rgba(0, 0, 0, 0.8);
-  margin-bottom: 10px;
-  border: none;
-  border-radius: 8px;
-}
-
-.accordion-button {
-  color: #fff;
-  background-color: #444; 
-  border: none;
-}
-
-.accordion-button:not(.collapsed) {
-  background-color: #675b5b; 
-  color: #ffd000;
-}
-
-.accordion-body {
-  background-color: #333; 
-  color: #fff; 
-}
-
-
-    @media (max-width: 768px) {
-      .info-section {
-        flex-direction: column; 
-      }
-
-      .info-card {
-        max-width: 100%;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .about-section h1 {
-        font-size: 2rem;
-      }
-
-      .about-section p {
-        font-size: 1rem;
-      }
-
-      .info-card h2 {
-        font-size: 1.25rem;
-      }
-
-      .info-card p {
-        font-size: 0.875rem;
-      }
-    }
-
-    .iframe-container {
-      display: flex;
-      justify-content: center; /* Centra horizontalmente */
-      align-items: center; /* Centra verticalmente (si es necesario) */
-      height: auto; /* Opcional: Ajusta el alto del contenedor si deseas centrar verticalmente */
-    }
-      
     .footer {
       text-align: center;
       padding: 20px;
@@ -214,7 +114,6 @@
       margin: 10px;
       width: 30px;
       height: 30px;
-      vertical-align: middle;
     }
 
     .footer .social-media {
@@ -226,40 +125,33 @@
       padding-top: 10px;
     }
 
-    /* CSS para centrar las barras de progreso */
-    .progress-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: auto;
-            margin: 0; /* Elimina el margen alrededor del contenedor */
-        }
-        .progress {
-            width: 80%;
-            max-width: 600px;
-            margin: 10px 0; /* Reduce el margen entre las barras de progreso */
-            height: 4rem; /* Aumenta la altura de las barras */
-            position: relative;
-        }
-        .progress-bar {
-            height: 100%; /* Asegura que la barra de progreso use toda la altura del contenedor */
-            position: relative;
-        }
-        .progress-bar-text {
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            color: white;
-            font-weight: bold;
-            line-height: 2rem; /* Ajusta esto para que coincida con la altura de la barra */
-        }
+    @media (max-width: 576px) {
+      .about-section h1 {
+        font-size: 2rem;
+      }
+
+      .info-card h2 {
+        font-size: 1.25rem;
+      }
+    }
+
+    .iframe-container {
+      display: flex;
+      justify-content: center; 
+      align-items: center; 
+      margin: 20px 0; 
+    }
+
+    .image-link img {
+      width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 <body>
   <header class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom fixed-header">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none ms-3">
-      <span class="fs-4" style="color: rgb(255, 255, 255); font-size: 14px;">Metflix</span>
+      <span class="fs-4" style="color: #ffffff; font-size: 14px;">Metflix</span>
     </a>
 
     <ul class="nav nav-pills mx-auto">
@@ -268,9 +160,7 @@
       <li class="nav-item"><a href="/sobre" class="nav-link">Acerca de Metflix</a></li>
       <li class="nav-item"><a href="/cerrar?email=user@example.com" class="nav-link">Cerrar</a></li>
       <li class="nav-item"><a href="/perfil" class="nav-link">Perfil</a></li>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    </nav>
-</ul>
+    </ul>
   </header>
 
   <div class="about-section">
@@ -279,61 +169,52 @@
     </div>
   </div>
 
-  <br>
   <div class="progress-container">
-    <h1 style="color: white; margin-top: 12px; margin-bottom: 24px;">Valoración de la Plataforma:</h1>
-        <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-            <span class="progress-bar-text">85% - Variedad</span>
-        </div>
+    <h1 style="color: white; margin: 12px 0;">Valoración de la Plataforma:</h1>
+    <div class="progress">
+      <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+        <span class="progress-bar-text">85% - Variedad</span>
+      </div>
     </div>
     <div class="progress">
-        <div class="progress-bar bg-info" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
-            <span class="progress-bar-text">95% - Calidad</span>
-        </div>
+      <div class="progress-bar bg-info" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+        <span class="progress-bar-text">95% - Calidad</span>
+      </div>
     </div>
     <div class="progress">
-        <div class="progress-bar bg-warning" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
-            <span class="progress-bar-text">95% - Interfaz Intuitiva</span>
-        </div>
+      <div class="progress-bar bg-warning" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+        <span class="progress-bar-text">95% - Interfaz Intuitiva</span>
+      </div>
     </div>
     <div class="progress">
-        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-            <span class="progress-bar-text">100% - Contendido</span>
-        </div>
+      <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+        <span class="progress-bar-text">100% - Contenido</span>
+      </div>
     </div>
   </div>
 
+  <h1 style="font-size: 18px; text-align: center;">Video introductorio</h1>
+  <div class="iframe-container">
+    <iframe width="400" height="220" src="https://www.youtube.com/embed/lEBS6T_hAV0?si=sdITmYgoGUHNCvV5" frameborder="0" allowfullscreen></iframe>
+  </div>
   <br>
+  <h1 style="font-size: 18px; text-align: center;">https://www.youtube.com/embed/lEBS6T_hAV0?si=sdITmYgoGUHNCvV5</h1>
 
   <div class="contenido info-section">
     <div class="info-card">
       <h2>Misión</h2>
-      <p>Nuestra misión es ofrecer entretenimiento de calidad que inspire y conecte a personas de todo el mundo. Buscamos innovar continuamente para proporcionar una experiencia única y satisfactoria a nuestros suscriptores.</p>
+      <p>Proporcionar entretenimiento ilimitado a través de películas y series de alta calidad.</p>
     </div>
     <div class="info-card">
       <h2>Visión</h2>
-      <p>Queremos ser la plataforma de entretenimiento líder global, proporcionando contenido que no solo entretenga, sino que también inspire y eduque. Nos dedicamos a estar a la vanguardia de la tecnología y el contenido para mantenernos relevantes en un mundo en constante cambio.</p>
+      <p>Convertirse en la plataforma de streaming más accesible y diversa a nivel global.</p>
     </div>
     <div class="info-card">
-      <h2>¿Qué Hacemos?</h2>
-      <p>Ofrecemos una extensa biblioteca de contenido, incluyendo producciones originales, películas, y series de diversos géneros. Nuestro algoritmo de recomendación personaliza la experiencia para cada usuario, asegurando que encuentres lo que más te gusta.</p>
+      <h2>Valores</h2>
+      <p>Compromiso, diversidad e innovación en cada experiencia que ofrecemos.</p>
     </div>
   </div>
 
-  <br>
-
-  <div class="contenido features-section">
-    <h2>Más motivos para unirte</h2>
-    <ul class="features-list">
-      <li><h3>Sin límites</h3><p>Accede a una vasta biblioteca de contenido sin restricciones de horarios ni dispositivos.</p></li>
-      <li><h3>Vea donde quieras</h3><p>Disfruta del contenido en tu teléfono móvil, tablet o computadora.</p></li>
-      <li><h3>Sin conexión</h3><p>Descarga tus series y películas favoritas para ver sin conexión.</p></li>
-    </ul>
-  </div>
-
-  <br>
-  
   <div class="contenido faq-section">
     <h2>Preguntas Frecuentes</h2>
     <div class="accordion" id="accordionExample">
@@ -369,16 +250,15 @@
         </h2>
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            Sí, dependiendo del plan de suscripción que elijas, puedes ver Netflix en múltiples dispositivos simultáneamente.
+            Sí, dependiendo del plan de suscripción que elijas, puedes ver Metflix en múltiples dispositivos simultáneamente.
           </div>
         </div>
       </div>
     </div>
   </div>
-  
 
   <div style="display: flex; justify-content: center; align-items: center; background-color: #ffffff; padding: 20px; width: 200px; margin: 0 auto; margin-top: 24px;">
-    <img src="https://www.webhosting.pe/images/pagos/niubiz.png" alt="Medios de Pago y Síguenos" style="width: 90px; vertical-align: middle;">
+    <img src="https://www.webhosting.pe/images/pagos/niubiz.png" alt="Medios de Pago y Síguenos" style="width: 90px;">
   </div>
 
   <div class="footer">
@@ -394,15 +274,12 @@
       </a>
     </div>
     <div class="reserved">
-      <div style="text-align: center;">
-        <img src="https://static.vecteezy.com/system/resources/previews/008/350/760/non_2x/initial-m-logo-design-vector.jpg" alt="Logo de la Página" style="height: 100px; width: auto;">
-      </div>
+      <img src="https://static.vecteezy.com/system/resources/previews/008/350/760/non_2x/initial-m-logo-design-vector.jpg" alt="Logo de la Página" style="height: 100px; width: auto;">
       <p>&copy; <span id="currentYear"></span> Todos los derechos reservados</p>
     </div>
   </div>
 
   <script>
-    // Script para actualizar el año automáticamente
     document.getElementById("currentYear").textContent = new Date().getFullYear();
   </script>
 
