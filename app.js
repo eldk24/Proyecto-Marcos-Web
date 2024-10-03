@@ -110,7 +110,7 @@ app.post("/pay", (req, res) => {
         return res.status(400).json({ message: "Falta el email" });
     }
 
-    console.log(`Email: ${email} ha realizado un pago`);
+    console.log(`Email: ${email} ha seleccionado un plan.`);
 
     res.json({ message: "Pago exitoso" });
 });
