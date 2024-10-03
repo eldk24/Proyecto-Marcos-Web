@@ -401,6 +401,54 @@ body {
       padding: 20px;
     }
 
+
+    body {
+    font-family: Arial, sans-serif;
+}
+
+.chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background: #292929;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 1000;
+    color: white;
+}
+
+.chatbot-header {
+    background: #7a0000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.chatbot-content {
+    padding: 10px;
+}
+
+.response-button {
+    background: #000000;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.response-button:hover {
+    background: #000000;
+}
+
+
+
+
+
   </style>
 </head>
 <body>
@@ -919,6 +967,36 @@ body {
       // Script para actualizar el año automáticamente
       document.getElementById("currentYear").textContent = new Date().getFullYear();
   </script>
+
+<div class="chatbot">
+  <div class="chatbot-header">Ayuda para crear cuenta:</div>
+  <div class="chatbot-content" id="chatbotContent">
+      <p id="initialQuestion">¿Deseas crear una cuenta?</p>
+      <button class="response-button" onclick="handleResponse('yes')">Sí</button>
+      <button class="response-button" onclick="handleResponse('no')">No</button>
+  </div>
+</div>
+
+
+    <script>
+function handleResponse(answer) {
+    const content = document.getElementById("chatbotContent");
+    
+    if (answer === 'yes') {
+        window.location.href = '/registro'; // Cambia a la ruta de registro
+    } else {
+        content.innerHTML = `
+            <p>¡Está bien!</p>
+            <p>Si deseas crear una cuenta solo presiona en el botón crear.</p>
+            <button class="response-button" onclick="window.location.href='/registro'">Crear Cuenta</button>
+        `;
+    }
+}
+
+    </script>
+
+</body>
+</html>
 
 </body>
 </html>

@@ -17,25 +17,6 @@
             background-color: #222222; /* Fondo del contenedor */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra suave */
         }
-        .profile-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between; /* Espacio entre texto e imagen */
-        }
-        .profile-pic {
-            width: 100px; /* Ajusta el tamaño de la imagen según tus necesidades */
-            height: 100px;
-            border-radius: 50%; /* Hace que la imagen sea circular */
-            margin-left: 20px; /* Espacio entre el texto y la imagen */
-            border: 2px solid #e50914; /* Borde rojo similar a Netflix */
-        }
-        .btn-primary {
-            background-color: #e50914; /* Color del botón */
-            border: none; /* Sin borde */
-        }
-        .btn-primary:hover {
-            background-color: #f40612; /* Color del botón al pasar el mouse */
-        }
         h1 {
             color: #e50914; /* Título en rojo */
         }
@@ -55,8 +36,8 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="/peliculas" class="nav-link">Inicio</a></li>
                     <li class="nav-item"><a href="/Extras" class="nav-link">Extras</a></li>
-                    <li class="nav-item"><a href="/sobre" class="nav-link">Acerca de Netflix</a></li>
-                    <li class="nav-item"><a href="/cerrar" class="nav-link">Cerrar</a></li>
+                    <li class="nav-item"><a href="/sobre" class="nav-link">Acerca de Metflix</a></li>
+                    <li class="nav-item"><a href="/cerrar?email=user@example.com" class="nav-link">Cerrar</a></li>
                     <li class="nav-item"><a href="/perfil" class="nav-link">Perfil</a></li>
                 </ul>
             </div>
@@ -65,43 +46,11 @@
 
     <div class="container">
         <h1>Perfil de Usuario</h1>
-        <div class="profile-container">
-            <div>
-                <p><strong>Nombre:</strong> <%= nombre %></p>
-                <p><strong>Email:</strong> <%= email %></p>
-                <form id="profilePicForm" enctype="multipart/form-data">
-                    <label for="profilePic">Sube tu foto de perfil:</label>
-                    <input type="file" name="image" accept="image/*" required>
-                    <button type="submit" class="btn btn-primary mt-2">Subir Foto</button>
-                </form>
-            </div>
-            <img src="/img/<%= email ? email + '.jpg' : 'default.jpg' %>" alt="Foto de perfil" id="profileImage" class="profile-pic" style="display: <%= email ? 'block' : 'none' %>;">
+        <div>
+            <p><strong>Nombre:</strong> <%= nombre %></p>
+            <p><strong>Email:</strong> <%= email %></p>
+            <p><strong>Plan seleccionado:</strong> <%= plan %></p> <!-- Mostrar el plan seleccionado -->
         </div>
     </div>
-
-    <script>
-        document.getElementById('profilePicForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // Evita que el formulario se envíe de manera tradicional
-            const formData = new FormData(this);
-
-            fetch('/upload', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message) {
-                    alert(data.message); // Muestra mensaje de éxito
-                    document.getElementById('profileImage').src = `/img/${data.filename}`; // Muestra la imagen subida
-                    document.getElementById('profileImage').style.display = 'block'; // Hace visible la imagen
-                } else {
-                    throw new Error("Error al subir la imagen."); // Manejo de errores
-                }
-            })
-            .catch(error => {
-                alert(error.message); // Muestra el error
-            });
-        });
-    </script>
 </body>
 </html>

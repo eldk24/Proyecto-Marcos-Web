@@ -15,6 +15,7 @@
             margin-bottom: 30px;
             text-align: center;
             font-size: 2.5em; /* Tamaño del título */
+            color: #e50914; /* Rojo característico de Netflix */
         }
         .container {
             max-width: 600px;
@@ -38,21 +39,118 @@
         }
         button {
             width: 100%; /* Botón ocupa todo el ancho */
+            background-color: #e50914; /* Botón rojo */
+            border: none;
+            padding: 10px;
+            font-size: 1.2em;
+        }
+        button:hover {
+            background-color: #f40612; /* Cambio de color al pasar el mouse */
+        }
+        .table {
+            margin-top: 20px;
+            background-color: #333;
+        }
+        .table th, .table td {
+            color: #ffffff;
+            border: none;
+            padding: 15px;
+        }
+        .table th {
+            background-color: #e50914;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #444;
+        }
+        /* Estilos del chatbot */
+        .chatbot {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 300px;
+            background: #343434;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            z-index: 1000;
+            color: white;
+        }
+        .chatbot-header {
+            background: #9e0000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .chatbot-content {
+            padding: 10px;
+        }
+        .response-button {
+            background: #161616;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .response-button:hover {
+            background: #b30000;
         }
     </style>
 </head>
 <body>
+    <!-- Chatbot -->
+    <div class="chatbot">
+        <div class="chatbot-header">Chatbot</div>
+        <div class="chatbot-content" id="chatbotContent">
+            <p id="initialQuestion">¿Te gustaría saber más sobre las suscripciones?</p>
+            <button class="response-button" onclick="showSubscriptionInfo()">Sí</button>
+            <button class="response-button" onclick="hideChatbot()">No</button>
+        </div>
+    </div>
+
     <div class="container">
         <h1>Seleccione un Plan</h1>
+
+        <!-- Tabla de descripción de planes -->
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Plan</th>
+                    <th>Precio</th>
+                    <th>Incluye</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Plan Básico</td>
+                    <td>S/7.90</td>
+                    <td>Calidad SD (480p)</td>
+                </tr>
+                <tr>
+                    <td>Plan Estándar</td>
+                    <td>s/18.90</td>
+                    <td>Calidad HD (1080p)</td>
+                </tr>
+                <tr>
+                    <td>Plan Premium</td>
+                    <td>s/24.90</td>
+                    <td>Calidad 4K (2160p)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Formulario de selección de plan -->
         <form id="planForm">
             <input type="hidden" id="emailInput" name="email" value="<%= email || '' %>"> <!-- El email se pasa aquí -->
             <label for="plan">Elija un plan:</label>
             <select name="plan" required>
-                <option value="Plan Básico">Plan Básico</option>
-                <option value="Plan Estándar">Plan Estándar</option>
-                <option value="Plan Premium">Plan Premium</option>
+                <option value="Plan Básico">Plan Básico - S/7.90</option>
+                <option value="Plan Estándar">Plan Estándar - S/18.90</option>
+                <option value="Plan Premium">Plan Premium - S/24.90</option>
             </select>
-            <button type="submit" class="btn btn-primary">Seleccionar Plan</button>
+            <button type="submit" class="btn btn-primary mt-3">Seleccionar Plan</button>
         </form>
 
         <div id="result" class="mt-3"></div>
@@ -71,9 +169,8 @@
             .then(response => response.json())
             .then(data => {
                 alert(`Usted ha elegido el plan ${data.plan} con el correo ${data.email}`); // Muestra el mensaje de elección de plan
-                // Ahora puedes pedir el pago
-                const paymentEmail = this.email.value; // Obtén el email del formulario
 
+                const paymentEmail = this.email.value; // Obtén el email del formulario
                 fetch('/pay', {
                     method: 'POST',
                     body: new URLSearchParams({ email: paymentEmail })
@@ -85,6 +182,40 @@
                 });
             });
         });
+
+        function showSubscriptionInfo() {
+    const content = document.getElementById("chatbotContent");
+    content.innerHTML = `
+        <p>Estos son los planes de suscripción que ofrecemos:</p>
+        <ul>
+            <li><strong>Plan Básico:</strong> S/7.90/mes
+                <ul>
+                    <li>Calidad SD (480p): Ideal para usuarios que no requieren alta definición y desean una opción económica.</li>
+                    <li>Es el plan más económico existente en esta plataforma.</li>
+                </ul>
+            </li>
+            <li><strong>Plan Estándar:</strong> S/18.90/mes
+                <ul>
+                    <li>Calidad HD (1080p): Proporciona una excelente calidad de imagen para disfrutar de tus series y películas favoritas.</li>
+                    <li>Plan con precio intermedio.</li>
+                </ul>
+            </li>
+            <li><strong>Plan Premium:</strong> S/24.90/mes
+                <ul>
+                    <li>Calidad 4K (2160p): La mejor calidad de imagen, ideal para quienes poseen un televisor 4K.</li>
+                    <li>Este es el plan más exclusivo de Metflix.</li>
+                </ul>
+            </li>
+        </ul>
+        <button class="response-button" onclick="hideChatbot()">Cerrar</button>
+    `;
+}
+
+
+        function hideChatbot() {
+            const chatbot = document.querySelector('.chatbot');
+            chatbot.style.display = 'none'; // Oculta el chatbot
+        }
     </script>
 </body>
 </html>

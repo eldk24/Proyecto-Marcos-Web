@@ -118,13 +118,19 @@ app.post("/pay", (req, res) => {
 // Ruta para mostrar el perfil del usuario
 app.get("/perfil", (req, res) => {
     const email = req.session.email;
-    const user = users[email];
 
-    if (!user) {
+    if (!email) {
         return res.redirect("/login");
     }
 
-    res.render("perfil", { nombre: user.nombre, email: email });
+    const user = users[email];
+    const plan = plans[email];
+
+    res.render("perfil", {
+        nombre: user.nombre,
+        email: email,
+        plan: plan || "No seleccionado" // Si no hay plan, mostrar "No seleccionado"
+    });
 });
 
 // Ruta para manejar la subida de la foto de perfil
