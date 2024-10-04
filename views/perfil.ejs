@@ -1,47 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             background-color: #141414; /* Fondo oscuro similar a Netflix */
             color: #ffffff; /* Texto blanco */
+            font-family: 'Helvetica Neue', Arial, sans-serif; /* Fuente general */
+            padding-top: 80px; /* Espaciado superior para la barra de navegación */
+            margin: 0;
         }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(33, 33, 33, 0.9); /* Fondo con un poco de transparencia */
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra en la barra de navegación */
+        }
+
+        .navbar a {
+            color: rgb(183, 183, 183);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px; /* Bordes redondeados */
+            transition: background-color 0.3s, color 0.3s; /* Transición suave */
+            margin: 0 10px; /* Margen entre enlaces */
+        }
+
+        .navbar a:hover {
+            background-color: #e50914; /* Fondo al pasar el mouse */
+            color: #ffffff; /* Texto blanco al pasar el mouse */
+        }
+
+        .navbar .active {
+            color: #ffffff;
+            background-color: #e50914; /* Fondo del enlace activo */
+        }
+
         .container {
-            margin-top: 50px;
+            margin: 100px auto; /* Margen superior para el contenedor */
             border-radius: 10px;
-            padding: 20px;
+            padding: 30px;
             background-color: #222222; /* Fondo del contenedor */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra suave */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra suave */
+            max-width: 600px; /* Ancho máximo del contenedor */
+            transition: transform 0.3s; /* Transición suave */
         }
+
+        .container:hover {
+            transform: scale(1.02); /* Efecto de escala al pasar el mouse */
+        }
+
         h1 {
             color: #e50914; /* Título en rojo */
+            margin-bottom: 20px; /* Espaciado inferior */
+            text-align: center; /* Centrar el título */
         }
+
         label {
             color: #e50914; /* Color de la etiqueta */
         }
+
+        #viewedMoviesSection {
+            margin-top: 30px; /* Margen superior para la sección de películas vistas */
+        }
+
+        ul {
+            list-style: none; /* Sin viñetas */
+            padding: 0; /* Sin padding */
+            margin: 0; /* Sin margen */
+        }
+
+        li {
+            padding: 10px 0; /* Espaciado vertical para los elementos de la lista */
+            border-bottom: 1px solid #444; /* Línea inferior */
+        }
+
+        li a {
+            color: #ffffff; /* Texto blanco para enlaces */
+            text-decoration: none; /* Sin subrayado */
+            transition: color 0.3s; /* Transición suave */
+        }
+
+        li a:hover {
+            color: #e50914; /* Color de enlace al pasar el mouse */
+        }
     </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-header">
-        <div class="container">
-            <a class="navbar-brand" href="/peliculas">Metflix</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="/peliculas" class="nav-link">Inicio</a></li>
-                    <li class="nav-item"><a href="/Extras" class="nav-link">Extras</a></li>
-                    <li class="nav-item"><a href="/sobre" class="nav-link">Acerca de Metflix</a></li>
-                    <li class="nav-item"><a href="/cerrar?email=user@example.com" class="nav-link">Cerrar</a></li>
-                    <li class="nav-item"><a href="/perfil" class="nav-link">Perfil</a></li>
-                </ul>
-            </div>
-        </div>
+    <nav class="navbar">
+        <a href="/peliculas" class="navbar-brand">Metflix</a>
+        <a href="#" id="inicio-link">Inicio</a>
+        <a href="/Extras">Extras</a>
+        <a href="/sobre">Acerca de Metflix</a>
+        <a href="/cerrar?email=user@example.com">Cerrar</a>
+        <a href="/perfil" class="active">Perfil</a>
     </nav>
 
     <div class="container">
@@ -51,6 +115,97 @@
             <p><strong>Email:</strong> <%= email %></p>
             <p><strong>Plan seleccionado:</strong> <%= plan %></p> <!-- Mostrar el plan seleccionado -->
         </div>
+
+        <div id="viewedMoviesSection">
+            <h3>Series y Películas Vistas</h3>
+            <ul id="viewedMoviesList"></ul>
+        </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Cargar las películas vistas desde localStorage
+            loadViewedMovies();
+        });
+
+        // En tu archivo de perfil de usuario
+        function loadViewedMovies() {
+    const userEmail = '<%= email %>'; // Obtén el email del usuario
+    let viewedMovies = JSON.parse(localStorage.getItem(userEmail + '-viewedMovies')) || [];
+    const list = document.getElementById('viewedMoviesList');
+
+    // Limpiar la lista antes de cargar
+    list.innerHTML = '';
+
+    viewedMovies.forEach(movie => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<a href="${movie.url}" target="_blank">${movie.title}</a>`;
+        list.appendChild(listItem);
+    });
+
+    // Mostrar un mensaje si no hay películas vistas
+    if (viewedMovies.length === 0) {
+        const noMoviesMessage = document.createElement('li');
+        noMoviesMessage.textContent = 'No has visto ninguna serie o película aún.';
+        list.appendChild(noMoviesMessage);
+    }
+}
+
+
+    // Mostrar un mensaje si no hay películas vistas
+    if (viewedMovies.length === 0) {
+        const noMoviesMessage = document.createElement('li');
+        noMoviesMessage.textContent = 'No has visto ninguna serie o película aún.';
+        list.appendChild(noMoviesMessage);
+    }
+
+
+
+function saveViewedMovie(title, url) {
+    const userEmail = '<%= email %>'; // Obtén el email del usuario
+    let viewedMovies = JSON.parse(localStorage.getItem(userEmail + '-viewedMovies')) || [];
+
+    // Agregar la nueva película solo si no existe
+    const existingMovie = viewedMovies.find(movie => movie.title === title);
+    if (!existingMovie) {
+        viewedMovies.push({ title: title, url: url });
+    }
+
+    // Guardar la lista actualizada en localStorage
+    localStorage.setItem(userEmail + '-viewedMovies', JSON.stringify(viewedMovies));
+}
+
+
+
+    </script>
+
+    <script>
+        document.getElementById('inicio-link').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevenir la acción predeterminada del enlace
+            const plan = localStorage.getItem('plan'); // Obtener el plan almacenado
+            let url;
+
+            // Determinar la URL según el plan
+            switch (plan) {
+                case 'Plan Básico':
+                    url = '/basico';
+                    break;
+                case 'Plan Estándar':
+                    url = '/estandar';
+                    break;
+                case 'Plan Premium':
+                    url = '/peliculas';
+                    break;
+                default:
+                    url = '/'; // Redirigir a una página predeterminada si no hay plan
+            }
+
+            // Redirigir a la URL correspondiente
+            if (url) {
+                window.location.href = url;
+            }
+        });
+    </script>
 </body>
+
 </html>

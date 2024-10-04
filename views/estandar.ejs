@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio - Premium</title>
+  <title>Inicio - Estándar</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   
@@ -535,110 +535,109 @@ body {
   </div>
 
 
-
-  <div class="header">
-    <h1><b>Series - Dramas🎭</b></h1>
-  </div>
-
 <!-- Modal -->
 <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
-  <div class="modal-dialog custom-modal-dialog">
-      <div class="modal-content custom-modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="movieModalLabel">Título de la Película</h5>
-          </div>
-          <div class="modal-body d-flex">
-              <div class="content">
-                  <p><strong>Duración:</strong> 120 minutos</p>
-                  <p><strong>Descripción:</strong> Esta es una breve descripción de la película.</p>
-              </div>
-              <div class="image-container">
-                  <img src="" alt="Imagen del Modal" class="modal-img" id="modalImage">
-              </div>
-          </div>
-          <div class="modal-footer">
-              <button style="background-color: rgb(146, 0, 0);" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button style="background-color: rgb(0, 123, 255);" type="button" class="btn btn-primary" id="modalButton">Ver serie</button>
-          </div>
-      </div>
+    <div class="modal-dialog custom-modal-dialog">
+        <div class="modal-content custom-modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="movieModalLabel">Título de la Película</h5>
+            </div>
+            <div class="modal-body d-flex">
+                <div class="content">
+                    <p><strong>Duración:</strong> 120 minutos</p>
+                    <p><strong>Descripción:</strong> Esta es una breve descripción de la película.</p>
+                </div>
+                <div class="image-container">
+                    <img src="" alt="Imagen del Modal" class="modal-img" id="modalImage">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button style="background-color: rgb(146, 0, 0);" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button style="background-color: rgb(0, 123, 255);" type="button" class="btn btn-primary" id="modalButton">Ver serie</button>
+            </div>
+        </div>
+    </div>
   </div>
-</div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-      var modal = document.getElementById('movieModal');
-      var modalTitle = modal.querySelector('.modal-title');
-      var modalContent = modal.querySelector('.content');
-      var modalImage = modal.querySelector('#modalImage');
-      var modalButton = modal.querySelector('#modalButton'); // Botón "Ver serie"
-
-      modal.addEventListener('show.bs.modal', function (event) {
-          var button = event.relatedTarget; // Imagen que activó el modal
-          var title = button.getAttribute('data-title');
-          var duration = button.getAttribute('data-duration');
-          var description = button.getAttribute('data-description');
-          var imageUrl = button.getAttribute('data-image');
-          var url = button.getAttribute('data-url'); // Captura de la URL
-
-          modalTitle.textContent = title;
-          modalContent.innerHTML = `<p><strong>Duración:</strong> ${duration}</p><p><strong>Descripción:</strong> ${description}</p>`;
-          modalImage.src = imageUrl;
-
-          // Cambia la acción del botón "Ver serie"
-          modalButton.onclick = function() {
-          console.log("Guardando película:", title, url); // Añade esta línea
-          saveViewedMovie(title, url);
-          window.open(url, '_blank'); // Abre la URL con el botón
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var modal = document.getElementById('movieModal');
+        var modalTitle = modal.querySelector('.modal-title');
+        var modalContent = modal.querySelector('.content');
+        var modalImage = modal.querySelector('#modalImage');
+        var modalButton = modal.querySelector('#modalButton'); // Botón "Ver serie"
+  
+        modal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget; // Imagen que activó el modal
+            var title = button.getAttribute('data-title');
+            var duration = button.getAttribute('data-duration');
+            var description = button.getAttribute('data-description');
+            var imageUrl = button.getAttribute('data-image');
+            var url = button.getAttribute('data-url'); // Captura de la URL
+  
+            modalTitle.textContent = title;
+            modalContent.innerHTML = `<p><strong>Duración:</strong> ${duration}</p><p><strong>Descripción:</strong> ${description}</p>`;
+            modalImage.src = imageUrl;
+  
+            // Cambia la acción del botón "Ver serie"
+            modalButton.onclick = function() {
+            console.log("Guardando película:", title, url); // Añade esta línea
+            saveViewedMovie(title, url);
+            window.open(url, '_blank'); // Abre la URL con el botón
 };
 
 
-      });
-  });
+        });
+    });
+  
+    function saveViewedMovie(title, url) {
+        // Asegúrate de que esta variable esté definida correctamente
+        const userEmail = '<%= email %>'; // Esta línea debe funcionar si `email` se pasa correctamente
+        
+        let viewedMovies = JSON.parse(localStorage.getItem(userEmail + '-viewedMovies')) || [];
+        
+        // Comprobar si la película ya está en la lista
+        if (!viewedMovies.some(movie => movie.title === title)) {
+            viewedMovies.push({ title: title, url: url });
+        }
 
-  function saveViewedMovie(title, url) {
-      // Asegúrate de que esta variable esté definida correctamente
-      const userEmail = '<%= email %>'; // Esta línea debe funcionar si `email` se pasa correctamente
-      
-      let viewedMovies = JSON.parse(localStorage.getItem(userEmail + '-viewedMovies')) || [];
-      
-      // Comprobar si la película ya está en la lista
-      if (!viewedMovies.some(movie => movie.title === title)) {
-          viewedMovies.push({ title: title, url: url });
-      }
-
-      // Guardar la lista actualizada en localStorage
-      localStorage.setItem(userEmail + '-viewedMovies', JSON.stringify(viewedMovies));
-  }
+        // Guardar la lista actualizada en localStorage
+        localStorage.setItem(userEmail + '-viewedMovies', JSON.stringify(viewedMovies));
+    }
 
 function loadViewedMovies() {
-  const userEmail = '<%= email %>'; // Cambia esto para obtener el email del usuario actual
-  let viewedMovies = JSON.parse(localStorage.getItem(userEmail + '-viewedMovies')) || [];
-  const list = document.getElementById('viewedMoviesList');
+    const userEmail = '<%= email %>'; // Cambia esto para obtener el email del usuario actual
+    let viewedMovies = JSON.parse(localStorage.getItem(userEmail + '-viewedMovies')) || [];
+    const list = document.getElementById('viewedMoviesList');
 
-  // Limpiar la lista antes de cargar
-  list.innerHTML = '';
+    // Limpiar la lista antes de cargar
+    list.innerHTML = '';
 
-  // Agregar las películas vistas a la lista
-  viewedMovies.forEach(movie => {
-      const listItem = document.createElement('li');
-      listItem.innerHTML = `<a href="${movie.url}" target="_blank">${movie.title}</a>`;
-      list.appendChild(listItem);
-  });
+    // Agregar las películas vistas a la lista
+    viewedMovies.forEach(movie => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<a href="${movie.url}" target="_blank">${movie.title}</a>`;
+        list.appendChild(listItem);
+    });
 
-  // Mostrar un mensaje si no hay películas vistas
-  if (viewedMovies.length === 0) {
-      const noMoviesMessage = document.createElement('li');
-      noMoviesMessage.textContent = 'No has visto ninguna serie o película aún.';
-      list.appendChild(noMoviesMessage);
-  }
+    // Mostrar un mensaje si no hay películas vistas
+    if (viewedMovies.length === 0) {
+        const noMoviesMessage = document.createElement('li');
+        noMoviesMessage.textContent = 'No has visto ninguna serie o película aún.';
+        list.appendChild(noMoviesMessage);
+    }
 }
 
 // Llama a loadViewedMovies cuando se carga la página de perfil
 document.addEventListener('DOMContentLoaded', loadViewedMovies);
 
 
+  
+  </script>
 
-</script>
+<div class="header">
+    <h1><b>Series🎭</b></h1>
+  </div>
 
 <div class="container-fluid">
   <div class="row">
@@ -690,79 +689,6 @@ document.addEventListener('DOMContentLoaded', loadViewedMovies);
       </div>
   </div>
 </div>
-
-  <div class="header">
-    <h1 style="margin-top: 48px;"><b>Series - Acción🎬</b></h1>
-  </div>
-
-  <div class="container-fluid">
-    <div class="row">
-          <div class="col-md-2">
-          <img style="margin-top: 16px;" src="breaking.png" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Breaking Bad" data-duration="60 horas" data-description="Serie sobre un profesor de química que se convierte en fabricante de metanfetaminas." data-image="https://www.pngall.com/wp-content/uploads/13/Breaking-Bad-Logo-PNG-Image.png" data-url="https://youtu.be/rdogRbRqCEY?si=OWDFBO5QjVfZXM_w">
-        </div>
-        <div class="col-md-2">
-          <img style="margin-top: 16px;" src="casadepapel.png" alt="Imagen 2" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="La Casa de Papel" data-duration="37 horas" data-description="Un grupo de delincuentes lleva a cabo un gran asalto a la Real Casa de la Moneda de España." data-image="https://seeklogo.com/images/L/la-casa-de-papel-logo-80111026D5-seeklogo.com.png" data-url="https://youtu.be/rdogRbRqCEY?si=OWDFBO5QjVfZXM_w">
-        </div>
-        <div class="col-md-2">
-          <img style="margin-top: 16px;" src="narcos.png" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Narcos" data-duration="31 horas" data-description="Serie que narra la vida del infame narcotraficante Pablo Escobar." data-image="https://c.wallhere.com/photos/f1/d4/Narcos_Pablo_Escobar_Netflix_Wagner_Moura-108608.png!s1" data-url="https://youtu.be/rdogRbRqCEY?si=OWDFBO5QjVfZXM_w">
-        </div>
-        <div class="col-md-2">
-          <img style="margin-top: 16px;" src="elite.png" alt="Imagen 4" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Élite" data-duration="25 horas" data-description="Drama que sigue a un grupo de adolescentes en una escuela de élite con secretos oscuros." data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Elite_Netflix_Logo_02.svg/2560px-Elite_Netflix_Logo_02.svg.png" data-url="https://youtu.be/rdogRbRqCEY?si=OWDFBO5QjVfZXM_w">
-        </div>
-      <div class="col-md-2">
-        <img style="margin-top: 16px;" src="greenhouse.jpg" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Greenhouse Academy" data-duration="12 horas" data-description="Greenhouse Academy sigue a los hermanos Hayley y Alex Woods mientras ingresan a una exclusiva escuela de élite llena de secretos y misterios. En medio de desafíos académicos y deportivos, descubren oscuros secretos que podrían poner en peligro sus vidas." data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKRebnQLrwyaC6BKE0ArnIoqhQ1HXuGxBnnjFc97louWuaeWMeUFG1GHBDm3aJmhRyzUA&usqp=CAU" data-url="https://youtu.be/rdogRbRqCEY?si=OWDFBO5QjVfZXM_w">
-    </div>
-    <div class="col-md-2">
-      <img style="margin-top: 16px;" src="toyboy.jpg" alt="Imagen 2" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Toy Boy" data-duration="15 horas" data-description="*Toy Boy es una serie española que sigue a Hugo Beltrán, un stripper que sale de prisión tras cumplir una condena por un crimen que no cometió. Al reintegrarse a la sociedad, busca descubrir la verdad detrás de su condena mientras navega por un mundo de lujo, engaños y traiciones." data-image="https://planoaplano.es/wp-content/uploads/2018/12/toy-boy-logo.png" data-url="https://youtu.be/rdogRbRqCEY?si=OWDFBO5QjVfZXM_w">
-    </div>
-  </div>
-
-  <div class="container-fluid"></div>
-  <div class="row">
-    <div class="col-md-2">
-        <img style="margin-top: 16px;" src="vivirdosveces.jpg" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Vivir Dos Veces" data-duration="1 hora 38 minutos" data-description="Vivir dos veces es una película española que sigue a Emilio, un profesor de matemáticas jubilado que enfrenta el diagnóstico de Alzheimer. Decidiendo hacer un último esfuerzo por encontrar a su amor de juventud, se embarca en un viaje con su hija y su nieta. A lo largo del viaje, la familia enfrenta desafíos y descubre nuevas dimensiones en sus relaciones y en la vida de Emilio." data-image="https://es.web.img3.acsta.net/pictures/20/05/04/19/33/3400659.jpg" data-url="https://youtu.be/rdogRbRqCEY?si=OWDFBO5QjVfZXM_w">
-    </div>
-    <div class="col-md-2">
-        <img style="margin-top: 16px;" src="rétame.jpg" alt="Imagen 4" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Rétame" data-duration="1 hora 30 minutos" data-description="Rétame es una película que sigue a un grupo de amigos que, en busca de aventuras y desafíos, se inscriben en un reality show extremo. A lo largo del programa, deben enfrentarse a pruebas físicas y psicológicas, revelando secretos personales y poniendo a prueba sus lealtades. A medida que el concurso se intensifica, las tensiones y los conflictos surgen, llevando a sorprendentes giros y revelaciones." data-image="https://es.web.img2.acsta.net/c_162_216/pictures/20/03/25/12/08/1126742.jpg" data-url="https://youtu.be/rdogRbRqCEY?si=OWDFBO5QjVfZXM_w">
-    </div>
-    <div class="col-md-2">
-        <img style="margin-top: 16px;" src="f1.jpg" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Formula 1: Drive To Survive 4" data-duration="5 horas" data-description="La serie sigue el emocionante mundo de la Fórmula 1, mostrando el drama y la competencia de los pilotos y equipos en cada carrera. A través de entrevistas y material detrás de escena, los espectadores son llevados a una experiencia inmersiva de lo que se necesita para competir al más alto nivel." data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/1024px-F1.svg.png" data-url="https://youtu.be/L1_rqAgbCkA?si=STRE7W9SHnA19tYz">
-    </div>
-    <div class="col-md-2">
-        <img style="margin-top: 16px;" src="warrior.jpg" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Warrior" data-duration="1 hora 50 minutos" data-description="La historia sigue a dos jóvenes que se encuentran por casualidad y desarrollan una conexión mágica. Sin embargo, deben enfrentar obstáculos que desafían su amor, incluyendo secretos familiares y circunstancias del destino que podrían separarlos. A medida que luchan por su amor, descubren que están destinados a estar juntos." data-image="https://occ-0-8407-116.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABQhghzNRM9BtdJYPak_h36qzXtaGMPr6txoRZh1f25mpTjul_HizdkTmGt1KfUm870AlU6TNNS5sYA09Bu4R0qaz8DNYEYgU2bbBjhZuq0xH.png?r=f4d" data-url="https://youtu.be/fD3Jtu9RATo?si=_qvYyWBVfmA9HC3f">
-    </div>
-    <div class="col-md-2">
-        <img style="margin-top: 16px;" src="swat.jpg" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="S.W.A.T." data-duration="1 hora 45 minutos" data-description="La historia sigue a un equipo de élite de la policía que se enfrenta a peligrosos criminales y situaciones extremas. A medida que los miembros del equipo trabajan juntos, deben superar sus diferencias y aprender a confiar el uno en el otro para resolver los casos más difíciles." data-image="https://static.skyassets.com/contentstack/assets/blt143e20b03d72047e/blt286a3d254725dfa1/661cf38211487565511ff93f/swat-TA.png?imageManager=true&impolicy=resize&height=360" data-url="https://youtu.be/0vzfbLx1I3c?si=NxaL1v5nGnS0v_jZ">
-    </div>
-    <div class="col-md-2">
-        <img style="margin-top: 16px;" src="calamar.jpg" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="El Juego del Calamar" data-duration="1 hora 45 minutos" data-description="Un grupo de personas en dificultades económicas acepta una misteriosa invitación a participar en un juego mortal por un premio de dinero. A medida que avanzan en los juegos, deben enfrentarse a decisiones difíciles y descubrir la verdadera naturaleza de la competencia." data-image="https://1000marcas.net/wp-content/uploads/2022/06/Squid-Game-Logo.png" data-url="https://youtu.be/gqVAplS_ajY?si=Ai0apgWOagqUZQeb">
-    </div>
-</div>
-
-
-
-  <div class="container-fluid"></div>
-  <div class="row">
-    <div class="col-md-2">
-        <img style="margin-top: 16px;" src="arcane.jpg" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Arcane" data-duration="16 horas" data-description="Arcane es una serie animada que explora la historia de dos hermanas y su viaje en un mundo de magia y traición. A medida que se enfrentan a la corrupción y la desigualdad, descubren sus verdaderos destinos." data-image="https://static.wikia.nocookie.net/arcane/images/4/49/Arcane_Season_1_title_card.png/revision/latest/scale-to-width-down/1200?cb=20211121090201" data-url="https://youtu.be/-BhEcVwBEPQ?si=SWD8ssezvAsKE8N_">
-    </div>
-    <div class="col-md-2">
-        <img style="margin-top: 16px;" src="demon.jpg" alt="Imagen 2" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Demon Slayer: Kimetsu no Yaiba 4" data-duration="18 horas" data-description="La serie sigue a Tanjiro Kamado, un joven cazador de demonios que lucha para salvar a su hermana y vengar a su familia. A través de batallas épicas, descubre la profundidad de su determinación y amor." data-image="https://occ-0-8407-114.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABed4svhwVvcPtGaT1YJYe5Gf6cGRr3bGu1bLkkd9wpa6IxaxBQDjBTKnhysueozXY69uADQQy-7MVIM45YfhXeLbNAaz8_mD47nAclavvvz-.png?r=4d1" data-url="https://youtu.be/XJ1RoUscQrw?si=AtKsoZfd2K6rU5jE">
-    </div>
-    <div class="col-md-2">
-        <img style="margin-top: 16px;" src="minombre.jpg" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Mi nombre" data-duration="19 horas" data-description="Mi Nombre sigue a una joven que se infiltra en el mundo criminal para vengar la muerte de su padre. A medida que se adentra más en este oscuro mundo, enfrenta dilemas morales y descubre verdades sobre su familia." data-image="https://images.ctfassets.net/4cd45et68cgf/79dQlB6ad0P6x1sISQs1VO/3f5e2dcd3e6cdc8dd6d5fed024d2eeba/EN-US_MyNameS1_Teaser_Solo_Vertical_RGB_PRE.jpg?w=1200" data-url="https://youtu.be/qNewsn09aTE?si=I5gBAmzb6EreCmMX">
-    </div>
-    <div class="col-md-2">
-        <img style="margin-top: 16px;" src="walkingdead.jpg" alt="Imagen 4" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="The Walking Dead" data-duration="19 horas" data-description="En un mundo post-apocalíptico infestado de zombis, un grupo de sobrevivientes lucha por mantenerse con vida mientras enfrentan no solo a los muertos, sino también a otros humanos que amenazan su supervivencia." data-image="https://static.skyassets.com/contentstack/assets/blt143e20b03d72047e/bltf681f43d4610cc06/664c63b04c5cb994708f5809/twd-logo.png?imageManager=true&impolicy=resize&height=360" data-url="https://youtu.be/rjyBpduUCzE?si=OBPi4uJ1zQjMN44U">
-    </div>
-    <div class="col-md-2">
-        <img style="margin-top: 16px;" src="kingdom.jpg" alt="Imagen 5" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Kingdom III" data-duration="19 horas" data-description="Kingdom III sigue la lucha por el trono en un reino en crisis, donde fuerzas sobrenaturales y conflictos políticos se entrelazan. La serie ofrece un emocionante vistazo a la lucha por el poder y la supervivencia." data-image="https://occ-0-8407-1001.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABegp4SdegGK7olu0l87nJCErt3ZachFPp_W-9hQaGTlJ2WZM8Bc0WgV643HA8bpGUd2MvV_WIDKM5C3wzhukwu5ZpDVHyf1x2rcxHjkOa91v.png?r=6a2" data-url="https://youtu.be/bBm6RikWYlE?si=P10Tols7MMGXgij8">
-    </div>
-    <div class="col-md-2">
-        <img style="margin-top: 16px;" src="sabuesos.jpg" alt="Imagen 6" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Un amor predestinado" data-duration="19 horas" data-description="Un amor predestinado narra la historia de dos almas que, a pesar de los obstáculos, están destinadas a encontrarse. La serie explora el destino, el amor y las decisiones que moldean nuestras vidas." data-image="https://pics.filmaffinity.com/Un_amor_predestinado_Serie_de_TV-779589481-large.jpg" data-url="https://youtu.be/aAc4Gu0khig?si=UzvFQJeQgaDQZnLX">
-    </div>
-</div>
-
 
   <div class="header">
     <h1 style="margin-top: 48px;"><b>Películas🎞️</b></h1>
@@ -820,32 +746,32 @@ document.addEventListener('DOMContentLoaded', loadViewedMovies);
   </script>
 
 <script>
-  document.getElementById('inicio-link').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevenir la acción predeterminada del enlace
-    const plan = localStorage.getItem('plan'); // Obtener el plan almacenado
-    let url;
-
-    // Determinar la URL según el plan
-    switch (plan) {
-        case 'Plan Básico':
-            url = '/basico';
-            break;
-        case 'Plan Estándar':
-            url = '/estandar';
-            break;
-        case 'Plan Premium':
-            url = '/peliculas';
-            break;
-        default:
-            url = '/'; // Redirigir a una página predeterminada si no hay plan
-    }
-
-    // Redirigir a la URL correspondiente
-    if (url) {
-      window.location.href = url;
-    }
-  });
-</script>
+    document.getElementById('inicio-link').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevenir la acción predeterminada del enlace
+      const plan = localStorage.getItem('plan'); // Obtener el plan almacenado
+      let url;
+  
+      // Determinar la URL según el plan
+      switch (plan) {
+          case 'Plan Básico':
+              url = '/basico';
+              break;
+          case 'Plan Estándar':
+              url = '/estandar';
+              break;
+          case 'Plan Premium':
+              url = '/peliculas';
+              break;
+          default:
+              url = '/'; // Redirigir a una página predeterminada si no hay plan
+      }
+  
+      // Redirigir a la URL correspondiente
+      if (url) {
+        window.location.href = url;
+      }
+    });
+  </script>
 
 </body>
 </html>

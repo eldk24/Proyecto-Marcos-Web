@@ -155,11 +155,14 @@
     </a>
 
     <ul class="nav nav-pills mx-auto">
-      <li class="nav-item"><a href="/peliculas" class="nav-link">Inicio</a></li>
+      <li class="nav-item">
+          <a href="#" class="nav-link" id="inicio-link">Inicio</a>
+      </li>
       <li class="nav-item"><a href="/Extras" class="nav-link">Extras</a></li>
       <li class="nav-item"><a href="/sobre" class="nav-link">Acerca de Metflix</a></li>
       <li class="nav-item"><a href="/cerrar?email=user@example.com" class="nav-link">Cerrar</a></li>
       <li class="nav-item"><a href="/perfil" class="nav-link">Perfil</a></li>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
     </ul>
   </header>
 
@@ -211,80 +214,47 @@
     </div>
     <div class="info-card">
       <h2>Valores</h2>
-      <p>Compromiso, diversidad e innovación en cada experiencia que ofrecemos.</p>
+      <p>Compromiso, calidad, y atención al cliente.</p>
     </div>
   </div>
 
-  <div class="contenido faq-section" style="width: 70%; margin: 0 auto;">
-    <h2 style="text-align: center; margin: 40px 0; color: white;">Preguntas Frecuentes</h2>
-    <div class="accordion" id="accordionExample">
-      <div class="accordion-item" style="background-color: #222;">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            ¿Cuánto cuesta una suscripción?
-          </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-          <div class="accordion-body" style="background-color: #ffc6c6;">
-            Ofrecemos varios planes de suscripción, que comienzan desde precios accesibles hasta planes premium con características adicionales.
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item" style="background-color: #222;">
-        <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            ¿Puedo cancelar mi suscripción en cualquier momento?
-          </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-          <div class="accordion-body" style="background-color: #ffc6c6;">
-            Sí, puedes cancelar tu suscripción en cualquier momento a través de tu cuenta en nuestro sitio web.
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item" style="background-color: #222;">
-        <h2 class="accordion-header" id="headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            ¿Puedo ver Metflix en múltiples dispositivos al mismo tiempo?
-          </button>
-        </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-          <div class="accordion-body" style="background-color: #ffc6c6;">
-            Sí, dependiendo del plan de suscripción que elijas, puedes ver Metflix en múltiples dispositivos simultáneamente.
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-
-  <div style="display: flex; justify-content: center; align-items: center; background-color: #ffffff; padding: 20px; width: 200px; margin: 0 auto; margin-top: 24px;">
-    <img src="https://www.webhosting.pe/images/pagos/niubiz.png" alt="Medios de Pago y Síguenos" style="width: 90px;">
-  </div>
-
-  <div class="footer">
+  <footer class="footer">
     <div class="social-media">
-      <a href="https://www.facebook.com" target="_blank">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" alt="Facebook">
-      </a>
-      <a href="https://www.instagram.com" target="_blank">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram">
-      </a>
-      <a href="https://www.youtube.com" target="_blank">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube">
-      </a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1400/1400155.png" alt="Instagram"></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1400/1400126.png" alt="Facebook"></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1400/1400088.png" alt="Twitter"></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1400/1400143.png" alt="YouTube"></a>
     </div>
-    <div class="reserved">
-      <img src="https://static.vecteezy.com/system/resources/previews/008/350/760/non_2x/initial-m-logo-design-vector.jpg" alt="Logo de la Página" style="height: 100px; width: auto;">
-      <p>&copy; <span id="currentYear"></span> Todos los derechos reservados</p>
-    </div>
-  </div>
+    <p class="reserved">Todos los derechos reservados &copy; 2024</p>
+  </footer>
 
   <script>
-    document.getElementById("currentYear").textContent = new Date().getFullYear();
-  </script>
+    document.getElementById('inicio-link').addEventListener('click', function() {
+      const plan = localStorage.getItem('plan'); // Obtener el plan almacenado
+      let url;
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      // Determinar la URL según el plan
+      switch (plan) {
+          case 'Plan Básico':
+              url = '/basico';
+              break;
+          case 'Plan Estándar':
+              url = '/estandar';
+              break;
+          case 'Plan Premium':
+              url = '/peliculas';
+              break;
+          default:
+              url = '/'; // Redirigir a una página predeterminada si no hay plan
+      }
+
+      if (url) {
+          window.location.href = url; // Redirigir a la URL correspondiente
+      } else {
+          console.warn("No se pudo determinar el plan. Redirigiendo a la página principal.");
+          window.location.href = '/'; // Redirigir a la página principal si no se encontró el plan
+      }
+    });
+  </script>
 </body>
 </html>

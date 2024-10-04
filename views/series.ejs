@@ -126,26 +126,26 @@
                 <tr>
                     <td>Plan Básico</td>
                     <td>S/7.90</td>
-                    <td>Calidad SD (480p)</td>
+                    <td>Solo Películas</td>
                 </tr>
                 <tr>
                     <td>Plan Estándar</td>
-                    <td>s/18.90</td>
-                    <td>Calidad HD (1080p)</td>
+                    <td>S/18.90</td>
+                    <td>Películas y Series </td>
                 </tr>
                 <tr>
                     <td>Plan Premium</td>
-                    <td>s/24.90</td>
-                    <td>Calidad 4K (2160p)</td>
+                    <td>S/24.90</td>
+                    <td>Películas y Series exclusivas</td>
                 </tr>
             </tbody>
         </table>
 
         <!-- Formulario de selección de plan -->
-        <form id="planForm">
+        <form id="plan-form" method="POST" action="/select-plan">
             <input type="hidden" id="emailInput" name="email" value="<%= email || '' %>"> <!-- El email se pasa aquí -->
             <label for="plan">Elija un plan:</label>
-            <select name="plan" required>
+            <select name="plan" id="plan-select" required>
                 <option value="Plan Básico">Plan Básico - S/7.90</option>
                 <option value="Plan Estándar">Plan Estándar - S/18.90</option>
                 <option value="Plan Premium">Plan Premium - S/24.90</option>
@@ -157,64 +157,82 @@
     </div>
 
     <script>
-        document.getElementById('planForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // Evita que el formulario se envíe de manera tradicional
-            const formData = new FormData(this);
-            const params = new URLSearchParams(formData);
+        // Redirigir después de recibir la respuesta del servidor
+document.getElementById('plan-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evitar el envío del formulario por defecto
 
-            fetch('/select-plan', {
-                method: 'POST',
-                body: params
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(`Usted ha elegido el plan ${data.plan} con el correo ${data.email}`); // Muestra el mensaje de elección de plan
+    const email = this.email.value;
+    const plan = this.plan.value;
 
-                const paymentEmail = this.email.value; // Obtén el email del formulario
-                fetch('/pay', {
-                    method: 'POST',
-                    body: new URLSearchParams({ email: paymentEmail })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.message); // Muestra el mensaje de pago exitoso
-                    window.location.href = '/peliculas'; // Redirige a la página de las películas
-                });
-            });
+    // Almacenar el plan en localStorage
+    localStorage.setItem('plan', plan);
+
+    // Ahora enviar el formulario
+    fetch('/select-plan', {
+        method: 'POST',
+        body: new URLSearchParams({ email: email, plan: plan }) // Enviar email y plan
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Mostrar mensaje de elección de plan
+        alert(`Usted ha elegido el plan: ${data.plan}`);
+        
+        // Realiza el pago
+        return fetch('/pay', {
+            method: 'POST',
+            body: new URLSearchParams({ email: data.email }) // Usa el correo que obtuviste
         });
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message); // Muestra el mensaje de pago exitoso
+
+        // Redirigir según el plan seleccionado
+        const selectedPlan = localStorage.getItem('plan'); // Obtén el plan almacenado
+        let redirectUrl;
+        if (selectedPlan === 'Plan Básico') {
+            redirectUrl = '/basico'; // Redirigir a basico.ejs
+        } else if (selectedPlan === 'Plan Estándar') {
+            redirectUrl = '/estandar'; // Redirigir a estandar.ejs
+        } else if (selectedPlan === 'Plan Premium') {
+            redirectUrl = '/peliculas'; // Redirigir a peliculas.ejs
+        }
+
+        window.location.href = redirectUrl; // Redirige a la página correspondiente
+    });
+});
 
         function showSubscriptionInfo() {
-    const content = document.getElementById("chatbotContent");
-    content.innerHTML = `
-        <p>Estos son los planes de suscripción que ofrecemos:</p>
-        <ul>
-            <li><strong>Plan Básico:</strong> S/7.90/mes
+            const content = document.getElementById("chatbotContent");
+            content.innerHTML = `
+                <p>Estos son los planes de suscripción que ofrecemos:</p>
                 <ul>
-                    <li>Calidad SD (480p): Ideal para usuarios que no requieren alta definición y desean una opción económica.</li>
-                    <li>Es el plan más económico existente en esta plataforma.</li>
+                    <li><strong>Plan Básico:</strong> S/7.90/mes
+                        <ul>
+                            <li>Solo Películas: Ideal para usuarios que no cuentan con mucho tiempo, solo prefieren ver películas y desean una opción económica.</li>
+                            <li>Es el plan más económico existente en esta plataforma.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Plan Estándar:</strong> S/18.90/mes
+                        <ul>
+                            <li>Películas y Series: Proporciona todas las películas disponibles y algunas series.</li>
+                            <li>Plan con precio intermedio.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Plan Premium:</strong> S/24.90/mes
+                        <ul>
+                            <li>Películas y Series Exclusivas: Incluye las mejores películas y series que solo están disponibles para usuarios Premium.</li>
+                            <li>Ideal para los más exigentes que quieren lo mejor en entretenimiento.</li>
+                        </ul>
+                    </li>
                 </ul>
-            </li>
-            <li><strong>Plan Estándar:</strong> S/18.90/mes
-                <ul>
-                    <li>Calidad HD (1080p): Proporciona una excelente calidad de imagen para disfrutar de tus series y películas favoritas.</li>
-                    <li>Plan con precio intermedio.</li>
-                </ul>
-            </li>
-            <li><strong>Plan Premium:</strong> S/24.90/mes
-                <ul>
-                    <li>Calidad 4K (2160p): La mejor calidad de imagen, ideal para quienes poseen un televisor 4K.</li>
-                    <li>Este es el plan más exclusivo de Metflix.</li>
-                </ul>
-            </li>
-        </ul>
-        <button class="response-button" onclick="hideChatbot()">Cerrar</button>
-    `;
-}
-
+                <button class="response-button" onclick="hideChatbot()">Cerrar</button>
+            `;
+        }
 
         function hideChatbot() {
             const chatbot = document.querySelector('.chatbot');
-            chatbot.style.display = 'none'; // Oculta el chatbot
+            chatbot.style.display = 'none'; // Ocultar el chatbot
         }
     </script>
 </body>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - Básico</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <style>
+    body {
+      background-color: rgb(33, 33, 33);
+    }
+
+    .custom-paragraph {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0 0 0;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    .main-heading {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 24px 12px 12px 12px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    img {
+      width: 100%;
+    }
+
+    .turnos {
+      display: flex;
+      justify-content: space-between; /* Espacio uniforme */
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto; /* Centrar */
+      position: relative; /* Para la posición del mensaje emergente */
+    }
+
+    .turnos .item {
+      position: relative;
+      text-align: center;
+      margin: 0 10px; /* Espacio horizontal entre objetos */
+      margin-bottom: 140px;
+    }
+
+    .turnos img {
+      width: 80px;
+      height: 80px;
+      display: block;
+      margin: 0 auto;
+      margin-top: 140px;
+    }
+
+    .custom-paragraph {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 16px 0 0 0;
+    }
+
+    /* Mensaje emergente */
+    .message {
+      position: absolute;
+      bottom: 60%; /* Acá se ajusta el mensaje emergente */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: black;
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      white-space: nowrap;
+      display: none;
+      z-index: 1;
+      font-size: 12px;
+    }
+
+    .item:hover .message {
+      display: block;
+    }
+
+    /* Filas con colores de fondo */
+    .row {
+      background-color: rgb(33, 33, 33); 
+      color: white;
+    }
+
+    /* Espaciado para la cuarta fila */
+    .row4 .custom-paragraph {
+      margin-bottom: 3px;
+    }
+
+    .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 24px; /* Ajuste de posición para móviles */
+        }
+        .carousel-caption h5 {
+            font-size: 1.5rem; /* Tamaño del texto del título */
+        }
+        .carousel-caption p {
+            font-size: 1rem; /* Tamaño del texto del párrafo */
+        }
+
+        /* Ajustes de texto para pantallas pequeñas */
+        @media (max-width: 1200px) {
+            .carousel-caption h5 {
+                font-size: 1.25rem;
+            }
+            .carousel-caption p {
+                font-size: 0.875rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .carousel-caption h5 {
+                font-size: 1rem;
+            }
+            .carousel-caption p {
+                font-size: 0.75rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .carousel-caption {
+                margin-bottom: 0; /* Quitar margen inferior en pantallas muy pequeñas */
+            }
+            .carousel-caption h5 {
+                font-size: 0.875rem;
+            }
+            .carousel-caption p {
+                font-size: 0.65rem;
+            }
+        }
+
+    .fixed-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgb(33, 33, 33);
+  padding: 10px 0;
+}
+
+.nav-pills .nav-link {
+  color: rgb(183, 183, 183);
+  background-color: rgba(0, 0, 0, 0);
+  padding: 5px 10px;
+}
+
+.nav-pills .nav-link.active {
+  color: rgb(255, 255, 255);
+  background-color: rgb(102, 0, 0);
+}
+
+body {
+  padding-top: 100px; /* Ajusta según la altura de la barra */
+}
+
+    .text-center {
+      text-align: center;
+    }
+
+    .container1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .slider {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .slide-track {
+      display: flex;
+      animation: scroll 40s linear infinite;
+      width: calc(200px * 21); /* Ajusta el tamaño total según el número de slides */
+    }
+
+    .slide {
+      width: 200px;
+      margin-right: 20px; /* Espacio entre las imágenes */
+    }
+
+    .slide img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-200px * 7)); /* Ajustado para el número de slides visibles */
+      }
+    }
+
+    /* Ajustar el tamaño de las imágenes en el grid */
+    .container-fluid img {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+    }
+
+    .header h1 {
+      font-size: 27px;
+      color: white;
+      text-align: center;
+      margin: 20px 0; /* Espaciado adicional alrededor del título */
+    }
+
+    .container-fluid img {
+      width: 100%;
+      height: auto; /* Mantiene la proporción de la imagen */
+      border-radius: 8px;
+    }
+
+    .modal-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .container-fluid img {
+      width: 100%;
+      height: auto; /* Mantiene la proporción de la imagen */
+      border-radius: 8px;
+    }
+
+    .modal-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    /* Espaciado para la imagen del modal */
+    .modal-body {
+      display: flex;
+      align-items: center;
+    }
+
+    .modal-body .content {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    .modal-body .image-container {
+      flex: 0 0 200px;
+    }
+
+    .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #222;
+            color: white;
+        }
+        .footer img {
+            margin: 10px;
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+        }
+        .footer .social-media {
+            margin-bottom: 20px;
+        }
+        .footer .reserved {
+            border-top: 1px solid #555;
+            padding-top: 10px;
+            
+        }
+
+        .review-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            margin: 20px;
+            margin-top: 84px;
+            background-color: #fff9e4;
+        }
+        .review-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .review-title {
+            font-size: 20px;
+            margin: 0;
+            text-align: left;
+            color: black;
+        }
+        .review-body {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .review-images {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .review-images img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .stars {
+            font-size: 18px;
+            color: #FFD700;
+        }
+        .review-text {
+            font-size: 14px;
+            line-height: 1.5;
+            color: black;
+        }
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgb(33, 33, 33);
+            padding: 10px 0;
+        }
+
+        /*Netflix logo animación*/
+
+    .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Fondo negro con opacidad */
+            z-index: 999; /* Debajo del logo */
+            opacity: 1;
+            transition: opacity 1s ease-out; /* Transición para el desvanecimiento */
+        }
+        .overlay.fade-out {
+            opacity: 0;
+            pointer-events: none; /* Desactiva la interacción con el fondo mientras está oculto */
+        }
+        .netflix {
+            width: 150px;
+            height: 250px;
+            position: fixed; /* Cambiado a fixed para estar sobre toda la página */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000; /* Asegura que esté sobre otros elementos */
+            opacity: 1;
+            transition: opacity 1s ease-out; /* Transición para el desvanecimiento */
+        }
+        .netflix.fade-out {
+            opacity: 0;
+        }
+        .netflix span {
+            width: 50px;
+            height: 0;
+            background: #db0001;
+            position: absolute;
+        }
+        .left {
+            left: 0;
+            bottom: 0;
+            animation: anim 1s linear forwards;
+            animation-delay: 1s;
+        }
+        .center {
+            top: 0;
+            left: 0;
+            transform: skewX(22deg);
+            transform-origin: top left;
+            box-shadow: 0 0 50px #000;
+            z-index: 2;
+            animation: anim 1s linear forwards;
+            animation-delay: 2s;
+        }
+        .right {
+            right: 0;
+            bottom: 0;
+            animation: anim 1s linear forwards;
+            animation-delay: 3s;
+        }
+        @keyframes anim {
+            100% {
+                height: 100%;
+            }
+        }
+        .container1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="overlay" id="overlay"></div>
+
+  <div class="netflix" id="netflix-logo">
+      <span class="left"></span>
+      <span class="center"></span>
+      <span class="right"></span>
+  </div>
+
+  <script>
+      // Obtén los elementos del logo y el overlay
+      const logo = document.getElementById('netflix-logo');
+      const overlay = document.getElementById('overlay'); 
+
+      // Calcula la duración total de la animación (en este caso 4 segundos: 1s + 1s + 1s + 1s)
+      const animationDuration = 4;
+
+      // Oculta el logo y el fondo después de que termine la animación con un desvanecimiento suave
+      setTimeout(() => {
+          logo.classList.add('fade-out');
+          overlay.classList.add('fade-out');
+      }, animationDuration * 1000); // Multiplica por 1000 para convertir a milisegundos
+  </script>
+  <div style="background-color: rgb(33, 33, 33); font-size: 12px;" class="container-fluid">
+    <header class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom fixed-header">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none ms-3">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        <span style="color: rgb(255, 255, 255); font-size: 14px;" class="fs-4">Metflix</span>
+      </a>
+  
+      <ul class="nav nav-pills mx-auto">
+        <li class="nav-item">
+            <a href="#" class="nav-link" id="inicio-link">Inicio</a>
+        </li>
+        <li class="nav-item"><a href="/Extras" class="nav-link">Extras</a></li>
+        <li class="nav-item"><a href="/sobre" class="nav-link">Acerca de Metflix</a></li>
+        <li class="nav-item"><a href="/cerrar?email=user@example.com" class="nav-link">Cerrar</a></li>
+        <li class="nav-item"><a href="/perfil" class="nav-link">Perfil</a></li>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
+      </ul>
+    </header>
+  </div>
+  
+  
+  
+
+  <div id="carouselExampleAutoplaying" class="carousel sliderr" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="itaewoncarrusel.png" class="d-block w-100" alt="img1">
+            <div class="carousel-caption">
+                <h5>Itaewon Class</h5>
+                <p>La serie sigue la historia de Park Sae-ro-yi, un joven que, tras ser expulsado de la escuela secundaria, decide abrir un bar en el vibrante distrito de Itaewon, Seúl. Después de la muerte de su padre, víctima de un accidente relacionado con un poderoso conglomerado de alimentos, Sae-ro-yi se embarca en un viaje impulsado por el deseo de venganza y la ambición de alcanzar el éxito. Junto a un grupo de inadaptados, lucha contra la corrupción y enfrenta adversidades, explorando temas de amistad, amor y perseverancia, mientras destaca la importancia de seguir tus sueños y luchar por la justicia en un mundo lleno de desigualdades.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="meteoroscarrusel.png" class="d-block w-100" alt="img2">
+            <div class="carousel-caption">
+              <h5>Jardín de Meteoros</h5>
+              <p>Narra la historia de Shan Cai, una estudiante de clase baja que asiste a una prestigiosa escuela. Allí, se enfrenta al temido grupo F4, liderado por el carismático Dao Ming Si, quien inicialmente la hostiga. Sin embargo, a medida que Shan Cai se mantiene firme, comienza un romance inesperado con Dao Ming Si, desafiando las diferencias sociales y los obstáculos en su camino.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+            <img src="herederoscarrusel.png" class="d-block w-100" alt="img3">
+            <div class="carousel-caption">
+                <h5>Herederos</h5>
+                <p>Es una serie que sigue la vida de una familia adinerada enfrentando intrigas, secretos y luchas de poder tras la muerte del patriarca. Mientras los miembros de la familia intentan hacerse con la herencia, surgen conflictos que ponen a prueba sus lealtades y revelan verdades ocultas, desatando una intensa lucha por el control de la fortuna familiar.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="casadepapelcar.png" class="d-block w-100" alt="img4">
+            <div class="carousel-caption">
+              <h5>La Casa de Papel: Temporada 5</h5>
+              <p>Después de que Lisboa entrase en el Banco de España, la banda vuelve a estar reunida otra vez. Pero no todo van a ser buenas noticias. Sierra encuentra al Profesor tras descubrir su escondite secreto a base de pedir un par de favores, ¿Podría Sierra unirse a la banda? Los protagonistas se ponen manos a la obra para conseguir sacar todo el oro que hay en el Banco de España.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="f1carrusel.png" class="d-block w-100" alt="img4">
+          <div class="carousel-caption">
+              <h5>Formula 1: Drive to Survive Season 4</h5>
+              <p>F1 ofrece una mirada intensa y personal a la temporada 2021 de Fórmula 1, destacando las rivalidades y dramas entre los equipos y pilotos. A través de entrevistas exclusivas y un acceso detrás de las cámaras, la serie captura la emoción de las carreras y las tensiones que rodean a las escuderías, especialmente la batalla entre Lewis Hamilton y Max Verstappen por el campeonato. Es una celebración del deporte y un examen de la presión que enfrentan los competidores en la pista.</p>
+          </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+  <br>
+
+  <div class="container1">
+    <div class="slider">
+      <div class="slide-track">
+        <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
+        
+        <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
+        
+        <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
+        
+        <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
+
+        <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
+        
+        <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
+
+        <div class="slide"><img src="netflixpantala.jpg" alt="Auspiciador 1"></div>
+        <div class="slide"><img src="proyectopower.jpg" alt="Auspiciador 2"></div>
+        <div class="slide"><img src="dracula.jpg" alt="Auspiciador 3"></div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+    <div class="modal-dialog custom-modal-dialog">
+        <div class="modal-content custom-modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="movieModalLabel">Título de la Película</h5>
+            </div>
+            <div class="modal-body d-flex">
+                <div class="content">
+                    <p><strong>Duración:</strong> 120 minutos</p>
+                    <p><strong>Descripción:</strong> Esta es una breve descripción de la película.</p>
+                </div>
+                <div class="image-container">
+                    <img src="" alt="Imagen del Modal" class="modal-img" id="modalImage">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button style="background-color: rgb(146, 0, 0);" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button style="background-color: rgb(0, 123, 255);" type="button" class="btn btn-primary" id="modalButton">Ver serie</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var modal = document.getElementById('movieModal');
+        var modalTitle = modal.querySelector('.modal-title');
+        var modalContent = modal.querySelector('.content');
+        var modalImage = modal.querySelector('#modalImage');
+        var modalButton = modal.querySelector('#modalButton'); // Botón "Ver serie"
+  
+        modal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget; // Imagen que activó el modal
+            var title = button.getAttribute('data-title');
+            var duration = button.getAttribute('data-duration');
+            var description = button.getAttribute('data-description');
+            var imageUrl = button.getAttribute('data-image');
+            var url = button.getAttribute('data-url'); // Captura de la URL
+  
+            modalTitle.textContent = title;
+            modalContent.innerHTML = `<p><strong>Duración:</strong> ${duration}</p><p><strong>Descripción:</strong> ${description}</p>`;
+            modalImage.src = imageUrl;
+  
+            // Cambia la acción del botón "Ver serie"
+            modalButton.onclick = function() {
+            console.log("Guardando película:", title, url); // Añade esta línea
+            saveViewedMovie(title, url);
+            window.open(url, '_blank'); // Abre la URL con el botón
+};
+
+
+        });
+    });
+  
+    function saveViewedMovie(title, url) {
+        // Asegúrate de que esta variable esté definida correctamente
+        const userEmail = '<%= email %>'; // Esta línea debe funcionar si `email` se pasa correctamente
+        
+        let viewedMovies = JSON.parse(localStorage.getItem(userEmail + '-viewedMovies')) || [];
+        
+        // Comprobar si la película ya está en la lista
+        if (!viewedMovies.some(movie => movie.title === title)) {
+            viewedMovies.push({ title: title, url: url });
+        }
+
+        // Guardar la lista actualizada en localStorage
+        localStorage.setItem(userEmail + '-viewedMovies', JSON.stringify(viewedMovies));
+    }
+
+function loadViewedMovies() {
+    const userEmail = '<%= email %>'; // Cambia esto para obtener el email del usuario actual
+    let viewedMovies = JSON.parse(localStorage.getItem(userEmail + '-viewedMovies')) || [];
+    const list = document.getElementById('viewedMoviesList');
+
+    // Limpiar la lista antes de cargar
+    list.innerHTML = '';
+
+    // Agregar las películas vistas a la lista
+    viewedMovies.forEach(movie => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<a href="${movie.url}" target="_blank">${movie.title}</a>`;
+        list.appendChild(listItem);
+    });
+
+    // Mostrar un mensaje si no hay películas vistas
+    if (viewedMovies.length === 0) {
+        const noMoviesMessage = document.createElement('li');
+        noMoviesMessage.textContent = 'No has visto ninguna serie o película aún.';
+        list.appendChild(noMoviesMessage);
+    }
+}
+
+// Llama a loadViewedMovies cuando se carga la página de perfil
+document.addEventListener('DOMContentLoaded', loadViewedMovies);
+
+
+  
+  </script>
+  <div class="header">
+    <h1 style="margin-top: 48px;"><b>Películas🎞️</b></h1>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <img style="margin-top: 16px;" src="hitman.jpg" alt="Imagen 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Hit Man" data-duration="16 horas" data-description="Hit Man es una emocionante película que sigue a un asesino a sueldo con un código de ética. A medida que se involucra en un mundo de traiciones y peligros, debe confrontar su propia moralidad y decidir hasta dónde está dispuesto a llegar por su próxima misión." data-image="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/fbd336b8-d63f-4b62-bcac-1306183149d7/dhjl0f4-56ee951f-c057-4a62-b490-2660d81267bd.png" data-url="https://youtu.be/c_rK0BzbTKE?si=WNUiBkYRhOEst00i">
+        </div>
+        <div class="col-md-2">
+            <img style="margin-top: 16px;" src="creep2.jpg" alt="Imagen 2" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Creep 2" data-duration="18 horas" data-description="En Creep 2, el personaje principal, un creador de contenido, se encuentra con un extraño en una remota cabaña, donde rápidamente se convierte en una aterradora experiencia de vida o muerte. Esta secuela intensifica el horror psicológico, explorando la locura humana y la manipulación." data-image="https://upload.wikimedia.org/wikipedia/en/5/5c/Creep2Poster.jpg" data-url="https://youtu.be/Juw6M3oVwCI?si=l-LmgnqfFN6cDQwy">
+        </div>
+        <div class="col-md-2">
+            <img style="margin-top: 16px;" src="nascar.jpg" alt="Imagen 3" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="La Guerra de las 24 horas" data-duration="19 horas" data-description="La Guerra de las 24 horas es un emocionante drama de carreras que sigue a un grupo de pilotos que compiten en la famosa carrera de resistencia. La película explora no solo la adrenalina de las carreras, sino también las relaciones y rivalidades que se forjan a lo largo del camino." data-image="https://pics.filmaffinity.com/La_guerra_de_las_24_horas-975529629-large.jpg" data-url="https://youtu.be/DioC_TXNbSQ?si=p-Msh99XrTlRzhzt">
+        </div>
+        <div class="col-md-2">
+          <img style="margin-top: 16px;" src="sonic.jpg" alt="Imagen 4" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Sonic" data-duration="19 horas" data-description="Sonic es una película de acción y aventuras que sigue al famoso erizo azul mientras se une a un humano para detener a un villano que busca dominar el mundo. Con humor y acción trepidante, esta adaptación de videojuegos es perfecta para toda la familia." data-image="https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABY3-r-xOI0prSEmyVnWWfvujCujjUcMheN7LzZACEU5_9GLSjNnBZGe8lD98yqKhQ3SYHFa-xJWgqM7PLySickhQ25gh3lMpCv_UuH5IkOe5.png?r=847" data-url="https://youtu.be/6PmTwCQTNJQ?si=0Vw_3wCJiXLATgck">
+        </div>
+        <div class="col-md-2">
+          <img style="margin-top: 16px;" src="spiderman.jpg" alt="Imagen 5" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Polar" data-duration="19 horas" data-description="Polar es un thriller de acción que sigue a un asesino a sueldo que se convierte en blanco de sus antiguos empleadores. Con un estilo visual impactante y una narrativa intensa, la película explora temas de venganza y redención en un mundo violento." data-image="https://blogduwest2.wordpress.com/wp-content/uploads/2019/01/polar.png?w=457" data-url="https://youtu.be/ZLJLCqS3IKU?si=tVPBwQ4d9dZ4qAU_">
+        </div>
+        <div class="col-md-2">
+          <img style="margin-top: 16px;" src="borning.jpg" alt="Imagen 6" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#movieModal" data-title="Borning 3" data-duration="19 horas" data-description="Borning 3 es una película de acción y comedia sobre un grupo de amigos que se embarcan en una aventura llena de carreras y desafíos. Con una mezcla de humor y emoción, los personajes aprenden sobre la amistad y la importancia de disfrutar la vida." data-image="https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABdY6X3wx2pV3fYECwKtAjyQtCJx-moC6aGLaEFPP3DYpWnpXZCkrLDdgLpn08JGJ9g5adEDc4nGM1ewt9BHwhX0OROamKzyC0Kpx5EfMemMxWp3lRRxLp80mj5F9mD3la02YW5hdpNio81AxbTUQPcSSyHskAfsOIam5o2DGLohh5rYR59KPKw.png?r=940" data-url="https://youtu.be/0kju4zO9iwI?si=uz1EjH8aXpIyYLZ-">
+        </div>
+    </div>
+</div>
+
+  
+  <div class="footer">
+      <div class="social-media">
+          <a href="https://www.facebook.com" target="_blank">
+              <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" alt="Facebook">
+          </a>
+          <a href="https://www.instagram.com" target="_blank">
+              <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram">
+          </a>
+          <a href="https://www.youtube.com" target="_blank">
+              <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube">
+          </a>
+      </div>
+      <div class="reserved">
+        <div style="text-align: center;">
+          <img src="https://static.vecteezy.com/system/resources/previews/008/350/760/non_2x/initial-m-logo-design-vector.jpg" alt="Logo de la Página" style="height: 100px; width: auto;">
+      </div>
+  </div>
+  
+          <p>&copy; <span id="currentYear"></span> Todos los derechos reservados</p>
+      </div>
+  </div>
+  
+    <script>
+      // Script para actualizar el año automáticamente
+      document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+
+<script>
+    document.getElementById('inicio-link').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevenir la acción predeterminada del enlace
+      const plan = localStorage.getItem('plan'); // Obtener el plan almacenado
+      let url;
+  
+      // Determinar la URL según el plan
+      switch (plan) {
+          case 'Plan Básico':
+              url = '/basico';
+              break;
+          case 'Plan Estándar':
+              url = '/estandar';
+              break;
+          case 'Plan Premium':
+              url = '/peliculas';
+              break;
+          default:
+              url = '/'; // Redirigir a una página predeterminada si no hay plan
+      }
+  
+      // Redirigir a la URL correspondiente
+      if (url) {
+        window.location.href = url;
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -241,14 +241,15 @@
                 <span style="color: rgb(255, 255, 255); font-size: 14px; margin-left: 24px;" class="fs-4">Metflix</span>
             </a>
             <ul class="nav nav-pills mx-auto">
-                <li class="nav-item"><a href="/peliculas" class="nav-link">Inicio</a></li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="inicio-link">Inicio</a>
+                </li>
                 <li class="nav-item"><a href="/Extras" class="nav-link">Extras</a></li>
                 <li class="nav-item"><a href="/sobre" class="nav-link">Acerca de Metflix</a></li>
                 <li class="nav-item"><a href="/cerrar?email=user@example.com" class="nav-link">Cerrar</a></li>
                 <li class="nav-item"><a href="/perfil" class="nav-link">Perfil</a></li>
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-              </nav>
-            </ul>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
+              </ul>
         </header>
     </div>
 
@@ -429,5 +430,34 @@
 
         renderCalendar();
     </script>
+
+<script>
+    document.getElementById('inicio-link').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevenir la acción predeterminada del enlace
+      const plan = localStorage.getItem('plan'); // Obtener el plan almacenado
+      let url;
+  
+      // Determinar la URL según el plan
+      switch (plan) {
+          case 'Plan Básico':
+              url = '/basico';
+              break;
+          case 'Plan Estándar':
+              url = '/estandar';
+              break;
+          case 'Plan Premium':
+              url = '/peliculas';
+              break;
+          default:
+              url = '/'; // Redirigir a una página predeterminada si no hay plan
+      }
+  
+      // Redirigir a la URL correspondiente
+      if (url) {
+        window.location.href = url;
+      }
+    });
+  </script>
+  
 </body>
 </html>

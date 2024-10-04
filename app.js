@@ -33,7 +33,18 @@ app.get("/", (req, res) => {
 
 // Rutas para otros archivos EJS
 app.get("/peliculas", (req, res) => {
-    res.render("peliculas"); // Renderizar la vista peliculas.ejs
+    const email = req.session.email; // Obtén el email de la sesión
+    res.render("peliculas", { email }); // Pasa el email a la vista
+});
+
+app.get("/basico", (req, res) => {
+    const email = req.session.email; // Obtén el email de la sesión
+    res.render("basico", { email }); // Pasa el email a la vista
+});
+
+app.get("/estandar", (req, res) => {
+    const email = req.session.email; // Obtén el email de la sesión
+    res.render("estandar", { email }); // Pasa el email a la vista
 });
 
 // Ruta para la página de series
@@ -41,7 +52,6 @@ app.get("/series", (req, res) => {
     const email = req.session.email; // Obtén el email de la sesión
     res.render("series", { email }); // Pasa el email a la vista
 });
-
 
 app.get("/sobre", (req, res) => {
     res.render("sobre"); // Renderizar la vista sobre.ejs
@@ -99,6 +109,8 @@ app.post("/select-plan", (req, res) => {
     }
 
     plans[email] = plan;
+
+    // Aquí puedes enviar el plan a la respuesta para almacenarlo en localStorage
     res.json({ message: `Usted ha elegido el plan ${plan}`, plan, email });
 });
 
